@@ -1,0 +1,17 @@
+node_modules
+.next
+out
+build
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+.env
+.env*.local
+npm-debug.log*
+.DS_Store
+.sanity
+
+# Design working files (large, not part of the site)
+mockups/_raw-homepage/
+mockups/_scripts/
+/onedrop-1.png
