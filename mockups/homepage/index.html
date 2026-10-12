@@ -1,0 +1,887 @@
+<!doctype html>
+<!--
+  Cheer d'Kids homepage mockup.
+  ALL PHOTOS ON THIS PAGE ARE MOCKUP PLACEHOLDERS (AI generated).
+  They must be replaced with real, consented photos from the client before anything goes live.
+  Every design token lives in :root so the page ports cleanly to Tailwind 4 theme variables.
+-->
+<html lang="en-NG">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cheer d’Kids | Building Futures, Brightening Smiles</title>
+<meta name="description" content="Cheer d’Kids creates programmes and experiences that help children rediscover joy, build self-belief and believe in their dreams and aspirations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/hero-outreach.jpg">
+<style>
+/* ============ Tokens ============ */
+:root{
+  /* brand */
+  --purple:#7146D3; --purple-strong:#5D35BC;
+  --gold:#FED072;
+  --blue:#2672AE; --blue-strong:#1F5F92; --blue-deep:#1D4F7A;
+  --black:#000; --white:#fff;
+  /* neutrals */
+  --ink:#16212E; --ink-2:#4A5565; --line:#E8E2D8; --line-cool:#DCE5EE;
+  --canvas:#FFFFFF; --canvas-warm:#FBF8F3; --canvas-tint:#F3F7FB;
+  --on-dark:#FFFFFF; --on-dark-2:#D5E3F0;
+  /* type */
+  --font-head:"Poppins", system-ui, sans-serif;
+  --font-body:"Nunito Sans", system-ui, sans-serif;
+  --fs-body:1.0625rem; --lh-body:1.65;
+  --fs-h1:clamp(2.375rem, 1.7rem + 2.8vw, 3.875rem);
+  --fs-h2:clamp(1.75rem, 1.4rem + 1.5vw, 2.75rem);
+  --fs-h3:clamp(1.25rem, 1.18rem + .3vw, 1.375rem);
+  --fs-lead:clamp(1.125rem, 1.05rem + .35vw, 1.3125rem);
+  /* radius */
+  --r-sm:12px; --r-md:20px; --r-lg:28px; --r-pill:999px;
+  /* spacing */
+  --gutter:20px; --container:1200px;
+  --section-y:64px; --stack-lg:32px;
+  /* elevation (hover and the one floating element only) */
+  --shadow-float:0 18px 40px -12px rgba(22,33,46,.22), 0 4px 12px rgba(22,33,46,.06);
+  --shadow-hover:0 14px 30px -14px rgba(22,33,46,.28);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+@media (min-width:768px){ :root{ --gutter:32px; --fs-body:1.125rem; } }
+@media (min-width:1024px){ :root{ --section-y:96px; --stack-lg:64px; } }
+
+/* ============ Base ============ */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:96px}
+body{margin:0; background:var(--canvas); color:var(--ink); font-family:var(--font-body); font-size:var(--fs-body); line-height:var(--lh-body); -webkit-font-smoothing:antialiased; overflow-x:hidden}
+img{display:block; max-width:100%; height:auto}
+h1,h2,h3{font-family:var(--font-head); font-weight:600; color:var(--ink); margin:0; letter-spacing:-.015em; text-wrap:balance}
+h1{font-size:var(--fs-h1); font-weight:600; line-height:1.08; letter-spacing:-.02em}
+h2{font-size:var(--fs-h2); line-height:1.15}
+h3{font-size:var(--fs-h3); line-height:1.3; letter-spacing:0}
+p{margin:0; max-width:65ch; text-wrap:pretty}
+a{color:var(--blue); text-underline-offset:3px}
+ul,ol{margin:0; padding:0; list-style:none}
+:focus-visible{outline:3px solid var(--blue); outline-offset:3px; border-radius:6px}
+.on-dark :focus-visible{outline-color:var(--gold)}
+.sr-only{position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+.skip{position:absolute; left:16px; top:-60px; z-index:100; background:var(--ink); color:#fff; padding:12px 18px; border-radius:var(--r-sm); font-family:var(--font-head); font-weight:600; text-decoration:none}
+.skip:focus{top:12px}
+
+.container{width:100%; max-width:calc(var(--container) + var(--gutter)*2); margin-inline:auto; padding-inline:var(--gutter)}
+.section{padding-block:var(--section-y)}
+.bg-warm{background:var(--canvas-warm)}
+.bg-tint{background:var(--canvas-tint)}
+
+.overline{display:block; font-family:var(--font-body); font-weight:700; font-size:.8125rem; letter-spacing:.12em; text-transform:uppercase; color:var(--purple); margin-bottom:12px}
+.lead{font-size:var(--fs-lead); color:var(--ink-2)}
+.muted{color:var(--ink-2)}
+.section-head{display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:20px 40px; margin-bottom:var(--stack-lg)}
+.section-head h2{max-width:20ch}
+
+/* ============ Buttons and links ============ */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:52px; padding:0 26px; border-radius:var(--r-pill); font-family:var(--font-head); font-weight:600; font-size:1rem; line-height:1; text-decoration:none; border:2px solid transparent; cursor:pointer; transition:background-color .2s, color .2s, border-color .2s, transform .2s var(--ease), box-shadow .2s; white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn--primary{background:var(--purple); color:#fff}
+.btn--primary:hover{background:var(--purple-strong); transform:translateY(-1px); box-shadow:0 10px 22px -10px rgba(113,70,211,.7)}
+.btn--secondary{background:transparent; color:var(--blue); border-color:var(--blue)}
+.btn--secondary:hover{background:var(--blue); color:#fff}
+.btn--sm{min-height:44px; padding:0 20px; font-size:.9375rem}
+.btn[disabled],.btn[aria-disabled="true"]{opacity:.5; pointer-events:none}
+.btn svg{width:18px; height:18px; flex:none}
+
+.link-arrow{display:inline-flex; align-items:center; gap:8px; min-height:44px; font-family:var(--font-head); font-weight:600; font-size:1rem; color:var(--blue); text-decoration:none}
+.link-arrow svg{width:18px; height:18px; transition:transform .25s var(--ease)}
+.link-arrow:hover{text-decoration:underline}
+.link-arrow--light{color:#fff}
+.link-arrow:hover svg{transform:translateX(4px)}
+
+/* ============ Header ============ */
+.site-header{position:sticky; top:0; z-index:50; background:var(--canvas-warm); border-bottom:1px solid transparent; transition:border-color .25s, background-color .25s}
+.site-header.is-scrolled{background:#fff; border-bottom-color:var(--line)}
+.header-inner{display:flex; align-items:center; justify-content:space-between; gap:24px; min-height:80px}
+.brand{display:inline-flex; align-items:center; flex:none; border-radius:var(--r-sm)}
+.brand img{height:56px; width:auto}
+.primary-nav{display:none}
+.primary-nav ul{display:flex; gap:4px}
+.primary-nav a{display:inline-flex; align-items:center; min-height:44px; padding:0 12px; font-family:var(--font-head); font-weight:500; font-size:.9375rem; color:var(--ink); text-decoration:none; border-radius:var(--r-sm); position:relative}
+.primary-nav a:hover{color:var(--blue)}
+.primary-nav a[aria-current="page"]{font-weight:600}
+.primary-nav a[aria-current="page"]::after{content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; border-radius:2px; background:var(--purple)}
+.header-actions{display:flex; align-items:center; gap:10px}
+.menu-toggle{display:inline-flex; align-items:center; justify-content:center; width:48px; height:48px; border-radius:var(--r-pill); border:1px solid var(--line); background:#fff; color:var(--ink); cursor:pointer}
+.menu-toggle svg{width:22px; height:22px}
+.menu-toggle .i-close{display:none}
+.menu-toggle[aria-expanded="true"] .i-open{display:none}
+.menu-toggle[aria-expanded="true"] .i-close{display:block}
+.mobile-menu{border-top:1px solid var(--line); background:#fff; padding:12px 0 28px}
+.mobile-menu[hidden]{display:none}
+.mobile-menu ul{display:grid}
+.mobile-menu li a{display:flex; align-items:center; justify-content:space-between; min-height:52px; font-family:var(--font-head); font-weight:500; font-size:1.0625rem; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line)}
+.mobile-menu li a[aria-current="page"]{color:var(--purple); font-weight:600}
+.mobile-menu .menu-cta{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:20px}
+@media (min-width:768px){ .brand img{height:64px} .header-inner{min-height:92px} }
+@media (min-width:1140px){
+  .primary-nav{display:block}
+  .menu-toggle,.mobile-menu{display:none!important}
+}
+
+/* ============ Hero ============ */
+.hero{background:var(--canvas-warm); padding-block:12px var(--section-y); overflow:hidden}
+.hero-media{order:-1}
+.hero-grid{display:grid; gap:28px; align-items:center}
+.hero-copy h1{margin-bottom:18px}
+@media (min-width:1024px){ .hero-copy h1{margin-bottom:22px} }
+.swash{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24' preserveAspectRatio='none'%3E%3Cpath d='M4 15 C 70 6, 170 3, 296 10' fill='none' stroke='%23FED072' stroke-width='9' stroke-linecap='round'/%3E%3Cpath d='M30 20 C 110 14, 200 13, 270 16' fill='none' stroke='%23FED072' stroke-width='5' stroke-linecap='round' opacity='.75'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:0 100%; background-size:100% .34em; padding-bottom:.06em; -webkit-box-decoration-break:clone; box-decoration-break:clone}
+.hero-copy .lead{margin-bottom:24px; max-width:34rem}
+.hero-ctas{display:flex; flex-wrap:wrap; gap:12px; align-items:center}
+.hero-ctas + .hero-ctas{margin-top:8px}
+.hero-meta{display:flex; align-items:center; gap:10px; margin-top:16px; font-size:.9375rem; color:var(--ink-2)}
+.hero-meta svg{width:20px; height:20px; color:var(--blue); flex:none}
+.hero-media{position:relative; margin:0}
+.hero-media img{width:100%; aspect-ratio:4/3; object-fit:cover; object-position:50% 40%; border-radius:var(--r-md)}
+@media (min-width:1024px){ .hero-media img{border-radius:var(--r-lg)} }
+.hero-card{display:none; position:absolute; margin:0; left:-36px; bottom:40px; align-items:center; gap:14px; background:#fff; border-radius:var(--r-md); padding:14px 20px 14px 16px; box-shadow:var(--shadow-float); max-width:calc(100% - 32px)}
+.hero-card .dot{width:44px; height:44px; border-radius:50%; background:var(--gold); display:grid; place-items:center; flex:none; color:var(--ink)}
+.hero-card .dot svg{width:22px; height:22px}
+.hero-card strong{display:block; font-family:var(--font-head); font-weight:600; font-size:1.5rem; line-height:1.1; letter-spacing:-.01em}
+.hero-card span{display:block; font-size:.875rem; line-height:1.35; color:var(--ink-2)}
+@media (min-width:1024px){
+  .hero{padding-top:40px}
+  .hero-copy .lead{margin-bottom:32px}
+  .hero-meta{margin-top:32px}
+  .hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,1fr); gap:56px}
+  .swash{white-space:nowrap}
+  .hero-media img{aspect-ratio:auto; height:min(620px, 72vh); min-height:520px}
+  .hero-media{order:0}
+  .hero-card{display:flex}
+}
+/* load-in */
+.js .hero-copy > *{opacity:0; transform:translateY(14px); animation:rise .7s var(--ease) forwards}
+.js .hero-copy > :nth-child(2){animation-delay:.08s}
+.js .hero-copy > :nth-child(3){animation-delay:.16s}
+.js .hero-copy > :nth-child(4){animation-delay:.24s}
+.js .hero-copy > :nth-child(5){animation-delay:.32s}
+.js .hero-media{opacity:0; transform:scale(.985); animation:settle 1s var(--ease) .1s forwards}
+@keyframes rise{to{opacity:1; transform:none}}
+@keyframes settle{to{opacity:1; transform:none}}
+
+/* ============ Why we exist (the one embrace frame) ============ */
+.split{display:grid; gap:48px; align-items:center}
+@media (min-width:1024px){ .split{grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:88px} }
+.embrace{position:relative; margin:0 auto; width:100%; max-width:460px; aspect-ratio:4/5; padding:4.5%}
+.embrace img{width:100%; height:100%; object-fit:cover; border-radius:50% 50% var(--r-lg) var(--r-lg) / 39.2% 39.2% var(--r-lg) var(--r-lg)}
+.embrace svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none}
+.embrace path{fill:none; stroke-width:9; stroke-linecap:round; vector-effect:non-scaling-stroke}
+.js .embrace path{stroke-dasharray:1; stroke-dashoffset:1; transition:stroke-dashoffset 1.6s var(--ease) .2s}
+.js .embrace.is-visible path{stroke-dashoffset:0}
+.why-copy h2{margin-bottom:20px; max-width:16ch}
+.why-copy > p{margin-bottom:36px}
+.pillars{display:grid; border-top:1px solid var(--line)}
+.pillars li{display:flex; align-items:baseline; gap:10px; padding:16px 0; border-bottom:1px solid var(--line); font-size:1.0625rem}
+.pillars b{font-family:var(--font-head); font-weight:600; color:var(--ink); min-width:7.5em}
+.pillars span{color:var(--ink-2)}
+@media (min-width:640px){
+  .pillars{grid-template-columns:1fr 1fr; column-gap:32px}
+  .pillars b{min-width:0}
+}
+
+/* ============ About ============ */
+.about-grid{display:grid; gap:40px}
+.about-statement{font-family:var(--font-head); font-weight:600; font-size:clamp(1.5rem, 1.2rem + 1.3vw, 2.25rem); line-height:1.3; letter-spacing:-.01em; color:var(--ink); max-width:24ch}
+.about-statement em{font-style:normal; color:var(--purple)}
+.mv{display:grid; gap:32px}
+.mv-item{border-top:2px solid var(--ink); padding-top:20px}
+.mv-item h3{font-size:1rem; letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px}
+.mv-item p{color:var(--ink-2)}
+.about-link{margin-top:8px}
+@media (min-width:768px){ .mv{grid-template-columns:1fr 1fr; gap:40px} }
+@media (min-width:1024px){ .about-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:88px; align-items:start} }
+
+/* ============ Impact (the one colour section) ============ */
+.impact{background:var(--blue-deep); color:var(--on-dark)}
+.impact h2{color:#fff; max-width:18ch}
+.impact .overline{color:var(--on-dark-2)}
+.impact .section-head p{color:var(--on-dark-2); max-width:36ch}
+.stats{display:grid; gap:0}
+.stat{display:grid; align-content:start; gap:10px; padding:28px 0; border-top:1px solid rgba(255,255,255,.18)}
+.stat::before{content:""; width:48px; height:4px; border-radius:4px; background:var(--gold); margin-bottom:12px}
+.stat-num{font-family:var(--font-head); font-weight:600; font-size:clamp(3rem, 2.2rem + 3vw, 4.5rem); line-height:1; letter-spacing:-.02em; color:#fff; font-variant-numeric:tabular-nums}
+.stat-num--word{font-size:clamp(2rem, 1.6rem + 1.6vw, 3rem); line-height:1.1}
+.stat-label{color:var(--on-dark-2); font-size:1.0625rem; line-height:1.45}
+.impact-foot{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; margin-top:48px; padding-top:20px; border-top:1px solid rgba(255,255,255,.18); color:var(--on-dark-2); font-size:.9375rem}
+.impact-foot a{color:#fff}
+@media (min-width:900px){
+  .stats{grid-template-columns:repeat(3,1fr); gap:40px}
+  .stat{padding:0; border-top:0}
+}
+
+/* ============ Card (one component: programmes, stories, get involved) ============ */
+.card-grid{display:grid; gap:24px}
+@media (min-width:768px){ .card-grid--2{grid-template-columns:1fr 1fr} }
+@media (min-width:700px) and (max-width:1023px){ .card-grid--3{grid-template-columns:1fr 1fr} }
+@media (min-width:1024px){ .card-grid--3{grid-template-columns:repeat(3,1fr)} }
+.card{display:flex; flex-direction:column; background:#fff; border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden}
+.bg-tint .card{border-color:var(--line-cool)}
+.card-link{display:flex; flex-direction:column; flex:1; color:inherit; text-decoration:none}
+.card-link:focus-visible{outline-offset:-3px; border-radius:var(--r-md)}
+.media{position:relative; overflow:hidden; aspect-ratio:4/3; background:var(--line)}
+.card--story .media{aspect-ratio:3/2}
+.media img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease-out}
+.card-link:hover .media img{transform:scale(1.03)}
+.card-body{display:flex; flex-direction:column; flex:1; gap:10px; padding:24px 24px 20px}
+@media (min-width:768px){ .card-body{padding:28px 28px 22px} }
+.card-body > p{color:var(--ink-2); font-size:1rem}
+.card-body .link-arrow{margin-top:auto; padding-top:6px}
+.card-link:hover h3{text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px}
+.badge{position:absolute; left:16px; top:16px; display:inline-flex; align-items:center; padding:6px 12px; border-radius:var(--r-pill); background:var(--gold); color:var(--black); font-family:var(--font-body); font-weight:700; font-size:.75rem; letter-spacing:.08em; text-transform:uppercase}
+.tag{display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body); font-weight:700; font-size:.8125rem; letter-spacing:.1em; text-transform:uppercase; color:var(--blue)}
+.tag::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--blue)}
+.on-the-day{margin-top:32px; padding-top:24px; border-top:1px solid var(--line); color:var(--ink-2); font-size:1rem; max-width:none}
+.on-the-day b{color:var(--ink); font-weight:700}
+
+/* ============ Stories gallery ============ */
+.gallery{display:grid; gap:16px; margin-top:var(--stack-lg)}
+.gallery-intro{display:flex; flex-direction:column; gap:10px; background:#fff; border:1px solid var(--line); border-radius:var(--r-md); padding:24px}
+.gallery-intro p{color:var(--ink-2); font-size:1rem}
+.gallery-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.gallery-grid a{display:block; overflow:hidden; border-radius:var(--r-md); aspect-ratio:1/1; background:var(--line)}
+.gallery-grid img{width:100%; height:100%; object-fit:cover; object-position:50% 30%; transition:transform .5s ease-out}
+.gallery-grid a:hover img{transform:scale(1.03)}
+@media (min-width:768px){
+  .gallery{grid-template-columns:minmax(0,1fr) minmax(0,2fr); gap:24px; align-items:stretch}
+  .gallery-intro{padding:32px; justify-content:center}
+  .gallery-grid{gap:24px}
+}
+
+/* ============ Brand promise quote ============ */
+.quote-grid{display:grid; gap:32px; align-items:center}
+.quote-photo{margin:0}
+.quote-photo img{width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:var(--r-md)}
+@media (min-width:900px){ .quote-photo img{aspect-ratio:1/1; border-radius:var(--r-lg)} }
+.quote-mark{width:44px; height:44px; color:var(--purple); margin-bottom:16px}
+@media (min-width:900px){ .quote-mark{width:56px; height:56px; margin-bottom:20px} }
+blockquote{margin:0}
+.quote-body{margin:0}
+.vision-quote{font-family:var(--font-head); font-style:normal; font-weight:500; font-size:clamp(1.5rem, 1.15rem + 1.4vw, 2.375rem); line-height:1.38; letter-spacing:-.01em; color:var(--ink); max-width:26ch}
+.quote-cite{display:flex; align-items:center; gap:14px; margin-top:32px; font-style:normal}
+.quote-cite::before{content:""; width:40px; height:2px; background:var(--purple)}
+.quote-cite b{font-family:var(--font-head); font-weight:600}
+.quote-cite span{color:var(--ink-2)}
+@media (min-width:900px){ .quote-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:88px} }
+
+/* ============ Sponsors ============ */
+.partners{display:grid; gap:40px; align-items:center}
+.partners-copy h2{margin-bottom:18px}
+.partners-copy p{color:var(--ink-2); margin-bottom:28px}
+.ways{background:#fff; border:1px solid var(--line); border-radius:var(--r-md); padding:28px 24px}
+.ways h3{margin-bottom:8px}
+.ways-list{display:grid}
+.ways-list li{display:flex; gap:16px; padding:18px 0; border-bottom:1px solid var(--line)}
+.ways-list li:last-child{border-bottom:0; padding-bottom:0}
+.ways-icon{width:44px; height:44px; flex:none; border-radius:50%; background:var(--canvas-tint); color:var(--blue); display:grid; place-items:center}
+.ways-icon svg{width:22px; height:22px}
+.ways-list b{display:block; font-family:var(--font-head); font-weight:600; font-size:1.0625rem}
+.ways-list div > span{display:block; color:var(--ink-2); font-size:1rem; line-height:1.55; margin-top:2px}
+@media (min-width:768px){ .ways{padding:36px 40px} }
+@media (min-width:1024px){ .partners{grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:88px} }
+
+/* ============ Get involved ============ */
+.section-head-note{max-width:36ch}
+.path .card-body{padding:32px 28px}
+.path-icon{width:52px; height:52px; border-radius:50%; background:var(--canvas-tint); color:var(--blue); display:grid; place-items:center; margin-bottom:12px}
+.path-icon svg{width:26px; height:26px}
+.path-extra{margin:12px 0 20px; flex:1}
+.steps{display:grid; gap:10px; counter-reset:step}
+.steps li{display:flex; align-items:center; gap:12px; font-size:.9375rem; color:var(--ink)}
+.steps li::before{counter-increment:step; content:counter(step); width:28px; height:28px; flex:none; border-radius:50%; background:var(--canvas-tint); color:var(--blue-strong); font-family:var(--font-head); font-weight:600; font-size:.8125rem; display:grid; place-items:center}
+.amounts{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+.amount{min-height:48px; border-radius:var(--r-sm); border:1.5px solid var(--line-cool); background:#fff; color:var(--ink); font-family:var(--font-head); font-weight:600; font-size:1rem; cursor:pointer; transition:border-color .2s, background-color .2s}
+.amount:hover{border-color:var(--ink-2)}
+.amount[aria-pressed="true"]{border-color:var(--gold); background:var(--gold); color:var(--black)}
+.amount-note{font-size:.875rem; color:var(--ink-2); margin-top:12px}
+.address{display:flex; gap:12px; padding:16px; border-radius:var(--r-sm); background:var(--canvas-tint); font-size:.9375rem; line-height:1.5}
+.address svg{width:20px; height:20px; color:var(--blue); flex:none; margin-top:2px}
+.address b{display:block; font-weight:700; font-size:.875rem}
+.path-actions{display:flex; flex-wrap:wrap; align-items:center; gap:4px 18px}
+.path-actions .btn{flex:1 1 auto}
+
+/* ============ Social + contact ============ */
+.connect{display:grid; gap:20px}
+@media (min-width:1024px){ .connect{grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:24px} }
+.panel{border-radius:var(--r-lg); padding:36px 28px}
+@media (min-width:768px){ .panel{padding:48px} }
+.panel--line{border:1px solid var(--line)}
+.panel--warm{background:var(--canvas-warm)}
+.panel h2{margin-bottom:14px}
+.panel > p{color:var(--ink-2)}
+.socials{display:grid; gap:12px; margin-top:28px}
+.social{display:flex; align-items:center; gap:16px; min-height:72px; padding:12px 18px; border:1px solid var(--line); border-radius:var(--r-md); color:var(--ink); text-decoration:none; transition:border-color .2s, box-shadow .2s}
+.social:hover{border-color:var(--blue); box-shadow:var(--shadow-hover)}
+.social .ico{width:44px; height:44px; border-radius:50%; background:var(--canvas-tint); color:var(--blue); display:grid; place-items:center; flex:none}
+.social .ico svg{width:22px; height:22px}
+.social b{display:block; font-family:var(--font-head); font-weight:600; font-size:1rem}
+.social span{display:block; font-size:.875rem; color:var(--ink-2)}
+.social .go{margin-left:auto; width:20px; height:20px; color:var(--blue)}
+.invite{display:flex; flex-direction:column; justify-content:space-between; gap:28px}
+.invite h2{max-width:18ch}
+.invite-actions{display:flex; flex-wrap:wrap; align-items:center; gap:12px 20px}
+.mail{display:inline-flex; align-items:center; gap:10px; min-height:44px; color:var(--blue); font-weight:600; word-break:break-all}
+.mail svg{width:20px; height:20px; flex:none}
+
+/* ============ Footer ============ */
+.site-footer{background:var(--black); color:#C9D1DB; padding-block:64px 32px; font-size:.9375rem}
+.footer-top{display:grid; gap:40px}
+.footer-brand img{width:132px; height:auto; border-radius:var(--r-sm)}
+.footer-brand p{margin-top:18px; color:#fff; font-family:var(--font-head); font-weight:500; font-size:1.0625rem; line-height:1.45; max-width:22ch}
+.footer-cols{display:grid; grid-template-columns:1fr 1fr; gap:32px 24px}
+.footer-cols h2{font-size:.8125rem; letter-spacing:.12em; text-transform:uppercase; color:#fff; margin-bottom:12px}
+.footer-cols a{display:inline-flex; align-items:center; min-height:40px; color:#C9D1DB; text-decoration:none}
+.footer-cols a:hover{color:var(--gold); text-decoration:underline}
+.footer-bottom{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin-top:48px; padding-top:24px; border-top:1px solid #2A2F36}
+.footer-social{display:flex; gap:10px}
+.footer-social a{width:44px; height:44px; border-radius:50%; border:1px solid #3A4048; display:grid; place-items:center; color:#fff; transition:border-color .2s, color .2s}
+.footer-social a:hover{border-color:var(--gold); color:var(--gold)}
+.footer-social svg{width:20px; height:20px}
+@media (min-width:768px){ .footer-cols{grid-template-columns:repeat(4,1fr)} }
+@media (min-width:1024px){ .footer-top{grid-template-columns:minmax(0,1fr) minmax(0,2.6fr); gap:64px} }
+
+/* ============ Scroll reveal ============ */
+.js .reveal{opacity:0; transform:translateY(12px); transition:opacity .5s ease-out, transform .5s ease-out}
+.js .reveal.is-visible{opacity:1; transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important; transition:none!important}
+  .js .reveal,.js .hero-copy > *,.js .hero-media{opacity:1!important; transform:none!important}
+  .js .embrace path{stroke-dashoffset:0}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ Header ============ -->
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="Cheer d’Kids, home">
+      <!-- Ports to components/Logo.tsx -->
+      <img src="assets/logo-transparent.png" alt="Cheer d’Kids" width="495" height="506">
+    </a>
+    <nav class="primary-nav" aria-label="Main">
+      <ul>
+        <li><a href="#top" aria-current="page">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#programmes">Programmes</a></li>
+        <li><a href="#impact">Our Impact</a></li>
+        <li><a href="#get-involved">Get Involved</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn--primary btn--sm" href="#donate">Donate</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="sr-only">Menu</span>
+        <svg class="i-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav class="container" aria-label="Main mobile">
+      <ul>
+        <li><a href="#top" aria-current="page">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#programmes">Programmes</a></li>
+        <li><a href="#impact">Our Impact</a></li>
+        <li><a href="#get-involved">Get Involved</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="menu-cta">
+        <a class="btn btn--secondary" href="#get-involved">Volunteer</a>
+        <a class="btn btn--primary" href="#donate">Donate</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ 1. Hero ============ -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <h1 id="hero-title">Building Futures, <span class="swash">Brightening Smiles</span></h1>
+      <p class="lead">Cheer d’Kids creates programmes and experiences that help children rediscover joy, build self-belief and believe in their dreams and aspirations.</p>
+      <div class="hero-ctas">
+        <a class="btn btn--primary" href="#donate">Support Our Mission</a>
+        <a class="btn btn--secondary" href="#get-involved">Volunteer With Us</a>
+      </div>
+      <div class="hero-ctas">
+        <a class="link-arrow" href="#impact">See Our Impact
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <p class="hero-meta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        Working across Southwest Nigeria, with outreaches in Lagos and Kwara.
+      </p>
+    </div>
+    <figure class="hero-media">
+      <img src="assets/hero-outreach.jpg" width="1264" height="848" fetchpriority="high"
+        alt="A volunteer in a purple t-shirt kneels among laughing schoolchildren in blue uniforms as they clap and raise their hands during a school outreach.">
+      <div class="hero-card" aria-hidden="true">
+        <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-5 9 5"/><path d="M5 9.5V19h14V9.5"/><path d="M10 19v-4.5h4V19"/><path d="M3 19h18"/></svg></span>
+        <div><strong>7 outreaches</strong><span>in schools and communities across Lagos and Kwara</span></div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 2. Why we exist ============ -->
+<section class="section" aria-labelledby="why-title">
+  <div class="container split">
+    <figure class="embrace reveal" aria-label="Photo framed by two curved arms, inspired by the embrace in our logo">
+      <img src="assets/classroom-conversation.jpg" width="900" height="1117" loading="lazy" decoding="async"
+        alt="Schoolchildren sitting in a circle in a bright classroom raise their hands eagerly during a group conversation, one girl laughing in the front.">
+      <svg viewBox="0 0 400 500" preserveAspectRatio="none" aria-hidden="true">
+        <path pathLength="1" stroke="#7146D3" d="M40 102 A192 192 0 0 0 8 200 L8 372 C8 438 96 486 200 496"/>
+        <path pathLength="1" stroke="#FED072" d="M360 102 A192 192 0 0 1 392 200 L392 372 C392 438 304 486 200 496"/>
+      </svg>
+    </figure>
+    <div class="why-copy reveal">
+      <span class="overline">Why we exist</span>
+      <h2 id="why-title">Every child deserves to keep their spark.</h2>
+      <p class="lead">Difficult family, economic and social circumstances can wear down a child’s confidence, enthusiasm and hope for the future. We exist so that children rediscover joy and believe that their circumstances do not have to define their future.</p>
+      <ul class="pillars" aria-label="How we see every child">
+        <li><b>Potential</b> <span>over pity</span></li>
+        <li><b>Hope</b> <span>over helplessness</span></li>
+        <li><b>Dignity</b> <span>over dependency</span></li>
+        <li><b>Empowerment</b> <span>over limitation</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. About ============ -->
+<section class="section bg-warm" id="about" aria-labelledby="about-title">
+  <div class="container about-grid">
+    <div class="reveal">
+      <span class="overline">About us</span>
+      <h2 class="about-statement" id="about-title">Cheer d’Kids is an NGO working across <em>Southwest Nigeria</em>, with documented outreaches in Lagos and Kwara.</h2>
+    </div>
+    <div class="reveal">
+      <div class="mv">
+        <div class="mv-item">
+          <h3>Our mission</h3>
+          <p>To provide programs and activities that enhance happiness and instill self-belief in children.</p>
+        </div>
+        <div class="mv-item">
+          <h3>Our vision</h3>
+          <p>To ensure that every child experiences joy and has the hope to believe in their dreams and aspirations.</p>
+        </div>
+      </div>
+      <a class="link-arrow about-link" href="#about">Read our story
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. Impact ============ -->
+<section class="section impact on-dark" id="impact" aria-labelledby="impact-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="overline">Our impact</span>
+        <h2 id="impact-title">Our impact so far</h2>
+      </div>
+      <p>Every outreach is a day of conversation, games, music and encouragement for children.</p>
+    </div>
+    <ul class="stats reveal">
+      <li class="stat">
+        <span class="stat-num">2,000+</span>
+        <span class="stat-label">children reached</span>
+      </li>
+      <li class="stat">
+        <span class="stat-num">7</span>
+        <span class="stat-label">school and community outreaches</span>
+      </li>
+      <li class="stat">
+        <span class="stat-num stat-num--word">Lagos and Kwara</span>
+        <span class="stat-label">where our outreaches have taken place</span>
+      </li>
+    </ul>
+    <div class="impact-foot">
+      <p>Figures from our own outreach records.</p>
+      <a class="link-arrow link-arrow--light" href="#stories">See our outreach stories
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. Programmes ============ -->
+<section class="section" id="programmes" aria-labelledby="prog-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="overline">Programmes</span>
+        <h2 id="prog-title">What we do with children and young people</h2>
+      </div>
+      <a class="link-arrow" href="#programmes">All programmes
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="card-grid card-grid--3">
+      <article class="card reveal">
+        <a class="card-link" href="#programmes">
+          <div class="media"><img src="assets/programme-games.jpg" width="900" height="725" loading="lazy" decoding="async" alt="Schoolchildren holding hands in a wide circle run and laugh during a game on a school field while a volunteer cheers them on."></div>
+          <div class="card-body">
+            <h3>School Outreaches</h3>
+            <p>Joyful school visits built around purpose, self-belief and keeping every child’s spark alive.</p>
+            <span class="link-arrow">Learn more<span class="sr-only"> about School Outreaches</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+        </a>
+      </article>
+      <article class="card reveal">
+        <a class="card-link" href="#programmes">
+          <div class="media"><img src="assets/programme-training.jpg" width="900" height="725" loading="lazy" decoding="async" alt="Young adult volunteers sit around a table with notebooks while a facilitator leads a training discussion."></div>
+          <div class="card-body">
+            <h3>Volunteer Training</h3>
+            <p>Training young Nigerians to show up for children with care, energy and good safeguarding practice.</p>
+            <span class="link-arrow">Learn more<span class="sr-only"> about Volunteer Training</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+        </a>
+      </article>
+      <article class="card reveal">
+        <a class="card-link" href="#programmes">
+          <div class="media">
+            <img src="assets/programme-skills.jpg" width="900" height="725" loading="lazy" decoding="async" alt="A teenage boy looks through a camera as a young mentor beside him points out what to photograph.">
+            <span class="badge">In development</span>
+          </div>
+          <div class="card-body">
+            <h3>Skill Acquisition</h3>
+            <p>A programme in development to help young people build practical, creative skills. Photography and graphics design are among the skills under consideration.</p>
+            <span class="link-arrow">Learn more<span class="sr-only"> about Skill Acquisition</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+        </a>
+      </article>
+    </div>
+    <p class="on-the-day reveal"><b>On an outreach day:</b> group conversations on purpose and self-belief, games, fun videos and creative engagement, prayer, danceable music, and relief items like bags, shoes and books.</p>
+  </div>
+</section>
+
+<!-- ============ 6. Featured stories ============ -->
+<section class="section bg-warm" id="stories" aria-labelledby="stories-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="overline">Featured stories</span>
+        <h2 id="stories-title">Where we have been</h2>
+      </div>
+    </div>
+    <div class="card-grid card-grid--2">
+      <article class="card card--story reveal">
+        <a class="card-link" href="#stories">
+          <div class="media"><img src="assets/project-lagos.jpg" width="1200" height="805" loading="lazy" decoding="async" alt="A hall full of cheering schoolchildren in yellow and green uniforms wave their arms as two volunteers lead a song at the front."></div>
+          <div class="card-body">
+            <span class="tag">Lagos State</span>
+            <h3>Outreaches in Lagos</h3>
+            <p>Conversation, games, music and encouragement, plus relief items from our sponsors.</p>
+            <span class="link-arrow">Read the story<span class="sr-only"> about our outreaches in Lagos</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+        </a>
+      </article>
+      <article class="card card--story reveal">
+        <a class="card-link" href="#stories">
+          <div class="media"><img src="assets/project-kwara.jpg" width="1200" height="805" loading="lazy" decoding="async" alt="Smiling schoolchildren hold new school bags and exercise books under a tree as a volunteer hands a book to a boy."></div>
+          <div class="card-body">
+            <span class="tag">Kwara State</span>
+            <h3>Outreaches in Kwara</h3>
+            <p>Conversation, games, music and encouragement, plus relief items from our sponsors.</p>
+            <span class="link-arrow">Read the story<span class="sr-only"> about our outreaches in Kwara</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+        </a>
+      </article>
+    </div>
+
+    <div class="gallery reveal">
+      <div class="gallery-intro">
+        <h3>Moments from our outreaches</h3>
+        <p>Games, books, music and a lot of laughter, captured at our school and community outreaches.</p>
+        <a class="link-arrow" href="#stories">Open the gallery
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <ul class="gallery-grid">
+        <li><a href="#stories"><img src="assets/gallery-reading.jpg" width="700" height="700" loading="lazy" decoding="async" alt="Two girls share a new storybook on a classroom bench, one pointing at the page and smiling."></a></li>
+        <li><a href="#stories"><img src="assets/portrait-smile.jpg" width="890" height="1117" loading="lazy" decoding="async" alt="A girl in a light blue school uniform laughs in warm afternoon light in her school yard."></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. Brand promise (no approved testimonials yet; never attribute words to a child) ============ -->
+<section class="section" aria-label="Our promise">
+  <div class="container quote-grid">
+    <figure class="quote-photo reveal">
+      <img src="assets/gallery-dance.jpg" width="700" height="700" loading="lazy" decoding="async" alt="Children in green uniforms dance with their arms up in a school yard, with a volunteer dancing alongside them.">
+    </figure>
+    <figure class="quote-body reveal">
+      <svg class="quote-mark" viewBox="0 0 48 48" aria-hidden="true"><path fill="currentColor" d="M20 12c-7.7 2.4-12 8.6-12 16.4V38h12V26h-6.4c.4-4.3 2.9-7.6 7.6-9.4L20 12zm20 0c-7.7 2.4-12 8.6-12 16.4V38h12V26h-6.4c.4-4.3 2.9-7.6 7.6-9.4L40 12z"/></svg>
+      <blockquote>
+        <p class="vision-quote">We want every child to believe that their circumstances do not have to define their future.</p>
+      </blockquote>
+      <figcaption class="quote-cite"><b>Our promise</b></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 8. Sponsors and partners ============ -->
+<section class="section bg-warm" id="partners" aria-labelledby="partners-title">
+  <div class="container partners">
+    <div class="partners-copy reveal">
+      <span class="overline">Sponsors and partners</span>
+      <h2 id="partners-title">Made possible together.</h2>
+      <p>Sponsors and partners help us provide relief items such as bags, shoes and books, and make every outreach possible. We will introduce them here, with their permission.</p>
+      <a class="btn btn--secondary" href="#contact">Partner With Us</a>
+    </div>
+    <!-- No sponsors are confirmed yet. Add logos here only with written permission. -->
+    <div class="ways reveal">
+      <h3>Ways to partner with us</h3>
+      <ul class="ways-list">
+        <li>
+          <span class="ways-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-5 9 5"/><path d="M5 9.5V19h14V9.5"/><path d="M10 19v-4.5h4V19"/><path d="M3 19h18"/></svg></span>
+          <div><b>Sponsor an outreach</b><span>Help us bring a day of joy and encouragement to a school or community.</span></div>
+        </li>
+        <li>
+          <span class="ways-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></span>
+          <div><b>Provide relief items</b><span>Bags, shoes, books and confectioneries for the children we meet.</span></div>
+        </li>
+        <li>
+          <span class="ways-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-6 7-6s6.2 2.4 7 6"/></svg></span>
+          <div><b>Share your skills</b><span>Support our volunteer training, or the skill acquisition programme in development.</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. Get involved ============ -->
+<section class="section bg-tint" id="get-involved" aria-labelledby="involved-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="overline">Get involved</span>
+        <h2 id="involved-title">Help a child keep their spark</h2>
+      </div>
+      <p class="muted section-head-note">Give your time, give online, or give the things children need for school.</p>
+    </div>
+    <div class="card-grid card-grid--3">
+      <article class="card path reveal" id="volunteer">
+        <div class="card-body">
+          <span class="path-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7.5" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5M14.5 14.6c.8-.4 1.6-.6 2.5-.6 2.2 0 3.8 1.4 4.3 4"/></svg></span>
+          <h3>Volunteer</h3>
+          <p>Students, graduates and professionals. Apply, take a short screening test by email, join our training, then an outreach.</p>
+          <div class="path-extra">
+            <ol class="steps" aria-label="How volunteering works">
+              <li>Apply online</li>
+              <li>Short screening test by email</li>
+              <li>Join our volunteer training</li>
+              <li>Join an outreach</li>
+            </ol>
+          </div>
+          <div class="path-actions"><a class="btn btn--secondary" href="#volunteer">Apply to volunteer</a></div>
+        </div>
+      </article>
+
+      <article class="card path reveal" id="donate">
+        <div class="card-body">
+          <span class="path-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></svg></span>
+          <h3>Donate</h3>
+          <p>Give online or by bank transfer. Local and international donations welcome.</p>
+          <div class="path-extra">
+            <div class="amounts" role="group" aria-label="Choose an amount">
+              <button class="amount" type="button" aria-pressed="false" data-amount="₦5,000">₦5,000</button>
+              <button class="amount" type="button" aria-pressed="true" data-amount="₦10,000">₦10,000</button>
+              <button class="amount" type="button" aria-pressed="false" data-amount="₦25,000">₦25,000</button>
+              <button class="amount" type="button" aria-pressed="false" data-amount="₦50,000">₦50,000</button>
+            </div>
+            <p class="amount-note">Prefer a bank transfer? Our account details are on the Donate page.</p>
+          </div>
+          <div class="path-actions"><a class="btn btn--primary" href="#donate">Donate <span data-amount-label>₦10,000</span></a></div>
+        </div>
+      </article>
+
+      <article class="card path reveal" id="donate-items">
+        <div class="card-body">
+          <span class="path-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></span>
+          <h3>Donate items or partner</h3>
+          <p>We welcome bags, shoes, books and confectioneries.</p>
+          <div class="path-extra">
+            <p class="address">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+              <span><b>Drop-off</b>10, Adebayo Street, Igbolomu, Ikorodu, Lagos</span>
+            </p>
+          </div>
+          <div class="path-actions">
+            <a class="btn btn--secondary" href="#contact">Arrange a drop-off</a>
+            <a class="link-arrow" href="#partners">Partner with us
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. Social + 11. Contact ============ -->
+<section class="section" id="contact" aria-label="Follow us and contact us">
+  <div class="container connect">
+    <div class="panel panel--line reveal">
+      <span class="overline">Social media</span>
+      <h2>Follow the joy.</h2>
+      <p>Photos, videos and news from every outreach.</p>
+      <div class="socials">
+        <a class="social" href="https://www.instagram.com/cheerdkids" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></span>
+          <span><b>Instagram</b><span>@cheerdkids</span></span>
+          <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          <span class="sr-only">(opens in a new tab)</span>
+        </a>
+        <a class="social" href="https://www.linkedin.com/company/cheer-d-kids-initiative" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8.8H3.6V20h2.9V8.8zM5 4a1.7 1.7 0 1 0 0 3.4A1.7 1.7 0 0 0 5 4zm15.4 9.6c0-3-1.6-4.9-4.2-4.9-1.4 0-2.4.7-2.9 1.5V8.8H10.4V20h2.9v-5.9c0-1.5.6-2.7 2.1-2.7 1.4 0 2 1.1 2 2.7V20h3v-6.4z"/></svg></span>
+          <span><b>LinkedIn</b><span>Cheer d’Kids on LinkedIn</span></span>
+          <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          <span class="sr-only">(opens in a new tab)</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="panel panel--warm invite reveal">
+      <div>
+        <span class="overline">For schools</span>
+        <h2>Invite Cheer d’Kids to Your School</h2>
+        <p class="muted">Tell us about your school and your pupils, and we will get in touch to plan a visit together.</p>
+      </div>
+      <div class="invite-actions">
+        <a class="btn btn--primary" href="#contact">Invite us</a>
+        <a class="mail" href="mailto:cheerthekidsinitiative@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg>
+          cheerthekidsinitiative@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ Footer ============ -->
+<footer class="site-footer on-dark">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo.png" width="495" height="506" alt="Cheer d’Kids" loading="lazy">
+        <p>Giving Children Hope. Keeping Their Spark Alive.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Footer">
+        <div>
+          <h2>About</h2>
+          <ul>
+            <li><a href="#about">Our story</a></li>
+            <li><a href="#about">Mission and vision</a></li>
+            <li><a href="#about">Core values</a></li>
+            <li><a href="#about">Registration information</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Our work</h2>
+          <ul>
+            <li><a href="#programmes">Programmes</a></li>
+            <li><a href="#impact">Our impact</a></li>
+            <li><a href="#stories">Gallery</a></li>
+            <li><a href="#stories">Stories</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Get involved</h2>
+          <ul>
+            <li><a href="#volunteer">Volunteer</a></li>
+            <li><a href="#donate">Donate</a></li>
+            <li><a href="#donate-items">Donate items</a></li>
+            <li><a href="#partners">Partner with us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Trust</h2>
+          <ul>
+            <li><a href="#partners">Sponsors and partners</a></li>
+            <li><a href="#top">Safeguarding</a></li>
+            <li><a href="#top">Privacy</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Cheer d’Kids</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/cheerdkids" target="_blank" rel="noopener" aria-label="Cheer d’Kids on Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.linkedin.com/company/cheer-d-kids-initiative" target="_blank" rel="noopener" aria-label="Cheer d’Kids on LinkedIn (opens in a new tab)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.5 8.8H3.6V20h2.9V8.8zM5 4a1.7 1.7 0 1 0 0 3.4A1.7 1.7 0 0 0 5 4zm15.4 9.6c0-3-1.6-4.9-4.2-4.9-1.4 0-2.4.7-2.9 1.5V8.8H10.4V20h2.9v-5.9c0-1.5.6-2.7 2.1-2.7 1.4 0 2 1.1 2 2.7V20h3v-6.4z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Mobile menu
+  var t=document.querySelector('.menu-toggle'), m=document.getElementById('mobile-menu');
+  t.addEventListener('click',function(){
+    var open=t.getAttribute('aria-expanded')==='true';
+    t.setAttribute('aria-expanded',String(!open)); m.hidden=open;
+  });
+  m.addEventListener('click',function(e){ if(e.target.closest('a')){ t.setAttribute('aria-expanded','false'); m.hidden=true; } });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !m.hidden){ t.setAttribute('aria-expanded','false'); m.hidden=true; t.focus(); } });
+
+  // Header border once scrolled
+  var h=document.querySelector('.site-header');
+  var onScroll=function(){ h.classList.toggle('is-scrolled', window.scrollY>8); };
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // Donation amount chips
+  var label=document.querySelector('[data-amount-label]');
+  document.querySelectorAll('.amount').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.amount').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true'); label.textContent=b.dataset.amount;
+    });
+  });
+
+  // Gentle reveal on scroll
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(el){ el.classList.add('is-visible'); }); return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('is-visible'); io.unobserve(en.target); } });
+  },{rootMargin:'0px 0px -8% 0px', threshold:.08});
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
