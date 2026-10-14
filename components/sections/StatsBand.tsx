@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { SITE } from "@/lib/site";
 import type { Img } from "@/lib/content/types";
+import { CountUp } from "@/components/CountUp";
 
 const STATS = [
   { value: SITE.impact.childrenReached, label: "children reached" },
@@ -39,7 +40,7 @@ export function StatsBand({ title = "Our impact so far", intro, image }: { title
                     : "font-heading text-[2.6rem] font-semibold leading-none tracking-[-0.02em] text-white tabular-nums min-[900px]:text-[clamp(3rem,2.2rem+3vw,4.5rem)]"
                 }
               >
-                {s.value}
+                {s.word ? s.value : <CountUp value={s.value} />}
               </span>
               <span className="text-[0.95rem] leading-[1.4] text-[#D5E3F0] min-[900px]:text-[1.0625rem] min-[900px]:leading-[1.45]">{s.label}</span>
             </li>
