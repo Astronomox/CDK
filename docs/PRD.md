@@ -508,11 +508,7 @@ Local and international donations are welcome.
 
 Current requested items: bags, shoes, books and confectioneries.
 
-Physical donation address:
-
-10, Adebayo Street,  
-Igbolomu,  
-Ikorodu, Lagos.
+Physical donation address: private (a home address in Lagos). Not published on the website; shared with donors by email after an enquiry.
 
 The website should include a physical donation enquiry option so donors can confirm logistics before delivery.
 

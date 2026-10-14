@@ -74,7 +74,7 @@ export function SchoolOutreachForm() {
         <>
           <div className={grid}>
             <TextField name="schoolName" label="School name" autoComplete="organization" required state={state} />
-            <TextField name="schoolLocation" label="School location" required state={state} hint="Area and state, e.g. Ikorodu, Lagos" />
+            <TextField name="schoolLocation" label="School location" required state={state} hint="Area and state, e.g. Ikeja, Lagos" />
             <TextField name="contactPerson" label="Contact person" autoComplete="name" required state={state} />
             <TextField name="phone" label="Phone" type="tel" autoComplete="tel" inputMode="tel" required state={state} />
             <TextField name="email" label="Email" type="email" autoComplete="email" required state={state} />

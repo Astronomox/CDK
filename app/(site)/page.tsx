@@ -437,8 +437,8 @@ export default async function HomePage() {
                   <p className="address">
                     <MapPin aria-hidden />
                     <span>
-                      <b>Drop-off</b>
-                      {SITE.donationAddress.lines.join(", ")}
+                      <b>Drop-off in {SITE.donationDropOff.area}</b>
+                      {SITE.donationDropOff.note}
                     </span>
                   </p>
                 </div>

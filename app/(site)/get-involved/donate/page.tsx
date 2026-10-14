@@ -113,16 +113,10 @@ export default function DonatePage() {
             <div className="flex items-start gap-3">
               <MapPin className="mt-1 size-6 shrink-0 text-purple" />
               <div>
-                <h3 className="text-xl font-semibold">Drop-off address</h3>
-                <address className="mt-2 not-italic text-lg leading-relaxed">
-                  {SITE.donationAddress.lines.map((line) => (
-                    <span key={line} className="block">
-                      {line}
-                    </span>
-                  ))}
-                </address>
+                <h3 className="text-xl font-semibold">Dropping off in {SITE.donationDropOff.area}</h3>
+                <p className="mt-2 text-lg">{SITE.donationDropOff.note}</p>
                 <p className="mt-4 text-muted-foreground">
-                  Please send us a quick enquiry first so we can confirm the items and arrange delivery before you travel.
+                  Send us a quick enquiry so we can confirm the items and arrange delivery before you travel.
                 </p>
                 <ArrowLink href="/get-involved/donate-items" className="mt-3">
                   Send a donation enquiry

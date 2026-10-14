@@ -58,7 +58,7 @@ export default function ContactPage() {
               <Gift className="mt-1 size-5 shrink-0 text-purple" />
               <p>
                 <span className="font-semibold">Item donations: </span>
-                {SITE.donationAddress.lines.join(", ")}
+                {SITE.donationDropOff.note}
               </p>
             </div>
             <ArrowLink href="/get-involved/donate-items" className="mt-3">

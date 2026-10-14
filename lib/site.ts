@@ -61,10 +61,13 @@ export const SITE = {
     officeAddress: TODO as string,
   },
 
-  /** Physical donation drop-off address (from the PRD, section 23.2). */
-  donationAddress: {
-    lines: ["10, Adebayo Street", "Igbolomu", "Ikorodu, Lagos"],
-    country: "Nigeria",
+  /**
+   * Item donations are dropped off in Lagos. The exact address is a private home
+   * address, so it is never published: it is shared by email after an enquiry.
+   */
+  donationDropOff: {
+    area: "Lagos",
+    note: "We share the drop-off address privately once we have confirmed your donation.",
   },
 
   requestedItems: ["Bags", "Shoes", "Books", "Confectioneries"],

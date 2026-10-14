@@ -9,7 +9,7 @@ import { MapPin } from "@/components/icons";
 
 export const metadata: Metadata = pageMetadata({
   title: "Donate items",
-  description: "Donate bags, shoes, books and confectioneries to Cheer The Kids. Send an enquiry to confirm items and delivery before drop-off in Ikorodu, Lagos.",
+  description: "Donate bags, shoes, books and confectioneries to Cheer The Kids. Send an enquiry to confirm items and arrange drop-off in Lagos.",
   path: "/get-involved/donate-items",
 });
 
@@ -51,15 +51,9 @@ export default function DonateItemsPage() {
           </div>
           <div className="rounded-[28px] bg-navy p-8 text-white">
             <MapPin className="size-8 text-gold" />
-            <h2 className="mt-3 text-2xl font-bold text-white">Donation address</h2>
-            <address className="mt-3 not-italic text-lg leading-relaxed text-white">
-              {SITE.donationAddress.lines.map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
-            </address>
-            <p className="mt-5 text-white">Please send an enquiry before delivery so we can confirm logistics and be there to receive you.</p>
+            <h2 className="mt-3 text-2xl font-bold text-white">Dropping off in {SITE.donationDropOff.area}</h2>
+            <p className="mt-3 text-lg leading-relaxed text-white">{SITE.donationDropOff.note}</p>
+            <p className="mt-5 text-white">Send an enquiry below and we will reply with the address and a time when we can be there to receive you.</p>
           </div>
         </div>
       </Section>

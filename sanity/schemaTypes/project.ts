@@ -13,7 +13,7 @@ export const project = defineType({
     defineField({
       name: "location",
       type: "string",
-      description: "e.g. Ikorodu, Lagos",
+      description: "e.g. Ikeja, Lagos",
       validation: (rule) => rule.required(),
     }),
     defineField({ name: "school", title: "School or community", type: "string" }),
