@@ -3,9 +3,7 @@
  *
  * Everything here comes from docs/PRD.md. Nothing is invented: where details are
  * still being compiled (dates, schools, per-project numbers) the fields are left
- * empty and the UI says so. Images are clearly labelled placeholders until approved,
- * consented photos are uploaded in the CMS.
- * The sample photos are AI generated and carry a visible "Sample photo" label.
+ * empty and the UI says so. Photos are the organisation's own outreach photos.
  *
  * Seed items carry the same `approved` flag as CMS items and go through the same
  * filter, so the safeguarding rule is exercised in development too.
@@ -16,24 +14,64 @@ import type { GalleryItem, Img, Partner, Programme, Project, Story, Testimonial,
 type Approvable<T> = T & { approved: boolean };
 
 /**
- * Sample photos (AI generated, mockup only) used until real, consented photos are added in the CMS.
- * They render with a visible "Sample photo" label. Replace every one of them before launch.
+ * Real outreach photos supplied by the organisation (Google Drive, 2024 to 2026 folders),
+ * resized to 1600px for the web. Replace or add more through the CMS.
  */
-function sample(file: string, width: number, height: number, alt: string): Img {
-  return { src: `/samples/${file}.jpg`, alt, width, height, placeholder: true };
+function photo(file: string, width: number, height: number, alt: string): Img {
+  return { src: `/photos/outreach-${file}.jpg`, alt, width, height };
 }
 
+export const PHOTOS = {
+  hero: photo("2024-23", 1600, 1026, "Pupils in green uniforms cheer and hold up books and gifts in front of the Cheer The Kids Children Outreach banner."),
+  why: photo("2024-31", 1600, 2000, "A schoolboy in a green uniform smiles broadly at an outreach."),
+  promise: photo("2025-34", 1600, 2400, "A volunteer in a Cheer The Kids t-shirt hugs a smiling pupil as they both make peace signs."),
+  schoolOutreach: photo("2026-15", 1600, 1067, "A volunteer speaks to pupils in brown and cream uniforms in front of the Children Outreach banner."),
+  training: photo("2024-30", 1280, 700, "The Cheer The Kids volunteer team standing together at an outreach."),
+  skills: photo("2024-18", 1600, 1068, "Pupils and volunteers gathered in a classroom during an indoor session."),
+  team: photo("2024-48", 1600, 944, "Cheer The Kids volunteers smiling together after an outreach."),
+};
+
+/** Kept for older imports: the site now uses real photos everywhere. */
 export const PLACEHOLDERS = {
-  outreach: sample("hero-outreach", 1264, 848, "A volunteer in a purple t-shirt kneels among laughing schoolchildren who clap and raise their hands during a school outreach."),
-  classroom: sample("classroom-conversation", 900, 1117, "Schoolchildren sitting in a circle in a bright classroom raise their hands during a group conversation."),
-  games: sample("programme-games", 900, 725, "Schoolchildren holding hands in a wide circle run and laugh during a game on a school field."),
-  training: sample("programme-training", 900, 725, "Young adult volunteers sit around a table with notebooks during a training discussion."),
-  skills: sample("programme-skills", 900, 725, "A teenage boy looks through a camera as a young mentor points out what to photograph."),
-  lagos: sample("project-lagos", 1200, 805, "A hall full of cheering schoolchildren wave their arms as two volunteers lead a song."),
-  kwara: sample("project-kwara", 1200, 805, "Smiling schoolchildren hold new school bags and exercise books as a volunteer hands out books."),
-  dance: sample("gallery-dance", 700, 700, "Children dance with their arms up in a school yard, with a volunteer dancing alongside them."),
-  reading: sample("gallery-reading", 700, 700, "Two girls share a new storybook on a classroom bench, smiling."),
-  portrait: sample("portrait-smile", 890, 1112, "A girl in a light blue school uniform laughs in warm afternoon light."),
+  outreach: PHOTOS.hero,
+  classroom: PHOTOS.why,
+  dance: PHOTOS.promise,
+  games: PHOTOS.schoolOutreach,
+  training: PHOTOS.training,
+  skills: PHOTOS.skills,
+  team: PHOTOS.team,
+};
+
+/** Every outreach photo on the site, keyed by year and number. */
+export const OUTREACH_PHOTOS = {
+  "2024-3": photo("2024-3", 1600, 2000, "A young boy smiles at the camera during an outreach."),
+  "2024-11": photo("2024-11", 1600, 1066, "Excited pupils raise their hands and papers during an activity."),
+  "2024-17": photo("2024-17", 1600, 2398, "A pupil smiles with her hand on her chin."),
+  "2024-24": photo("2024-24", 1600, 1066, "A large group of pupils in green uniforms gathered in the school yard."),
+  "2024-25": photo("2024-25", 1600, 1066, "A girl in a green uniform laughs in the school yard."),
+  "2024-26": photo("2024-26", 1600, 1280, "Two volunteers hold a certificate in front of the outreach banner."),
+  "2024-29": photo("2024-29", 1280, 854, "Pupils cheer and wave their papers in the air."),
+  "2024-32": photo("2024-32", 1600, 1066, "Pupils and volunteers pose together in front of the outreach banner."),
+  "2024-38": photo("2024-38", 1600, 1066, "Pupils in a classroom clap and smile during a session."),
+  "2025-1": photo("2025-1", 1600, 1067, "Young pupils in colourful uniforms clap together outside."),
+  "2025-6": photo("2025-6", 1600, 1068, "Pupils line up in the school compound during an outreach."),
+  "2025-9": photo("2025-9", 1600, 1067, "Pupils reach out excitedly as a volunteer shares items."),
+  "2025-12": photo("2025-12", 1600, 2400, "A young pupil claps and smiles."),
+  "2025-22": photo("2025-22", 1600, 1067, "A volunteer talks with young pupils beside the Children Outreach banner."),
+  "2025-28": photo("2025-28", 1600, 1068, "Young pupils stand together in front of the Children Outreach banner."),
+  "2025-37": photo("2025-37", 1600, 2400, "A volunteer in a purple Cheer The Kids Initiative t-shirt makes peace signs."),
+  "2025-43": photo("2025-43", 1600, 1021, "Volunteers in Cheer The Kids t-shirts gather outside a school."),
+  "2025-47": photo("2025-47", 1600, 2400, "A volunteer in a navy Cheer The Kids t-shirt smiles and makes peace signs."),
+  "2026-4": photo("2026-4", 1600, 2400, "A pupil holds a sign reading Healthy Girls, Confident Women, Strong Future."),
+  "2026-5": photo("2026-5", 1600, 1067, "A large crowd of pupils in brown and cream uniforms at an outreach."),
+  "2026-12": photo("2026-12", 1600, 2400, "A pupil speaks into a microphone during an outreach."),
+  "2026-16": photo("2026-16", 1600, 2400, "A pupil holds up a Cheer The Kids sign among classmates."),
+  "2026-19": photo("2026-19", 1600, 2400, "A smiling volunteer holds a Cheer The Kids sign."),
+  "2026-20": photo("2026-20", 1600, 2400, "A smiling pupil holds a Cheer The Kids sign high above their head."),
+  "2026-25": photo("2026-25", 1600, 2400, "Two pupils grin at the camera."),
+  "2026-31": photo("2026-31", 1600, 1067, "Pupils clap and sing together outside."),
+  "2026-44": photo("2026-44", 1600, 1067, "A pupil speaks into a microphone as classmates listen."),
+  "2026-47": photo("2026-47", 1600, 2400, "A pupil smiles among classmates during an outreach."),
 };
 
 function paragraphs(...texts: string[]): PortableTextBlock[] {
@@ -63,7 +101,7 @@ export const seedProgrammes: Programme[] = [
     ],
     audience: "Primary and secondary school pupils in Lagos, Kwara and across Southwest Nigeria.",
     status: "active",
-    image: PLACEHOLDERS.games,
+    image: PHOTOS.schoolOutreach,
     order: 1,
   },
   {
@@ -80,7 +118,7 @@ export const seedProgrammes: Programme[] = [
     ],
     audience: "Tertiary students, graduates and professionals.",
     status: "active",
-    image: PLACEHOLDERS.training,
+    image: PHOTOS.training,
     order: 2,
   },
   {
@@ -95,7 +133,7 @@ export const seedProgrammes: Programme[] = [
       "More details to be announced",
     ],
     status: "in-development",
-    image: PLACEHOLDERS.skills,
+    image: PHOTOS.skills,
     skills: [
       { title: "Photography", description: "Under consideration.", status: "planned" },
       { title: "Graphics design", description: "Under consideration.", status: "planned" },
@@ -115,16 +153,15 @@ const OUTREACH_ACTIVITIES = [
 
 export const seedProjects: Approvable<Project>[] = [
   {
-    slug: "outreaches-in-lagos",
-    title: "Outreaches in Lagos",
-    location: "Lagos State",
+    slug: "outreaches-2026",
+    title: "Our 2026 outreaches",
+    location: "Southwest Nigeria",
     context:
-      "Many children face difficult family, economic and social circumstances that can wear down confidence and hope. Schools in Lagos welcomed us to spend time with their pupils.",
+      "This year we returned to schools with conversation, play and encouragement, including a focus on healthy girls, confident women and strong futures.",
     whatWeDid: OUTREACH_ACTIVITIES,
-    outcome:
-      "These visits are part of the more than 2,000 children reached across our 7 school and community outreaches so far.",
-    coverImage: PLACEHOLDERS.lagos,
-    photos: [PLACEHOLDERS.outreach, PLACEHOLDERS.dance],
+    outcome: "Part of the more than 2,000 children reached across our 7 school and community outreaches so far.",
+    coverImage: OUTREACH_PHOTOS["2026-5"],
+    photos: [OUTREACH_PHOTOS["2026-4"], OUTREACH_PHOTOS["2026-16"], OUTREACH_PHOTOS["2026-44"], OUTREACH_PHOTOS["2026-31"]],
     videos: [],
     testimonials: [],
     sponsors: [],
@@ -132,16 +169,31 @@ export const seedProjects: Approvable<Project>[] = [
     approved: true,
   },
   {
-    slug: "outreaches-in-kwara",
-    title: "Outreaches in Kwara",
-    location: "Kwara State",
+    slug: "outreaches-2025",
+    title: "Our 2025 outreaches",
+    location: "Southwest Nigeria",
     context:
-      "Our work reaches beyond Lagos. In Kwara we brought the same mix of conversation, play and encouragement to children in schools and communities.",
+      "Our volunteers spent the day with young pupils: clapping games, conversations about self-belief and plenty of smiles.",
     whatWeDid: OUTREACH_ACTIVITIES,
-    outcome:
-      "These visits are part of the more than 2,000 children reached across our 7 school and community outreaches so far.",
-    coverImage: PLACEHOLDERS.kwara,
-    photos: [PLACEHOLDERS.reading, PLACEHOLDERS.classroom],
+    outcome: "Part of the more than 2,000 children reached across our 7 school and community outreaches so far.",
+    coverImage: OUTREACH_PHOTOS["2025-28"],
+    photos: [OUTREACH_PHOTOS["2025-22"], OUTREACH_PHOTOS["2025-6"], OUTREACH_PHOTOS["2025-12"], OUTREACH_PHOTOS["2025-43"]],
+    videos: [],
+    testimonials: [],
+    sponsors: [],
+    detailsPending: true,
+    approved: true,
+  },
+  {
+    slug: "outreaches-2024",
+    title: "Our 2024 outreaches",
+    location: "Southwest Nigeria",
+    context:
+      "Our early outreaches brought volunteers, games and relief items into school yards and classrooms, and set the tone for everything since.",
+    whatWeDid: OUTREACH_ACTIVITIES,
+    outcome: "Part of the more than 2,000 children reached across our 7 school and community outreaches so far.",
+    coverImage: OUTREACH_PHOTOS["2024-24"],
+    photos: [OUTREACH_PHOTOS["2024-32"], OUTREACH_PHOTOS["2024-11"], OUTREACH_PHOTOS["2024-29"], OUTREACH_PHOTOS["2024-38"]],
     videos: [],
     testimonials: [],
     sponsors: [],
@@ -150,17 +202,33 @@ export const seedProjects: Approvable<Project>[] = [
   },
 ];
 
-/** Sample photos only (AI generated, no real children). Replace with approved, consented photos. */
+/** The organisation's own outreach photos from 2024 to 2026. */
 export const seedGallery: Approvable<GalleryItem>[] = [
-  { id: "seed-g1", image: PLACEHOLDERS.outreach, category: "school-outreaches", caption: "Clapping games at a school outreach", approved: true },
-  { id: "seed-g2", image: PLACEHOLDERS.reading, category: "creative-activities", caption: "Sharing a new storybook", approved: true },
-  { id: "seed-g3", image: PLACEHOLDERS.dance, category: "events", caption: "Dancing together", approved: true },
-  { id: "seed-g4", image: PLACEHOLDERS.games, category: "games", caption: "A circle game on the school field", approved: true },
-  { id: "seed-g5", image: PLACEHOLDERS.kwara, category: "donations", caption: "New school bags and books", approved: true },
-  { id: "seed-g6", image: PLACEHOLDERS.classroom, category: "school-outreaches", caption: "Conversations on purpose and self-belief", approved: true },
-  { id: "seed-g7", image: PLACEHOLDERS.training, category: "volunteers", caption: "Volunteer training", approved: true },
-  { id: "seed-g9", image: PLACEHOLDERS.portrait, category: "school-outreaches", caption: "All smiles after an outreach", approved: true },
-  { id: "seed-g8", image: PLACEHOLDERS.lagos, category: "events", caption: "A hall full of cheers", approved: true },
+  { id: "photo-1", image: PHOTOS.hero, category: "school-outreaches", caption: "Celebrating at an outreach", approved: true },
+  { id: "photo-2", image: OUTREACH_PHOTOS["2026-25"], category: "school-outreaches", caption: "All smiles", approved: true },
+  { id: "photo-3", image: PHOTOS.promise, category: "volunteers", caption: "A volunteer and a pupil", approved: true },
+  { id: "photo-4", image: OUTREACH_PHOTOS["2024-38"], category: "creative-activities", caption: "Clapping along in class", approved: true },
+  { id: "photo-5", image: OUTREACH_PHOTOS["2026-4"], category: "events", caption: "Healthy Girls, Confident Women, Strong Future", approved: true },
+  { id: "photo-6", image: OUTREACH_PHOTOS["2025-1"], category: "games", caption: "Clapping games", approved: true },
+  { id: "photo-7", image: PHOTOS.why, category: "school-outreaches", caption: "A big smile", approved: true },
+  { id: "photo-8", image: OUTREACH_PHOTOS["2026-12"], category: "creative-activities", caption: "Taking the microphone", approved: true },
+  { id: "photo-9", image: OUTREACH_PHOTOS["2024-29"], category: "school-outreaches", caption: "Cheers in the school yard", approved: true },
+  { id: "photo-10", image: OUTREACH_PHOTOS["2025-47"], category: "volunteers", caption: "Our volunteers", approved: true },
+  { id: "photo-11", image: OUTREACH_PHOTOS["2026-20"], category: "events", caption: "Holding the sign high", approved: true },
+  { id: "photo-12", image: OUTREACH_PHOTOS["2024-26"], category: "events", caption: "Certificates of appreciation", approved: true },
+  { id: "photo-13", image: OUTREACH_PHOTOS["2025-9"], category: "donations", caption: "Sharing items with pupils", approved: true },
+  { id: "photo-14", image: PHOTOS.schoolOutreach, category: "school-outreaches", caption: "Talking about purpose and self-belief", approved: true },
+  { id: "photo-15", image: OUTREACH_PHOTOS["2024-3"], category: "school-outreaches", caption: "Ready for the day", approved: true },
+  { id: "photo-16", image: OUTREACH_PHOTOS["2025-37"], category: "volunteers", caption: "Volunteer joy", approved: true },
+  { id: "photo-17", image: OUTREACH_PHOTOS["2026-44"], category: "creative-activities", caption: "Speaking up", approved: true },
+  { id: "photo-18", image: OUTREACH_PHOTOS["2024-25"], category: "school-outreaches", caption: "Laughter in the yard", approved: true },
+  { id: "photo-19", image: OUTREACH_PHOTOS["2025-12"], category: "games", caption: "Joining in", approved: true },
+  { id: "photo-20", image: OUTREACH_PHOTOS["2026-19"], category: "volunteers", caption: "Proud to volunteer", approved: true },
+  { id: "photo-21", image: PHOTOS.training, category: "volunteers", caption: "The volunteer team", approved: true },
+  { id: "photo-22", image: OUTREACH_PHOTOS["2026-47"], category: "school-outreaches", caption: "Listening closely", approved: true },
+  { id: "photo-23", image: OUTREACH_PHOTOS["2024-17"], category: "school-outreaches", caption: "Thinking big", approved: true },
+  { id: "photo-24", image: OUTREACH_PHOTOS["2026-16"], category: "events", caption: "Our logo in the crowd", approved: true },
+  { id: "photo-25", image: PHOTOS.team, category: "volunteers", caption: "Volunteers together", approved: true },
 ];
 
 /** Real testimonials exist but must be added in the CMS with consent. None are seeded. */
@@ -180,9 +248,9 @@ export const seedStories: Approvable<Story>[] = [
     publishedAt: "2026-10-10",
     excerpt:
       "Are you a student, graduate or professional who wants to help children believe in their dreams? We would love to hear from you.",
-    coverImage: PLACEHOLDERS.classroom,
+    coverImage: OUTREACH_PHOTOS["2025-47"],
     body: paragraphs(
-      "Cheer d’Kids is welcoming new volunteers. We work with young Nigerians in tertiary institutions, graduates and professionals who want to bring joy and encouragement to children.",
+      "Cheer The Kids is welcoming new volunteers. We work with young Nigerians in tertiary institutions, graduates and professionals who want to bring joy and encouragement to children.",
       "There are roles for everyone: school outreaches, our social media team, videography, photography, graphics design, content creation and event support.",
       "Here is how it works. You apply online. We review your application and send a short screening test by email. You then join our training before being deployed to an outreach.",
       "If that sounds like you, apply on our Volunteer page.",
@@ -195,11 +263,11 @@ export const seedStories: Approvable<Story>[] = [
     category: "impact-story",
     publishedAt: "2026-10-10",
     excerpt: "A look at where our work has taken us so far, from Lagos to Kwara.",
-    coverImage: PLACEHOLDERS.outreach,
+    coverImage: OUTREACH_PHOTOS["2026-5"],
     body: paragraphs(
-      "Through 7 school and community outreaches, Cheer d’Kids has reached more than 2,000 children. Our documented activities so far have taken place in Lagos and Kwara.",
+      "Through 7 school and community outreaches, Cheer The Kids has reached more than 2,000 children. Our documented activities so far have taken place in Lagos and Kwara.",
       "Every outreach mixes conversation about purpose and self-belief with games, music, creative activities and, thanks to our sponsors, relief items such as bags, shoes and books.",
-      "We are compiling the full story of each outreach, with photos and videos shared only with the right consent in place. Watch this space.",
+      "We are compiling the full story of each outreach. You can already see moments from 2024, 2025 and 2026 in our gallery.",
     ),
     approved: true,
   },
@@ -209,7 +277,7 @@ export const seedStories: Approvable<Story>[] = [
     category: "programme-announcement",
     publishedAt: "2026-10-10",
     excerpt: "Photography and graphics design are among the skills we are considering.",
-    coverImage: PLACEHOLDERS.skills,
+    coverImage: PHOTOS.skills,
     body: paragraphs(
       "We want young people to leave our programmes with practical skills they can grow into real opportunities.",
       "Our skill acquisition programme is under development. Photography and graphics design are among the skills under consideration.",
