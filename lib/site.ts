@@ -20,14 +20,16 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").re
 
 export const SITE = {
   /** Site name, matching the logo wordmark "CHEER d’KIDS". Uses a typographic apostrophe. */
-  name: "Cheer d’Kids",
+  name: "Cheer The Kids",
   /** Short name used where space is tight (manifest, small labels). */
-  shortName: "Cheer d’Kids",
+  shortName: "Cheer The Kids",
   /** Plain spelling used in emails, file names and anywhere a straight apostrophe is safer. */
-  plainName: "Cheer d'Kids",
+  plainName: "Cheer The Kids",
+  /** Registered (official) name, as given by the organisation. Used with the RC number. */
+  legalName: "Cheer The Kids",
   tagline: "Giving Children Hope. Keeping Their Spark Alive.",
   description:
-    "Cheer d’Kids creates programmes and experiences that help children rediscover joy, build self-belief and believe in their dreams and aspirations.",
+    "Cheer The Kids creates programmes and experiences that help children rediscover joy, build self-belief and believe in their dreams and aspirations.",
 
   /** TODO: domain not yet acquired. Set NEXT_PUBLIC_SITE_URL in the environment once it is. */
   url: siteUrl,
@@ -47,14 +49,14 @@ export const SITE = {
   },
 
   registration: {
-    /** TODO: CAC RC number pending. */
-    rcNumber: TODO as string,
+    rcNumber: "9565791" as string,
   },
 
   contact: {
     email: "cheerthekidsinitiative@gmail.com",
-    /** TODO: official phone number pending. Use international format, e.g. +234... */
-    phone: TODO as string,
+    phone: "0810 590 0625" as string,
+    /** International format for tel: links and structured data. */
+    phoneIntl: "+2348105900625",
     /** TODO: office / correspondence address pending. */
     officeAddress: TODO as string,
   },

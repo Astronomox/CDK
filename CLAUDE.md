@@ -7,7 +7,7 @@ Next.js (App Router) + TypeScript + Tailwind CSS. Sanity for CMS. Supabase for f
 
 ## Brand
 - Logo: public/brand/logo.png (temporary). Final SVG will be supplied later. Always load the logo through one component (components/Logo.tsx) so swapping to SVG is a one-file change.
-- Logo wordmark reads "CHEER d'KIDS". Site name is "Cheer d’Kids" (confirmed by the owner). Keep it in one constant (lib/site.ts).
+- Logo wordmark reads "CHEER d'KIDS". Site name is "Cheer The Kids", the official name confirmed by the client. Keep it in one constant (lib/site.ts).
 - Colours: Purple #7146D3, Gold #FED072, Blue #2672AE, Black #000, White #FFF. Blue and white are the base, purple and gold are accents. Never use gold as text on white.
 - Fonts: Poppins (headings, buttons) and Nunito Sans (body) via next/font.
 - Style: rounded shapes, circles, generous white space, photo-led, warm. No pity imagery.

@@ -15,7 +15,7 @@ export function organizationJsonLd(): Record<string, unknown> {
     "@context": "https://schema.org",
     "@type": "NGO",
     name: SITE.name,
-    alternateName: "Cheer d'Kids",
+    alternateName: "Cheer The Kids",
     url: SITE.url,
     logo: absoluteUrl("/brand/logo-transparent.png"),
     description: SITE.description,
@@ -27,7 +27,8 @@ export function organizationJsonLd(): Record<string, unknown> {
     ],
     sameAs: [SITE.socials.instagram, SITE.socials.linkedin],
   };
-  if (!isTodo(SITE.contact.phone)) data.telephone = SITE.contact.phone;
+  data.legalName = SITE.legalName;
+  if (!isTodo(SITE.contact.phone)) data.telephone = SITE.contact.phoneIntl;
   if (!isTodo(SITE.registration.rcNumber)) data.identifier = { "@type": "PropertyValue", name: "RC number", value: SITE.registration.rcNumber };
   return data;
 }

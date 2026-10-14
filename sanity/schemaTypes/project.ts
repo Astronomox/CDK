@@ -18,7 +18,7 @@ export const project = defineType({
     }),
     defineField({ name: "school", title: "School or community", type: "string" }),
     defineField({ name: "context", title: "Need or context", type: "text", rows: 4, validation: (rule) => rule.required() }),
-    defineField({ name: "whatWeDid", title: "What Cheer d’Kids did", type: "array", of: [defineArrayMember({ type: "string" })] }),
+    defineField({ name: "whatWeDid", title: "What Cheer The Kids did", type: "array", of: [defineArrayMember({ type: "string" })] }),
     defineField({
       name: "childrenReached",
       title: "Number of children reached",

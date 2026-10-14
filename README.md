@@ -1,6 +1,6 @@
-# Cheer d’Kids website
+# Cheer The Kids website
 
-The official website for Cheer d’Kids, an NGO giving children in Southwest Nigeria hope, joy and self-belief.
+The official website for Cheer The Kids, an NGO giving children in Southwest Nigeria hope, joy and self-belief.
 
 - Requirements and brand guideline: [docs/PRD.md](docs/PRD.md)
 - Working notes and decisions: [CLAUDE_CONTEXT.md](CLAUDE_CONTEXT.md)
@@ -52,7 +52,7 @@ Set these in `.env.local` for development and in Vercel (Project Settings > Envi
 | `SUPABASE_URL` | Form storage | Project URL |
 | `SUPABASE_SERVICE_ROLE_KEY` | Form storage | **Server only. Never prefix with NEXT_PUBLIC.** |
 | `RESEND_API_KEY` | Email notifications | |
-| `RESEND_FROM` | Email notifications | Sender on a domain verified in Resend, e.g. `Cheer d’Kids <forms@yourdomain.org>` |
+| `RESEND_FROM` | Email notifications | Sender on a domain verified in Resend, e.g. `Cheer The Kids <forms@yourdomain.org>` |
 | `FORM_NOTIFY_TO` | Email notifications | Optional. Defaults to the official email in `lib/site.ts` |
 | `NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY` | Donate button | `pk_live_...` (or `pk_test_...` while testing) |
 | `PAYSTACK_SECRET_KEY` | `/api/paystack/verify` | **Server only.** Confirms payments |

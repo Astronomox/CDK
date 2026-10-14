@@ -66,7 +66,7 @@ export function SchoolOutreachForm() {
     <FormShell
       action={submitSchoolOutreach}
       event="school_enquiry_submitted"
-      submitLabel="Invite Cheer d’Kids"
+      submitLabel="Invite Cheer The Kids"
       successTitle="Invitation received"
       privacyNote={privacy}
     >
