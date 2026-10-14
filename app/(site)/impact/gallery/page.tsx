@@ -10,7 +10,7 @@ export const revalidate = 600;
 
 export const metadata: Metadata = pageMetadata({
   title: "Gallery",
-  description: "Photos from Cheer d’Kids outreaches, games, creative activities, donations, volunteers and events.",
+  description: "Photos from Cheer The Kids outreaches, games, creative activities, donations, volunteers and events.",
   path: "/impact/gallery",
 });
 

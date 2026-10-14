@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
+import { OUTREACH_PHOTOS } from "@/lib/content/seed";
 import { SITE } from "@/lib/site";
 import { getProjects } from "@/lib/content";
 import { EmptyState, PageHeader, Section } from "@/components/ui/primitives";
@@ -10,7 +11,7 @@ export const revalidate = 600;
 
 export const metadata: Metadata = pageMetadata({
   title: "Projects",
-  description: "Stories from Cheer d’Kids school and community outreaches in Lagos and Kwara.",
+  description: "Stories from Cheer The Kids school and community outreaches in Lagos and Kwara.",
   path: "/impact/projects",
 });
 
@@ -19,6 +20,7 @@ export default async function ProjectsPage() {
   return (
     <>
       <PageHeader
+        image={OUTREACH_PHOTOS["2025-28"]}
         eyebrow="Our Impact"
         title="Projects"
         intro="Each project tells the story of an outreach: where we went, what we did, and what changed."

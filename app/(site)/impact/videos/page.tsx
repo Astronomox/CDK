@@ -9,7 +9,7 @@ export const revalidate = 600;
 
 export const metadata: Metadata = pageMetadata({
   title: "Videos",
-  description: "Watch Cheer d’Kids outreaches in action.",
+  description: "Watch Cheer The Kids outreaches in action.",
   path: "/impact/videos",
 });
 

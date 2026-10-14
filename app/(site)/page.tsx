@@ -4,13 +4,14 @@ import { ArrowRight, ArrowUpRight, HeartHandshake, Mail, MapPin, School, Shoppin
 import { SITE } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 import { getGallery, getProgrammes, getProjects } from "@/lib/content";
-import { PLACEHOLDERS } from "@/lib/content/seed";
+import { OUTREACH_PHOTOS, PLACEHOLDERS } from "@/lib/content/seed";
+import type { GalleryItem, Project } from "@/lib/content";
 import { MediaImage } from "@/components/ui/MediaImage";
 import { StatsBand } from "@/components/sections/StatsBand";
 import { Instagram, LinkedIn } from "@/components/icons";
-import { RevealObserver } from "@/components/home/RevealObserver";
 import { HomeDonate } from "@/components/home/HomeDonate";
 import "../home.css";
+import "../home-mobile.css";
 
 export const revalidate = 600;
 
@@ -30,6 +31,44 @@ function Arrow() {
   return <ArrowRight aria-hidden />;
 }
 
+/** Photos for the hero collage, the ribbon and the impact band. */
+const HERO_SIDE = [OUTREACH_PHOTOS["2026-20"], OUTREACH_PHOTOS["2025-12"]];
+const RIBBON = [
+  OUTREACH_PHOTOS["2024-25"],
+  OUTREACH_PHOTOS["2026-4"],
+  OUTREACH_PHOTOS["2025-1"],
+  OUTREACH_PHOTOS["2026-12"],
+  OUTREACH_PHOTOS["2024-38"],
+  OUTREACH_PHOTOS["2025-47"],
+];
+const IMPACT_BG = OUTREACH_PHOTOS["2026-31"];
+
+/** Year shown large on project cards: from the date, or a year in the title. */
+function projectYear(p: Project) {
+  return p.date?.slice(0, 4) ?? p.title.match(/\b(19|20)\d{2}\b/)?.[0];
+}
+
+/** Picks mosaic tiles, putting portrait photos in tall slots and landscape photos in wide ones. */
+function mosaic(items: GalleryItem[]) {
+  const pool = [...items];
+  const take = (portrait: boolean) => {
+    const i = pool.findIndex((g) => g.image.height > g.image.width === portrait);
+    return pool.splice(i >= 0 ? i : 0, 1)[0];
+  };
+  const slots = [
+    { cls: "m-big", portrait: true },
+    { cls: "m-tall", portrait: true },
+    { cls: "m-sq", portrait: false },
+    { cls: "m-sq", portrait: true },
+    { cls: "m-wide", portrait: false },
+    { cls: "m-wide", portrait: false },
+  ];
+  return slots.flatMap((s) => {
+    const item = pool.length ? take(s.portrait) : undefined;
+    return item ? [{ ...item, cls: s.cls }] : [];
+  });
+}
+
 export default async function HomePage() {
   const [programmes, projects, gallery] = await Promise.all([getProgrammes(), getProjects(), getGallery()]);
   // Never show the same photo twice on the homepage.
@@ -37,14 +76,16 @@ export default async function HomePage() {
     PLACEHOLDERS.outreach.src,
     PLACEHOLDERS.classroom.src,
     PLACEHOLDERS.dance.src,
+    IMPACT_BG.src,
+    ...HERO_SIDE.map((p) => p.src),
+    ...RIBBON.map((p) => p.src),
     ...programmes.slice(0, 3).map((p) => p.image.src),
-    ...projects.slice(0, 2).map((p) => p.coverImage.src),
+    ...projects.slice(0, 3).map((p) => p.coverImage.src),
   ]);
-  const moments = gallery.filter((g) => !used.has(g.image.src)).slice(0, 2);
+  const moments = mosaic(gallery.filter((g) => !used.has(g.image.src)));
 
   return (
     <div className="home">
-      <RevealObserver />
 
       {/* 1. Hero */}
       <section className="hero" aria-labelledby="hero-title">
@@ -72,8 +113,15 @@ export default async function HomePage() {
               Working across {SITE.region}, with outreaches in Lagos and Kwara.
             </p>
           </div>
-          <figure className="hero-media">
-            <MediaImage image={PLACEHOLDERS.outreach} priority sizes="(min-width: 1024px) 46vw, 100vw" />
+          <figure className="hero-media hero-collage">
+            <div className="hc-main">
+              <MediaImage image={PLACEHOLDERS.outreach} fill priority quality={90} sizes="(min-width: 1024px) 34vw, 100vw" />
+            </div>
+            {HERO_SIDE.map((img, i) => (
+              <div key={img.src} className={i === 0 ? "hc-a" : "hc-b"}>
+                <MediaImage image={img} fill priority sizes="(min-width: 1024px) 18vw, 0px" />
+              </div>
+            ))}
             <div className="hero-card" aria-hidden>
               <span className="dot">
                 <School />
@@ -85,6 +133,21 @@ export default async function HomePage() {
             </div>
           </figure>
         </div>
+      </section>
+
+      {/* Photo ribbon: real moments, edge to edge */}
+      <section className="ribbon" aria-label="Moments from our outreaches">
+        <ul>
+          {[...RIBBON, ...RIBBON].map((img, i) => (
+            <li
+              key={`${img.src}-${i}`}
+              className={`${img.height > img.width ? "r-portrait" : "r-landscape"}${i >= RIBBON.length ? " r-clone" : ""}`}
+              aria-hidden={i >= RIBBON.length || undefined}
+            >
+              <MediaImage image={img} fill sizes="(min-width: 1024px) 22vw, 70vw" />
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* 2. Why we exist */}
@@ -144,7 +207,7 @@ export default async function HomePage() {
 
       {/* 4. Impact */}
       <div id="impact">
-        <StatsBand />
+        <StatsBand image={IMPACT_BG} />
       </div>
 
       {/* 5. Programmes */}
@@ -191,50 +254,57 @@ export default async function HomePage() {
           <div className="section-head reveal">
             <div>
               <span className="eyebrow">Featured stories</span>
-              <h2 id="stories-title">Where we have been</h2>
+              <h2 id="stories-title">Three years of outreaches</h2>
             </div>
             <Link className="link-arrow" href="/impact/projects">
               All projects <Arrow />
             </Link>
           </div>
-          <div className="card-grid card-grid--2">
-            {projects.slice(0, 2).map((p) => (
-              <article key={p.slug} className="card card--story reveal">
-                <Link className="card-link" href={`/impact/projects/${p.slug}`}>
-                  <div className="media">
-                    <MediaImage image={p.coverImage} fill sizes="(min-width: 768px) 50vw, 100vw" />
-                  </div>
-                  <div className="card-body">
-                    <span className="tag">{p.location}</span>
-                    <h3>{p.title}</h3>
-                    <p>Conversation, games, music and encouragement, plus relief items from our sponsors.</p>
-                    <span className="link-arrow">
-                      Read the story<span className="sr-only"> about {p.title}</span> <Arrow />
+          <ul className="years">
+            {projects.slice(0, 3).map((p) => {
+              const year = projectYear(p);
+              return (
+                <li key={p.slug} className="year-card reveal">
+                  <Link href={`/impact/projects/${p.slug}`}>
+                    <MediaImage image={p.coverImage} fill sizes="(min-width: 900px) 33vw, 100vw" />
+                    <span className="year-shade" aria-hidden />
+                    <span className="year-body">
+                      {year ? (
+                        <span className="year-num" aria-hidden>
+                          {year}
+                        </span>
+                      ) : null}
+                      <span className="year-title">{p.title}</span>
+                      <span className="year-more">
+                        Read the story <Arrow />
+                      </span>
                     </span>
-                  </div>
-                </Link>
-              </article>
-            ))}
-          </div>
-
-          <div className="gallery reveal">
-            <div className="gallery-intro">
-              <h3>Moments from our outreaches</h3>
-              <p>Games, books, music and a lot of laughter, captured at our school and community outreaches.</p>
-              <Link className="link-arrow" href="/impact/gallery">
-                Open the gallery <Arrow />
-              </Link>
-            </div>
-            <ul className="gallery-grid">
-              {moments.map((m) => (
-                <li key={m.id}>
-                  <Link href="/impact/gallery" aria-label={`Open the gallery: ${m.caption ?? m.image.alt}`}>
-                    <MediaImage image={m.image} fill sizes="(min-width: 768px) 33vw, 50vw" />
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </div>
+              );
+            })}
+          </ul>
+
+          {moments.length ? (
+            <div className="moments reveal">
+              <div className="moments-head">
+                <h3>Moments from our outreaches</h3>
+                <Link className="link-arrow" href="/impact/gallery">
+                  Open the gallery <Arrow />
+                </Link>
+              </div>
+              <ul className="mosaic">
+                {moments.map((m) => (
+                  <li key={m.id} className={m.cls}>
+                    <Link href="/impact/gallery" aria-label={`Open the gallery: ${m.caption ?? m.image.alt}`}>
+                      <MediaImage image={m.image} fill sizes={m.cls === "m-big" ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 768px) 25vw, 50vw"} />
+                      {m.caption ? <span className="m-cap">{m.caption}</span> : null}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </div>
       </section>
 

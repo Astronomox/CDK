@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
+import { OUTREACH_PHOTOS } from "@/lib/content/seed";
 import { VOLUNTEER_AREAS } from "@/lib/forms/options";
 import { VOLUNTEER_JOURNEY } from "@/lib/journeys";
 import { ButtonLink } from "@/components/ui/ButtonLink";
@@ -11,7 +12,7 @@ import { Book, Camera, Heart, School, Sparkle, Users } from "@/components/icons"
 export const metadata: Metadata = pageMetadata({
   title: "Volunteer",
   description:
-    "Volunteer with Cheer d’Kids. Open to tertiary students, graduates and professionals. Apply, take a short screening test by email, train and join an outreach.",
+    "Volunteer with Cheer The Kids. Open to tertiary students, graduates and professionals. Apply, take a short screening test by email, train and join an outreach.",
   path: "/get-involved/volunteer",
 });
 
@@ -27,6 +28,7 @@ export default function VolunteerPage() {
   return (
     <>
       <PageHeader
+        image={OUTREACH_PHOTOS["2025-47"]}
         eyebrow="Get involved"
         title="Volunteer With Us"
         intro="Bring your energy, care and skills to help children rediscover joy and believe in their dreams."

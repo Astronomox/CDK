@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
+import { OUTREACH_PHOTOS } from "@/lib/content/seed";
 import { SITE, isTodo } from "@/lib/site";
 import { Eyebrow, PageHeader, Section } from "@/components/ui/primitives";
 import { SchoolOutreachForm } from "@/components/forms/Forms";
@@ -9,7 +10,7 @@ import { Gift, Instagram, Mail, MapPin } from "@/components/icons";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact",
-  description: "Contact Cheer d’Kids by email or social media, or invite us to bring an outreach to your school.",
+  description: "Contact Cheer The Kids by email or social media, or invite us to bring an outreach to your school.",
   path: "/contact",
 });
 
@@ -17,6 +18,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHeader
+        image={OUTREACH_PHOTOS["2026-16"]}
         eyebrow="Contact"
         title="We would love to hear from you"
         intro="Questions, ideas, invitations or donations: get in touch and a member of our team will reply."
@@ -67,7 +69,7 @@ export default function ContactPage() {
         {!isTodo(SITE.contact.phone) ? (
           <p className="mt-6 text-lg">
             Prefer to call?{" "}
-            <a href={`tel:${SITE.contact.phone.replace(/\s/g, "")}`} className="font-semibold text-blue-deep underline">
+            <a href={`tel:${SITE.contact.phoneIntl}`} className="font-semibold text-blue-deep underline">
               {SITE.contact.phone}
             </a>
           </p>
@@ -79,7 +81,7 @@ export default function ContactPage() {
           <div>
             <Eyebrow tone="blue">School outreach</Eyebrow>
             <h2 id="school-heading" className="mt-3 text-3xl font-bold sm:text-4xl">
-              Invite Cheer d’Kids to Your School
+              Invite Cheer The Kids to Your School
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Our school outreaches bring conversations on purpose and self-belief, games, music and creative activities to your pupils. Tell

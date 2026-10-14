@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
+import { OUTREACH_PHOTOS } from "@/lib/content/seed";
 import { getPartners } from "@/lib/content";
 import { EmptyState, PageHeader, Section } from "@/components/ui/primitives";
 import { PartnerTile } from "@/components/sections/cards";
@@ -9,7 +10,7 @@ export const revalidate = 600;
 
 export const metadata: Metadata = pageMetadata({
   title: "Sponsors and partners",
-  description: "The sponsors and partners who make Cheer d’Kids outreaches and relief items possible.",
+  description: "The sponsors and partners who make Cheer The Kids outreaches and relief items possible.",
   path: "/partners",
 });
 
@@ -21,6 +22,7 @@ export default async function PartnersPage() {
   return (
     <>
       <PageHeader
+        image={OUTREACH_PHOTOS["2026-19"]}
         eyebrow="Sponsors and partners"
         title="Made possible together"
         intro="Our sponsors and partners make outreaches, relief items and programmes possible. We only display partner logos with their permission."

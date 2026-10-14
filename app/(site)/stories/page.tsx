@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
+import { OUTREACH_PHOTOS } from "@/lib/content/seed";
 import { SITE } from "@/lib/site";
 import { getStories } from "@/lib/content";
 import { EmptyState, PageHeader, Section } from "@/components/ui/primitives";
@@ -10,7 +11,7 @@ export const revalidate = 600;
 
 export const metadata: Metadata = pageMetadata({
   title: "Stories and news",
-  description: "Project stories, outreach updates, volunteer stories and programme announcements from Cheer d’Kids.",
+  description: "Project stories, outreach updates, volunteer stories and programme announcements from Cheer The Kids.",
   path: "/stories",
 });
 
@@ -19,6 +20,7 @@ export default async function StoriesPage() {
   return (
     <>
       <PageHeader
+        image={OUTREACH_PHOTOS["2025-22"]}
         eyebrow="Stories and news"
         title="Stories and news"
         intro="Outreach updates, volunteer stories, programme announcements and what is coming up next."

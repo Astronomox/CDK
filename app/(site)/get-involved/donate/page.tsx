@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { pageMetadata } from "@/lib/seo";
+import { OUTREACH_PHOTOS } from "@/lib/content/seed";
 import { SITE, isTodo } from "@/lib/site";
 import { ArrowLink, ButtonLink } from "@/components/ui/ButtonLink";
 import { Card, PageHeader, Section } from "@/components/ui/primitives";
@@ -11,7 +12,7 @@ import { Gift, Heart, Mail, MapPin, Shield } from "@/components/icons";
 
 export const metadata: Metadata = pageMetadata({
   title: "Donate",
-  description: "Support Cheer d’Kids with a gift by Paystack or bank transfer, or donate bags, shoes, books and confectioneries. Local and international donations welcome.",
+  description: "Support Cheer The Kids with a gift by Paystack or bank transfer, or donate bags, shoes, books and confectioneries. Local and international donations welcome.",
   path: "/get-involved/donate",
 });
 
@@ -19,6 +20,7 @@ export default function DonatePage() {
   return (
     <>
       <PageHeader
+        image={OUTREACH_PHOTOS["2024-11"]}
         eyebrow="Donate"
         title="Support Our Mission"
         intro="Your gift helps us run outreaches, provide relief items and keep children's spark alive. Local and international donations are welcome."

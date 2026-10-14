@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
+import { OUTREACH_PHOTOS } from "@/lib/content/seed";
 import { getProjects } from "@/lib/content";
 import { PageHeader, Section, SectionHeading } from "@/components/ui/primitives";
 import { StatsBand } from "@/components/sections/StatsBand";
@@ -29,6 +30,7 @@ export default async function ImpactPage() {
   return (
     <>
       <PageHeader
+        image={OUTREACH_PHOTOS["2026-5"]}
         eyebrow="Our impact"
         title="Over 2,000 children reached through 7 outreaches"
         intro="Our documented activities so far have taken place in Lagos and Kwara. Here is the evidence, shared honestly and with consent."

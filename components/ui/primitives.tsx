@@ -118,8 +118,8 @@ export function PageHeader({
           </div>
         </div>
         {image ? (
-          <div className="relative hidden aspect-[4/3] overflow-hidden rounded-[28px] lg:block">
-            <MediaImage image={image} fill priority sizes="(min-width: 1024px) 40vw, 0px" className="object-cover" />
+          <div className="relative mt-8 aspect-[16/10] overflow-hidden rounded-[20px] lg:mt-0 lg:aspect-[4/3] lg:rounded-[28px]">
+            <MediaImage image={image} fill priority sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover object-[50%_30%]" />
           </div>
         ) : null}
       </div>

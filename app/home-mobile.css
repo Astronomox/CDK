@@ -1,0 +1,148 @@
+/*
+ * Homepage on phones (below 768px). Desktop is untouched.
+ * Ideas: a full-screen photo hero, sections that fit on one screen,
+ * swipeable rows instead of long stacks, and the promise quote set on its photo.
+ */
+@media (max-width: 767px) {
+  .home{--section-y:52px; --stack-lg:24px; --gutter:20px; overflow-x:clip}
+  /* Grid children must be allowed to shrink, or swipe rows stretch the page sideways. */
+  .home .hero-grid > *,.home .about-grid > *,.home .split > *,.home .partners > *,.home .connect > *,.home .quote-grid > *,.home .wrap > *{min-width:0}
+  .home h2{font-size:1.75rem; line-height:1.18}
+  .home .section-head{margin-bottom:16px; gap:8px 16px; align-items:center}
+  .home .section-head h2{max-width:none}
+  .home .eyebrow{font-size:.75rem; margin-bottom:8px}
+  .home .lead{font-size:1rem}
+
+  /* ============ Full-screen photo hero ============ */
+  .hero{position:relative; padding:0; background:var(--ink); overflow:hidden}
+  .hero .hero-grid{position:relative; display:grid; align-items:end; gap:0; padding:0; min-height:calc(100svh - 80px); max-height:900px}
+  .hero-media{position:absolute; inset:0; margin:0}
+  .hero-collage{display:block; height:100%}
+  .hero-collage .hc-main{position:absolute; inset:0; aspect-ratio:auto; border-radius:0; min-height:0}
+  .hero-collage .hc-main img{object-position:50% 22%}
+  .hero-collage .hc-a,.hero-collage .hc-b,.hero-card{display:none!important}
+  .hero-media::after{content:""; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(180deg, rgba(22,33,46,.05) 0%, rgba(22,33,46,.1) 28%, rgba(22,33,46,.78) 52%, rgba(22,33,46,.96) 100%)}
+  .hero-copy{position:relative; z-index:1; padding:0 20px 26px; color:#fff}
+  .hero-copy h1{color:#fff; font-size:2.4rem; line-height:1.06; margin-bottom:14px}
+  .hero-copy .swash{background-size:100% .3em}
+  .hero-copy .lead{color:rgba(255,255,255,.9); font-size:1rem; line-height:1.55; margin-bottom:20px}
+  .hero-ctas:has(.btn){display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .hero-ctas .btn{min-width:0; min-height:50px; padding:6px 10px; font-size:.9rem; line-height:1.2; white-space:normal; text-align:center}
+  .hero .btn--secondary{border-color:#fff; color:#fff; background:rgba(255,255,255,.08)}
+  .hero .btn--secondary:hover{background:#fff; color:var(--ink)}
+  .hero .link-arrow{color:#fff; min-height:40px}
+  .hero-meta{margin-top:6px; color:rgba(255,255,255,.82); font-size:.85rem}
+  .hero-meta svg{color:var(--gold)}
+
+  /* ============ Photo ribbon ============ */
+  .ribbon{background:var(--canvas); padding:16px 0 4px}
+  .ribbon li{height:200px; border-radius:16px}
+  .ribbon .r-landscape{width:290px}
+  .ribbon .r-portrait{width:140px}
+  /* Cards inside sideways rows are not animated by the vertical scroll. */
+  .home .card-grid--3 > .reveal,.home .years > .reveal{animation:none}
+
+  /* ============ Swipe rows ============ */
+  .home .card-grid--3,.home .years,.home .mv{
+    display:flex!important; gap:14px; overflow-x:auto; overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory; scroll-padding-inline:var(--gutter);
+    margin-inline:calc(var(--gutter) * -1); padding:4px var(--gutter) 14px; scrollbar-width:none
+  }
+  .home .card-grid--3::-webkit-scrollbar,.home .years::-webkit-scrollbar,.home .mv::-webkit-scrollbar{display:none}
+  .home .card-grid--3 > *,.home .years > *,.home .mv > *{flex:0 0 84%; scroll-snap-align:start}
+  .home .years > *{flex-basis:76%}
+
+  /* Programme and get-involved cards */
+  .home .card-body{padding:18px 18px 16px; gap:8px}
+  .home .card-body > p{font-size:.95rem}
+  .home .card h3{font-size:1.2rem}
+  .home .path .card-body{padding:22px 20px}
+  .home .path-icon{width:44px; height:44px; margin-bottom:6px}
+  .home .path-icon svg{width:22px; height:22px}
+  .on-the-day{margin-top:16px; padding-top:16px; font-size:.92rem}
+
+  /* ============ Why we exist ============ */
+  .split{gap:22px}
+  .embrace{max-width:240px}
+  .why-copy h2{margin-bottom:12px}
+  .why-copy > p{margin-bottom:18px}
+  .pillars{grid-template-columns:1fr 1fr; column-gap:16px}
+  .pillars li{flex-direction:column; align-items:flex-start; gap:0; padding:10px 0; font-size:.95rem}
+  .pillars b{min-width:0}
+
+  /* ============ About: mission and vision swipe ============ */
+  .about-grid{gap:18px}
+  .about-statement{font-size:1.4rem; line-height:1.32}
+  .home .mv > .mv-item{background:#fff; border:1px solid var(--line); border-top:4px solid var(--purple); border-radius:20px; padding:18px 18px 20px}
+  .home .mv > .mv-item:nth-child(2){border-top-color:var(--blue)}
+  .mv-item h3{font-size:.85rem}
+  .mv-item p{font-size:.95rem}
+
+  /* ============ Three years ============ */
+  .year-card a{aspect-ratio:3/4}
+  .year-body{padding:20px}
+  .year-num{font-size:3.6rem}
+  .year-num::after{margin-top:10px}
+  .year-title{font-size:1.1rem}
+
+  /* ============ Moments mosaic ============ */
+  .moments{margin-top:28px}
+  .moments-head{margin-bottom:12px}
+  .moments-head h3{font-size:1.15rem}
+  .mosaic{grid-auto-rows:104px; gap:8px}
+
+  /* ============ Promise: quote on its photo ============ */
+  .home .quote-grid{display:grid; grid-template-areas:"stack"; gap:0; width:auto; margin-inline:var(--gutter); padding-inline:0; border-radius:24px; overflow:hidden; isolation:isolate}
+  .quote-photo,.quote-body{grid-area:stack}
+  .quote-photo{position:relative}
+  .quote-photo img{aspect-ratio:4/5!important; height:100%; width:100%; border-radius:0!important; object-position:50% 12%}
+  .quote-photo::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(22,33,46,0) 30%, rgba(22,33,46,.6) 55%, rgba(22,33,46,.94) 100%)}
+  .quote-body{position:relative; z-index:1; align-self:end; padding:22px 22px 24px}
+  .quote-mark{width:32px; height:32px; margin-bottom:8px; color:var(--gold)}
+  .vision-quote{color:#fff; font-size:1.3rem; line-height:1.38}
+  .quote-cite{margin-top:16px}
+  .quote-cite b{color:#fff}
+  .quote-cite::before{background:var(--gold)}
+
+  /* ============ Partners ============ */
+  .partners{gap:20px}
+  .partners-copy h2{margin-bottom:10px}
+  .partners-copy p{margin-bottom:18px; font-size:.95rem}
+  .ways{padding:20px 18px}
+  .ways-list li{padding:12px 0; gap:12px}
+  .ways-icon{width:38px; height:38px}
+  .ways-icon svg{width:18px; height:18px}
+  .ways-list b{font-size:1rem}
+  .ways-list div > span{font-size:.9rem}
+
+  /* ============ Social and contact ============ */
+  .connect{gap:14px}
+  .panel{padding:24px 20px; border-radius:24px}
+  .panel h2{font-size:1.6rem; margin-bottom:8px}
+  .socials{grid-template-columns:1fr 1fr; gap:10px; margin-top:18px}
+  .social{min-height:60px; padding:10px 12px; gap:10px}
+  .social .ico{width:36px; height:36px}
+  .social .ico svg{width:18px; height:18px}
+  .social .go{display:none}
+  .social span span{font-size:.75rem}
+  .invite{gap:18px}
+  .invite-actions{gap:10px 16px}
+  .mail{font-size:.9rem}
+}
+
+/* Ribbon on phones and tablets: an endless, gentle left-to-right glide. */
+@media (max-width: 1023px) {
+  .ribbon{overflow:hidden}
+  .ribbon ul{width:max-content; overflow:visible; scroll-snap-type:none; padding:0 0 4px; animation:ribbon-flow 60s linear infinite}
+  .ribbon:hover ul,.ribbon:active ul{animation-play-state:paused}
+}
+@media (min-width: 1024px) {
+  .ribbon .r-clone{display:none}
+}
+/* Moves exactly one set of photos (half the strip plus half a gap), so the loop is seamless. */
+@keyframes ribbon-flow{from{transform:translateX(calc(-50% - 6px))} to{transform:translateX(0)}}
+@media (prefers-reduced-motion: reduce) {
+  .ribbon ul{animation:none!important; width:auto; overflow-x:auto}
+  .ribbon .r-clone{display:none}
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
+import { OUTREACH_PHOTOS } from "@/lib/content/seed";
 import { Eyebrow, PageHeader, Section } from "@/components/ui/primitives";
 import { PartnerForm } from "@/components/forms/Forms";
 import { ArrowLink } from "@/components/ui/ButtonLink";
@@ -7,7 +8,7 @@ import { Book, Gift, Handshake, Sparkle } from "@/components/icons";
 
 export const metadata: Metadata = pageMetadata({
   title: "Partner with us",
-  description: "Sponsor an outreach, donate relief items or bring your organisation's skills to Cheer d’Kids programmes in Southwest Nigeria.",
+  description: "Sponsor an outreach, donate relief items or bring your organisation's skills to Cheer The Kids programmes in Southwest Nigeria.",
   path: "/get-involved/partner",
 });
 
@@ -22,6 +23,7 @@ export default function PartnerPage() {
   return (
     <>
       <PageHeader
+        image={OUTREACH_PHOTOS["2024-26"]}
         eyebrow="Partner With Us"
         title="Let's brighten more smiles together"
         intro="We work with sponsors, organisations, schools and communities to expand our impact. Here is how we can work together."

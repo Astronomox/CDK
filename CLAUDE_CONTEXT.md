@@ -46,7 +46,7 @@ Working notes for whoever picks this project up next (human or Claude). Read CLA
 ## Session 2 (2026-10-12): UI rebuild on shadcn/ui
 
 ### What changed
-- **Name:** site name is now **Cheer d’Kids** (`SITE.name`, typographic apostrophe; `SITE.plainName` has a straight apostrophe). All copy updated. The logo is shown alone (no text beside it) so the wordmark is never recreated in another font.
+- **Name:** site name is now **Cheer The Kids** (`SITE.name`, typographic apostrophe; `SITE.plainName` has a straight apostrophe). All copy updated. The logo is shown alone (no text beside it) so the wordmark is never recreated in another font.
 - **shadcn/ui:** `components.json`, `lib/utils.ts` (`cn`), and new-york style components in `components/ui/` (button, badge, card, separator, input, textarea, label, sheet, dialog, accordion, tabs, navigation-menu) on `radix-ui`, `lucide-react`, `tw-animate-css`. Brand colours are mapped to shadcn tokens in `app/globals.css` (`primary` = purple, `ring` = purple, `muted-foreground` = #475467). `text-muted` was replaced by `text-muted-foreground` everywhere.
 - **Design (inspired by UK charities: Save the Children UK, Demelza, YoungMinds):** navy utility bar; sticky header with mega menus (feature panel per section) and Donate/Volunteer buttons; Sheet + accordion mobile menu; large display type; blob-framed image collage hero; values marquee; colour tiles for the four communication frames; navy stats band; bento "get involved" grid with a Demelza-style quick-donate module (`components/donate/QuickDonate.tsx`, passes `?amount=` to the donate page); Instagram/LinkedIn panels; black footer with school-invite card.
 - **Gallery:** masonry grid + full-screen lightbox (`components/GalleryGrid.tsx`): quality 90 at full viewport width (`images.qualities: [75, 90]` in `next.config.ts`), arrow keys, swipe, counter, captions.
@@ -66,3 +66,21 @@ Working notes for whoever picks this project up next (human or Claude). Read CLA
 - **Sample photos:** `public/samples/*.jpg` are AI generated (made with the owner's Figma AI credits by the build agent, without prior approval; flagged to the owner). `MediaImage` shows a visible "Sample photo" label on any image with `placeholder: true`. They must all be replaced by real, consented photos (via the CMS) before launch.
 - Verified: typecheck, lint, production build (35 pages); homepage, About, Donate, School Outreaches and Gallery checked visually at 1440px.
 - Not yet re-checked at 390px after the port (the mockup itself passed at 390px).
+
+## Session 4 (2026-10-14): client details and real photos
+
+- Client confirmed: official name **Cheer The Kids** (stored as `SITE.legalName`, shown with the RC number in the footer, About and JSON-LD; display name stays "Cheer The Kids" pending the owner's decision), RC **9565791**, phone **0810 590 0625** (`phoneIntl` +2348105900625), email and socials unchanged. Outreach details (item 3) and sponsors (item 4) still pending.
+- Photos: client Google Drive (2024, 2025, 2026 outreach folders, about 150 photos). 35 chosen and saved at 1600px in `public/photos/outreach-<year>-<n>.jpg`. `lib/content/seed.ts` now uses `PHOTOS` (role photos) and `G` (gallery set); projects are one per year ("Our 2026 outreaches" etc., location "Southwest Nigeria", `detailsPending`). AI sample photos removed (`public/samples` deleted).
+- Consent: the client shared these photos for the site but has not yet written to confirm parent/guardian consent. Get that confirmation before launch.
+- Next: outreach details per year (schools, dates, numbers), sponsors and logo permissions, bank details, domain.
+- Update (later on 2026-10-14): parent/guardian consent for the Drive photos confirmed by the client ("use the pictures as you wish"). Site name switched to the official **Cheer The Kids** everywhere (`SITE.name`); the logo artwork still reads "CHEER d'KIDS".
+- Photo-led homepage pass: three-photo hero collage, edge-to-edge photo ribbon after the hero, impact numbers over a full-bleed photo (`StatsBand image`), "Three years of outreaches" year cards with large year numerals, and a moments mosaic (`mosaic()` puts portrait photos in tall slots). Homepage avoids repeating any photo. All 12 inner pages now pass a real photo to `PageHeader`.
+- Only the CDK dev server should be running (port 3005); other dev servers were stopped at the owner's request. PostgreSQL (5432) was left running.
+
+## Session 5 (2026-10-14): mobile redesign
+
+- New `app/home-mobile.css` (only below 768px, imported after `app/home.css`): full-screen photo hero with headline and buttons over a dark gradient; swipe rows (scroll-snap, next card peeking) for programmes, the three year cards, mission and vision, and the get-involved cards; compact two-column impact numbers (in `StatsBand` Tailwind classes); the promise quote set on its photo; tighter sections, partners and contact. Mobile homepage went from ~13,760px to ~9,400px tall with no sideways scroll (sr-only labels inside cards needed `position:relative` on `.card`).
+- `components/PhotoPeek.tsx` (mounted in `app/(site)/layout.tsx`): press and hold any photo in `<main>` on a touch screen to preview it full screen; it shows the loaded copy instantly, then swaps to a sharper next/image rendition sized to the screen (max 1920px, q90). Taps and swipes behave normally; the native image menu is suppressed on touch (`globals.css`).
+- Inner pages now show their `PageHeader` photo on phones too (16:10 banner). Footer tightened on phones.
+- Use `npm run dev` (port 3000) or the running server on 3005. Do not use pnpm (`packageManager` is npm).
+- Follow-up: swipe hint text removed. Ribbon on phones and tablets loops endlessly left to right (items rendered twice, copy is aria-hidden, pauses on touch, off for reduced motion). Scroll reveal is now pure CSS (animation-timeline: view(), with no fallback hiding), replacing the JS RevealObserver that could leave sections invisible after re-renders.

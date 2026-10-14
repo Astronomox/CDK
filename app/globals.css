@@ -134,6 +134,14 @@
   [id] {
     scroll-margin-top: 7rem;
   }
+  /* Press-and-hold opens our photo preview instead of the browser image menu. */
+  @media (pointer: coarse) {
+    main img {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

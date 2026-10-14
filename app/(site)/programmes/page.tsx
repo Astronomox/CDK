@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
+import { OUTREACH_PHOTOS } from "@/lib/content/seed";
 import { getProgrammes } from "@/lib/content";
 import { PageHeader, Section } from "@/components/ui/primitives";
 import { ProgrammeCard } from "@/components/sections/cards";
@@ -9,7 +10,7 @@ export const revalidate = 600;
 
 export const metadata: Metadata = pageMetadata({
   title: "Programmes",
-  description: "School outreaches, volunteer training and skill acquisition: how Cheer d’Kids helps children build joy and self-belief.",
+  description: "School outreaches, volunteer training and skill acquisition: how Cheer The Kids helps children build joy and self-belief.",
   path: "/programmes",
 });
 
@@ -18,6 +19,7 @@ export default async function ProgrammesPage() {
   return (
     <>
       <PageHeader
+        image={OUTREACH_PHOTOS["2026-44"]}
         eyebrow="Programmes"
         title="Programmes that build joy and self-belief"
         intro="Everything we do is designed to help children rediscover joy, believe in themselves and dream big."
@@ -32,7 +34,7 @@ export default async function ProgrammesPage() {
         </div>
       </Section>
       <CtaBand
-        title="Invite Cheer d’Kids to Your School"
+        title="Invite Cheer The Kids to Your School"
         text="Bring conversation, games, music and encouragement to your pupils."
         actions={[
           { href: "/programmes/school-outreaches#invite", label: "Invite us", trackLabel: "programmes_invite_school" },

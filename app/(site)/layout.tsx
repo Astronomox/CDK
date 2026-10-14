@@ -2,6 +2,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Analytics } from "@/components/Analytics";
 import { JsonLd, organizationJsonLd } from "@/components/JsonLd";
+import { PhotoPeek } from "@/components/PhotoPeek";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -12,6 +13,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       </main>
       <Footer />
       <JsonLd data={organizationJsonLd()} />
+      <PhotoPeek />
       <Analytics />
     </>
   );

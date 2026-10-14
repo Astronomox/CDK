@@ -44,7 +44,7 @@ function Extras({ programme }: { programme: Programme }) {
             <div>
               <Eyebrow>For schools</Eyebrow>
               <h2 id="invite-heading" className="mt-3 text-3xl font-bold sm:text-4xl">
-                Invite Cheer d’Kids to Your School
+                Invite Cheer The Kids to Your School
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
                 Share a few details and we will get in touch to plan a joyful visit.

@@ -9,7 +9,7 @@ export const revalidate = 600;
 
 export const metadata: Metadata = pageMetadata({
   title: "Testimonials",
-  description: "What children, parents, teachers, volunteers and sponsors say about Cheer d’Kids.",
+  description: "What children, parents, teachers, volunteers and sponsors say about Cheer The Kids.",
   path: "/impact/testimonials",
 });
 

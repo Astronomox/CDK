@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
+import { OUTREACH_PHOTOS } from "@/lib/content/seed";
 import { SITE } from "@/lib/site";
 import { Eyebrow, PageHeader, Section } from "@/components/ui/primitives";
 import { Steps } from "@/components/sections/Steps";
@@ -8,7 +9,7 @@ import { MapPin } from "@/components/icons";
 
 export const metadata: Metadata = pageMetadata({
   title: "Donate items",
-  description: "Donate bags, shoes, books and confectioneries to Cheer d’Kids. Send an enquiry to confirm items and delivery before drop-off in Ikorodu, Lagos.",
+  description: "Donate bags, shoes, books and confectioneries to Cheer The Kids. Send an enquiry to confirm items and delivery before drop-off in Ikorodu, Lagos.",
   path: "/get-involved/donate-items",
 });
 
@@ -23,6 +24,7 @@ export default function DonateItemsPage() {
   return (
     <>
       <PageHeader
+        image={OUTREACH_PHOTOS["2025-9"]}
         eyebrow="Donate items"
         title="Give items that make a child's day"
         intro="Bags, shoes and books help children show up to school ready to learn. Confectioneries make outreach days a celebration."

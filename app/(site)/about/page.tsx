@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE, isTodo } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
-import { PLACEHOLDERS } from "@/lib/content/seed";
+import { PLACEHOLDERS, OUTREACH_PHOTOS } from "@/lib/content/seed";
 import { MediaImage } from "@/components/ui/MediaImage";
 import { PageHeader, Section, SectionHeading } from "@/components/ui/primitives";
 import { StatsBand } from "@/components/sections/StatsBand";
@@ -30,6 +30,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
+        image={OUTREACH_PHOTOS["2024-32"]}
         eyebrow="About us"
         title="Giving children hope. Keeping their spark alive."
         intro={`${SITE.name} is an NGO focused on giving children hope, restoring joy and helping young people develop the self-belief to pursue their dreams and aspirations.`}
@@ -39,7 +40,7 @@ export default function AboutPage() {
       <Section labelledBy="story-heading">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
-            <SectionHeading id="story-heading" eyebrow="Our story" title="Why Cheer d’Kids was established" />
+            <SectionHeading id="story-heading" eyebrow="Our story" title="Why Cheer The Kids was established" />
             <div className="mt-5 space-y-4 text-lg text-muted-foreground">
               <p>
                 Children growing up in difficult family, economic and social circumstances can lose confidence, enthusiasm and hope for the
@@ -57,7 +58,7 @@ export default function AboutPage() {
           </div>
           <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[28px]">
-              <MediaImage image={PLACEHOLDERS.training} fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+              <MediaImage image={PLACEHOLDERS.team} fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
             </div>
           </div>
         </div>
@@ -127,7 +128,9 @@ export default function AboutPage() {
               <p className="mt-3 text-muted-foreground">Our Corporate Affairs Commission (CAC) registration details will be published here.</p>
             ) : (
               <dl className="mt-3">
-                <dt className="text-muted-foreground">CAC registration number</dt>
+                <dt className="text-muted-foreground">Registered name</dt>
+                <dd className="font-heading text-xl font-semibold">{SITE.legalName}</dd>
+                <dt className="mt-3 text-muted-foreground">CAC registration number</dt>
                 <dd className="font-heading text-xl font-semibold">RC {SITE.registration.rcNumber}</dd>
               </dl>
             )}
