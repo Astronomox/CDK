@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SITE, isTodo } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
+import { TEAM } from "@/lib/team";
 import { PLACEHOLDERS, OUTREACH_PHOTOS } from "@/lib/content/seed";
 import { MediaImage } from "@/components/ui/MediaImage";
 import { PageHeader, Section, SectionHeading } from "@/components/ui/primitives";
@@ -111,15 +112,48 @@ export default function AboutPage() {
 
       <StatsBand title="Our impact so far" />
 
-      <Section labelledBy="team-heading">
+      <Section id="team" labelledBy="team-heading">
+        <SectionHeading
+          id="team-heading"
+          eyebrow="Our team"
+          title="The people behind every outreach"
+          intro={`Meet the directors who lead ${SITE.name}.`}
+        />
+        <ul className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4">
+          {TEAM.map((m) => (
+            <li key={m.name}>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] bg-canvas-warm">
+                <MediaImage
+                  image={m.photo}
+                  fill
+                  sizes="(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 46vw"
+                  className="object-cover"
+                  style={{ objectPosition: m.focus, transform: m.zoom ? `scale(${m.zoom})` : undefined, transformOrigin: m.focus }}
+                />
+                <span aria-hidden className="pointer-events-none absolute inset-0" style={{ boxShadow: "inset 0 -60px 60px -40px rgba(22,33,46,.25)" }} />
+              </div>
+              <p className="mt-3 font-heading text-[1.05rem] font-semibold leading-snug text-ink">{m.name}</p>
+              <p className="mt-0.5 text-sm text-purple">{m.role}</p>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section tone="muted" labelledBy="registration-heading">
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-[20px] border border-line p-8">
-            <h2 id="team-heading" className="text-2xl font-bold">
-              Our team
+          <div className="rounded-[20px] border border-line bg-white p-8">
+            <h2 id="registration-heading" className="sr-only">
+              Contact and registration
             </h2>
-            <p className="mt-3 text-muted-foreground">Profiles of our leadership team will be shared here soon.</p>
+            <p className="font-sans text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-purple">Get in touch</p>
+            <a href={`mailto:${SITE.contact.email}`} className="mt-3 block break-all font-heading text-lg font-semibold text-blue-deep underline underline-offset-4 sm:text-xl">
+              {SITE.contact.email}
+            </a>
+            <a href={`tel:${SITE.contact.phoneIntl}`} className="mt-1 block font-heading text-lg font-semibold text-blue-deep underline underline-offset-4 sm:text-xl">
+              {SITE.contact.phone}
+            </a>
           </div>
-          <div id="registration" className="rounded-[20px] border border-line p-8">
+          <div id="registration" className="rounded-[20px] border border-line bg-white p-8">
             <div className="flex items-center gap-3">
               <Shield className="size-7 text-blue" />
               <h2 className="text-2xl font-bold">Registration information</h2>

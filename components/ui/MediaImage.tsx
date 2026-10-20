@@ -1,3 +1,4 @@
+import type React from "react";
 import Image from "next/image";
 import type { Img } from "@/lib/content/types";
 
@@ -9,6 +10,7 @@ type Props = {
   /** Fill the parent (parent must be positioned and sized). */
   fill?: boolean;
   quality?: number;
+  style?: React.CSSProperties;
 };
 
 /**
@@ -17,7 +19,7 @@ type Props = {
  * photos get a visible label so they are never mistaken for real outreach photos.
  * The parent element must be positioned for the label to sit on the image.
  */
-export function MediaImage({ image, sizes, className = "", priority, fill, quality }: Props) {
+export function MediaImage({ image, sizes, className = "", priority, fill, quality, style }: Props) {
   const isSvg = image.src.endsWith(".svg");
   const common = {
     src: image.src,
@@ -26,6 +28,7 @@ export function MediaImage({ image, sizes, className = "", priority, fill, quali
     priority,
     quality,
     className,
+    style,
     unoptimized: isSvg,
     ...(image.lqip ? { placeholder: "blur" as const, blurDataURL: image.lqip } : {}),
   };
