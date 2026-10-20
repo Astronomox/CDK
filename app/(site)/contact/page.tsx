@@ -50,7 +50,7 @@ export default function ContactPage() {
             <MapPin className="size-8 text-purple" />
             <h3 className="mt-4 text-xl font-semibold">Address</h3>
             {isTodo(SITE.contact.officeAddress) ? (
-              <p className="mt-1 text-muted-foreground">We work across {SITE.region}. Our correspondence address will be listed here.</p>
+              <p className="mt-1 text-muted-foreground">We work across {SITE.region}, with outreaches in Lagos and Kwara. Reach us by email or phone.</p>
             ) : (
               <address className="mt-1 not-italic">{SITE.contact.officeAddress}</address>
             )}

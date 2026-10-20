@@ -16,7 +16,9 @@ export function isTodo(value: string | undefined | null): boolean {
   return !value || value === TODO || value.startsWith("TODO");
 }
 
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+/** Custom domain if set, otherwise the Vercel production URL, otherwise local dev. */
+const vercelHost = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL;
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || (vercelHost ? `https://${vercelHost}` : "http://localhost:3000")).replace(/\/$/, "");
 
 export const SITE = {
   /** Site name, matching the logo wordmark "CHEER d’KIDS". Uses a typographic apostrophe. */
@@ -31,7 +33,7 @@ export const SITE = {
   description:
     "Cheer The Kids creates programmes and experiences that help children rediscover joy, build self-belief and believe in their dreams and aspirations.",
 
-  /** TODO: domain not yet acquired. Set NEXT_PUBLIC_SITE_URL in the environment once it is. */
+  /** Set NEXT_PUBLIC_SITE_URL if a custom domain is added later. */
   url: siteUrl,
 
   mission: "To provide programs and activities that enhance happiness and instill self-belief in children.",
@@ -57,8 +59,8 @@ export const SITE = {
     phone: "0810 590 0625" as string,
     /** International format for tel: links and structured data. */
     phoneIntl: "+2348105900625",
-    /** TODO: office / correspondence address pending. */
-    officeAddress: TODO as string,
+    /** Not published: the organisation prefers email and phone only. */
+    officeAddress: "" as string,
   },
 
   /**
