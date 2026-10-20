@@ -57,7 +57,7 @@ export function Section({
   labelledBy?: string;
 }) {
   return (
-    <section id={id} aria-labelledby={labelledBy} className={cn("relative py-16 lg:py-24", SECTION_TONES[tone], className)}>
+    <section id={id} aria-labelledby={labelledBy} className={cn("relative py-11 sm:py-14 lg:py-[72px]", SECTION_TONES[tone], className)}>
       <div className="container-page relative">{children}</div>
     </section>
   );
@@ -82,11 +82,11 @@ export function PageHeader({
   children?: React.ReactNode;
 }) {
   return (
-    <header className="bg-canvas-warm pb-14 pt-8 sm:pb-20 sm:pt-10">
-      <div className={cn("container-page", image && "grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]")}>
+    <header className="page-header bg-canvas-warm pb-10 pt-6 sm:pb-14 sm:pt-8">
+      <div className={cn("container-page", image && "grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]")}>
         <div>
           {crumbs.length ? (
-            <nav aria-label="Breadcrumb" className="mb-8 text-sm">
+            <nav aria-label="Breadcrumb" className="ph-crumbs mb-5 text-sm">
               <ol className="flex flex-wrap items-center gap-1 text-muted-foreground">
                 <li>
                   <Link href="/" className="rounded-md hover:text-ink hover:underline">
@@ -110,7 +110,7 @@ export function PageHeader({
               </ol>
             </nav>
           ) : null}
-          <div className="max-w-3xl">
+          <div className="ph-copy max-w-3xl">
             {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
             <h1 className="text-[clamp(2.375rem,1.7rem+2.8vw,3.5rem)] font-semibold leading-[1.08] tracking-[-0.02em]">{title}</h1>
             {intro ? <div className="mt-5 max-w-2xl text-[clamp(1.125rem,1.05rem+0.35vw,1.3125rem)] text-muted-foreground">{intro}</div> : null}
@@ -118,7 +118,7 @@ export function PageHeader({
           </div>
         </div>
         {image ? (
-          <div className="relative mt-8 aspect-[16/10] overflow-hidden rounded-[20px] lg:mt-0 lg:aspect-[4/3] lg:rounded-[28px]">
+          <div className="ph-media relative mt-6 aspect-[16/10] overflow-hidden rounded-[20px] lg:mt-0 lg:aspect-[3/2] lg:rounded-[28px]">
             <MediaImage image={image} fill priority sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover object-[50%_30%]" />
           </div>
         ) : null}

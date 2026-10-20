@@ -29,26 +29,29 @@ export default function ContactPage() {
         <h2 id="general-heading" className="sr-only">
           General enquiries
         </h2>
-        <div className="grid gap-6 md:grid-cols-3">
-          <div className="rounded-[20px] bg-canvas-warm p-6 sm:p-8">
-            <Mail className="size-8 text-purple" />
-            <h3 className="mt-4 text-xl font-semibold">Email</h3>
+        <div className="grid gap-3 sm:gap-6 md:grid-cols-3">
+          <div className="lift rounded-[20px] bg-canvas-warm p-5 sm:p-8">
+            <h3 className="flex items-center gap-3 text-xl font-semibold md:block">
+              <Mail className="size-7 text-purple md:mb-4 md:size-8" /> Email
+            </h3>
             <p className="mt-1 text-muted-foreground">For general enquiries.</p>
             <a href={`mailto:${SITE.contact.email}`} className="mt-3 block break-all font-heading font-semibold text-blue-deep underline underline-offset-4">
               {SITE.contact.email}
             </a>
           </div>
-          <div className="rounded-[20px] bg-canvas-tint p-6 sm:p-8">
-            <Instagram className="size-8 text-blue" />
-            <h3 className="mt-4 text-xl font-semibold">Social media</h3>
+          <div className="lift rounded-[20px] bg-canvas-tint p-5 sm:p-8">
+            <h3 className="flex items-center gap-3 text-xl font-semibold md:block">
+              <Instagram className="size-7 text-blue md:mb-4 md:size-8" /> Social media
+            </h3>
             <p className="mt-1 text-muted-foreground">Message us or follow our work.</p>
-            <div className="mt-4">
+            <div className="mt-3 sm:mt-4">
               <SocialLinks withLabels />
             </div>
           </div>
-          <div className="rounded-[20px] bg-canvas-warm p-6 sm:p-8">
-            <MapPin className="size-8 text-purple" />
-            <h3 className="mt-4 text-xl font-semibold">Address</h3>
+          <div className="lift rounded-[20px] bg-canvas-warm p-5 sm:p-8">
+            <h3 className="flex items-center gap-3 text-xl font-semibold md:block">
+              <MapPin className="size-7 text-purple md:mb-4 md:size-8" /> Address
+            </h3>
             {isTodo(SITE.contact.officeAddress) ? (
               <p className="mt-1 text-muted-foreground">We work across {SITE.region}, with outreaches in Lagos and Kwara. Reach us by email or phone.</p>
             ) : (
@@ -67,7 +70,7 @@ export default function ContactPage() {
           </div>
         </div>
         {!isTodo(SITE.contact.phone) ? (
-          <p className="mt-6 text-lg">
+          <p className="mt-4 text-lg sm:mt-6">
             Prefer to call?{" "}
             <a href={`tel:${SITE.contact.phoneIntl}`} className="font-semibold text-blue-deep underline">
               {SITE.contact.phone}

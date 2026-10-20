@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Nunito_Sans, Poppins } from "next/font/google";
 import { SITE } from "@/lib/site";
 import "./globals.css";
+import "./motion.css";
 
 const poppins = Poppins({
   subsets: ["latin"],

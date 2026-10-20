@@ -12,15 +12,15 @@ const STATS = [
 /** The one deep blue band: only the three verified numbers, with short gold rules. */
 export function StatsBand({ title = "Our impact so far", intro, image }: { title?: string; intro?: string; image?: Img }) {
   return (
-    <section aria-labelledby="stats-heading" className="relative isolate overflow-hidden bg-blue-ink py-12 text-white sm:py-16 lg:py-28">
+    <section aria-labelledby="stats-heading" className="relative isolate overflow-hidden bg-blue-ink py-11 text-white sm:py-14 lg:py-20">
       {image ? (
         <>
-          <Image src={image.src} alt="" fill sizes="100vw" className="-z-20 object-cover" />
+          <Image src={image.src} alt="" fill sizes="100vw" quality={90} className="-z-20 object-cover" />
           <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-ink/90 via-blue-ink/85 to-blue-ink/95" />
         </>
       ) : null}
       <div className="container-page">
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-x-10 gap-y-5 lg:mb-16">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-x-10 gap-y-5 lg:mb-12">
           <div>
             <p className="mb-3 font-sans text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-[#D5E3F0]">Our impact</p>
             <h2 id="stats-heading" className="max-w-[18ch] text-[clamp(1.75rem,1.4rem+1.5vw,2.75rem)] font-semibold leading-[1.15] text-white">

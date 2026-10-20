@@ -41,19 +41,19 @@ export default async function ImpactPage() {
         <h2 id="explore-heading" className="sr-only">
           Explore our impact
         </h2>
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {sections.map(({ href, title, text, Icon, tone }) => (
             <li key={href}>
               <Link
                 href={href}
-                className="group flex h-full flex-col rounded-[20px] border border-line bg-white p-6 transition-shadow hover:shadow-[0_12px_32px_rgba(23,63,97,0.12)]"
+                className="lift group flex h-full flex-col rounded-[20px] border border-line bg-white p-4 sm:p-6"
               >
-                <span aria-hidden className={`grid size-12 place-items-center rounded-full ${tone}`}>
-                  <Icon className="size-6" />
+                <span aria-hidden className={`grid size-10 place-items-center rounded-full sm:size-12 ${tone}`}>
+                  <Icon className="size-5 sm:size-6" />
                 </span>
-                <span className="mt-4 font-heading text-xl font-semibold">{title}</span>
-                <span className="mt-1 flex-1 text-muted-foreground">{text}</span>
-                <span aria-hidden className="mt-4 inline-flex items-center gap-1.5 font-heading font-semibold text-blue-deep">
+                <span className="mt-3 font-heading text-lg font-semibold sm:mt-4 sm:text-xl">{title}</span>
+                <span className="mt-1 flex-1 text-sm text-muted-foreground sm:text-base">{text}</span>
+                <span aria-hidden className="mt-3 inline-flex sm:mt-4 items-center gap-1.5 font-heading font-semibold text-blue-deep">
                   View <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
               </Link>
@@ -67,7 +67,7 @@ export default async function ImpactPage() {
       {projects.length ? (
         <Section labelledBy="recent-heading">
           <SectionHeading id="recent-heading" eyebrow="Projects" title="Recent project stories" />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {projects.slice(0, 3).map((p) => (
               <ProjectCard key={p.slug} project={p} />
             ))}

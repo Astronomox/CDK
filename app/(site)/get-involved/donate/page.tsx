@@ -28,7 +28,7 @@ export default function DonatePage() {
       />
 
       <Section id="give">
-        <div className="grid items-start gap-6 lg:grid-cols-2">
+        <div className="grid items-start gap-6 lg:grid-cols-2 [&>*]:min-w-0">
           <Card>
             <div className="flex items-center gap-3">
               <span aria-hidden className="grid size-12 place-items-center rounded-full bg-purple text-white">

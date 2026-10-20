@@ -95,3 +95,21 @@ Working notes for whoever picks this project up next (human or Claude). Read CLA
 - Outreach copy checked line by line against the client summary; outcome lines reworded to stick to what the client wrote. Locations use "Ikorodu, Lagos State" without the Igbolomu community name (owner lives there); add it back only if the owner agrees.
 - Fixes: About "Get in touch" email now wraps on phones (it caused sideways scroll) and is a mailto/tel link.
 - Still pending from the client: who will update the site (item 11), the client's "observations", partners and logo permission, bank details, Paystack keys, videos, HerCare photos. Note the headline stats (2,000+ children, 7 outreaches) are larger than the 4 documented outreaches add up to (about 1,500); confirm with the client.
+
+## Session 6b (2026-10-20): "too much space, site feels dead"
+
+- Motion system, no library: `components/Motion.tsx` (mounted in the site layout) reveals blocks inside every `main section` (direct children of `.container-page` or `.wrap`, grid items staggered 80ms) with one IntersectionObserver. It only hides blocks that start below the screen, uses a `data-rv` attribute it owns, skips sideways scrollers, sr-only labels and `[data-no-reveal]`, and removes the attribute when done, so nothing can stay hidden. Also sets `html[data-scrolled]` for the compact, frosted header. Styles in `app/motion.css` (selectors start with `:root` so card transitions cannot override the reveal).
+- The old CSS-only reveal (`animation-timeline: view()`) is gone: it never ran in Safari or Firefox.
+- CSS motion: homepage hero text staggers in, the gold swash draws, photos settle and the main photo slowly zooms, the hero card bobs, soft brand glows drift; inner `PageHeader`s get the same entrance (`ph-crumbs`, `ph-copy`, `ph-media`); `app/(site)/template.tsx` fades each page in on navigation; scroll progress bar (Chromium only, hidden elsewhere); `.lift` hover on cards; buttons press to 96%. The photo ribbon now loops on desktop too (90s), paused on hover. All off under prefers-reduced-motion.
+- Spacing: `Section` is `py-11 sm:py-14 lg:py-[72px]` (was 64/96), PageHeader tighter with a 3:2 photo on desktop, homepage `--section-y` 52/76 (phones 44), 88px grid gaps now 64px, CTA band and stats band tighter.
+- Layout compaction on phones: About values in a 2-column grid with a photo in the 8th slot; mission, vision and where we work in one band; contact and registration in one card. Impact shortcuts 2x2; recent projects and related stories use `.swipe-row` (globals.css, phones only). `Steps` is a compact timeline on phones. Volunteer "who" cards and "ways to help" (2 columns) compacted; Contact cards put icons inline.
+- Result (page height): About -17% desktop / -15% phone, Impact -9% / -31%, Volunteer -6% / -20%, others -5 to -9% desktop.
+- Testing note: the site uses `scroll-behavior: smooth`, so scripted scroll tests must use `behavior: 'instant'`, or rapid scrollTo calls cancel each other and look like stuck reveals.
+
+## Session 6c (2026-10-20): no sideways scroll, voices, heart line, sharper photos
+
+- Rule from the owner: no sideways scrolling anywhere. All swipe rows removed (homepage cards, mission and vision, Impact, stories, gallery filters now wrap). The photo ribbon still glides on its own.
+- `components/VoiceRotator.tsx`: one testimonial at a time, smoke-style fade, about 4.7s each, pause button, still under reduced motion (read via `useSyncExternalStore`). `components/HeartLine.tsx`: a line that draws itself into a heart, replacing the slash before testimonial names. `components/PathTabs.tsx`: on phones the get-involved cards are one panel with Volunteer | Donate | Give items tabs.
+- Photos: MediaImage defaults to quality 90, `sizes` values corrected, and the 35 outreach photos and 7 team photos got a gentle sharpening pass (metadata including GPS stripped). The sources are only 1600px (Drive previews, some originals only 1280px), so getting sharper than this needs the original files.
+- Verified: tsc, lint and build pass; every page is 375px wide on phones with no inner sideways scrollers; homepage phone screenshot checked.
+- To check next: the "Our impact so far" heading on the blue stats band looked dark in the phone screenshot (possibly caught mid-reveal; confirm the contrast). Not committed or pushed yet.

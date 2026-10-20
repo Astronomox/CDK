@@ -1,0 +1,94 @@
+/*
+ * Site-wide motion. Transform and opacity only, so it stays smooth on low-end phones.
+ * Scroll reveal is driven by components/Motion.tsx (data-rv); everything else is CSS.
+ * All of it switches off for people who prefer reduced motion.
+ */
+:root{
+  --motion-ease:cubic-bezier(.2,.7,.2,1);
+  --motion-spring:cubic-bezier(.34,1.4,.64,1);
+}
+
+/* ============ Scroll reveal ============ */
+:root [data-rv]{
+  opacity:0; transform:translate3d(0,32px,0) scale(.985);
+  transition:opacity .7s var(--motion-ease), transform .9s var(--motion-ease);
+  transition-delay:var(--rv-d,0ms);
+}
+:root [data-rv="in"]{opacity:1; transform:none}
+/* Photos inside a revealing block settle from a slight zoom. */
+:root [data-rv] img{transform:scale(1.08); transition:transform 1.4s var(--motion-ease); transition-delay:var(--rv-d,0ms)}
+:root [data-rv="in"] img{transform:none}
+
+/* ============ Heart line (components/HeartLine.tsx) ============ */
+.heart-line{display:block; flex:none; width:56px; height:auto; aspect-ratio:100/40; color:var(--color-purple); overflow:visible}
+.heart-line path{fill:none; stroke:currentColor; stroke-width:3.4; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:1; stroke-dashoffset:0}
+.heart-line[data-draw=""] path{stroke-dashoffset:1}
+.heart-line[data-draw="in"] path{transition:stroke-dashoffset 1.8s cubic-bezier(.65,.05,.25,1)}
+.heart-line--auto path{animation:heart-draw 1.8s cubic-bezier(.65,.05,.25,1) .45s both}
+@keyframes heart-draw{from{stroke-dashoffset:1}}
+
+/* ============ Page change ============ */
+.page-enter{animation:page-in .55s var(--motion-ease) backwards}
+@keyframes page-in{from{opacity:0; transform:translate3d(0,14px,0)}}
+
+/* ============ Shared keyframes ============ */
+@keyframes rise{from{opacity:0; transform:translate3d(0,26px,0)}}
+@keyframes photo-in{from{opacity:0; transform:translate3d(0,18px,0) scale(.94)}}
+@keyframes slow-zoom{from{transform:scale(1)} to{transform:scale(1.09)}}
+@keyframes drift{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(-28px,22px,0) scale(1.08)}
+  100%{transform:translate3d(18px,-14px,0) scale(.96)}
+}
+@keyframes bob{0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)}}
+@keyframes swash-draw{from{background-size:0% .34em}}
+@keyframes sheen{from{transform:translateX(-120%) skewX(-18deg)} to{transform:translateX(220%) skewX(-18deg)}}
+
+/* ============ Inner page headers ============ */
+.page-header{position:relative; overflow:hidden; isolation:isolate}
+.page-header::before,.page-header::after{content:""; position:absolute; z-index:-1; border-radius:50%; pointer-events:none}
+.page-header::before{width:440px; height:440px; top:-200px; right:-120px; background:radial-gradient(circle, rgba(254,208,114,.5), rgba(254,208,114,0) 68%); animation:drift 16s ease-in-out infinite alternate}
+.page-header::after{width:360px; height:360px; bottom:-220px; left:-140px; background:radial-gradient(circle, rgba(113,70,211,.16), rgba(113,70,211,0) 70%); animation:drift 19s ease-in-out -6s infinite alternate-reverse}
+.ph-crumbs{animation:rise .7s var(--motion-ease) backwards}
+.ph-copy > *{animation:rise .8s var(--motion-ease) backwards}
+.ph-copy > :nth-child(1){animation-delay:.06s}
+.ph-copy > :nth-child(2){animation-delay:.14s}
+.ph-copy > :nth-child(3){animation-delay:.24s}
+.ph-copy > :nth-child(4){animation-delay:.34s}
+.ph-media{animation:photo-in 1s var(--motion-ease) .12s backwards}
+.ph-media img{animation:slow-zoom 22s ease-in-out infinite alternate}
+
+/* ============ Header ============ */
+.site-header{transition:box-shadow .3s ease, background-color .3s ease}
+.site-header-bar{transition:min-height .3s var(--motion-ease)}
+.site-logo{transition:height .3s var(--motion-ease)}
+html[data-scrolled="true"] .site-header{box-shadow:0 10px 30px -18px rgba(22,33,46,.35); background-color:rgba(255,255,255,.94); backdrop-filter:saturate(1.4) blur(10px)}
+@media (min-width:768px){
+  html[data-scrolled="true"] .site-header-bar{min-height:72px}
+  html[data-scrolled="true"] .site-logo{height:3.25rem}
+}
+
+/* Reading progress, where the browser supports scroll-driven animation. */
+.scroll-progress{display:none}
+@supports (animation-timeline: scroll()){
+  .scroll-progress{display:block; position:fixed; z-index:60; top:0; left:0; right:0; height:3px; pointer-events:none; transform-origin:0 50%;
+    background:linear-gradient(90deg, var(--color-purple), var(--color-blue) 60%, var(--color-gold));
+    animation:progress linear both; animation-timeline:scroll(root)}
+  @keyframes progress{from{transform:scaleX(0)} to{transform:scaleX(1)}}
+}
+
+/* ============ Touch and hover feedback ============ */
+.lift{transition:transform .35s var(--motion-ease), box-shadow .35s var(--motion-ease), border-color .35s}
+@media (hover:hover){
+  .lift:hover{transform:translateY(-6px); box-shadow:0 22px 40px -22px rgba(22,33,46,.38)}
+}
+.press{transition:transform .2s var(--motion-spring)}
+.press:active{transform:scale(.96)}
+
+@media (prefers-reduced-motion: reduce){
+  :root [data-rv],:root [data-rv] img{opacity:1!important; transform:none!important}
+  .page-enter,.ph-crumbs,.ph-copy > *,.ph-media,.ph-media img,.page-header::before,.page-header::after,.scroll-progress{animation:none!important}
+  .scroll-progress{display:none}
+  .heart-line path,.heart-line--auto path{animation:none!important; stroke-dashoffset:0!important}
+  .lift:hover{transform:none}
+}

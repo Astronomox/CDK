@@ -10,6 +10,9 @@ import { MediaImage } from "@/components/ui/MediaImage";
 import { StatsBand } from "@/components/sections/StatsBand";
 import { Instagram, LinkedIn } from "@/components/icons";
 import { HomeDonate } from "@/components/home/HomeDonate";
+import { HeartLine } from "@/components/HeartLine";
+import { VoiceRotator } from "@/components/VoiceRotator";
+import { PathTabs } from "@/components/PathTabs";
 import "../home.css";
 import "../home-mobile.css";
 
@@ -120,7 +123,7 @@ export default async function HomePage() {
             </div>
             {HERO_SIDE.map((img, i) => (
               <div key={img.src} className={i === 0 ? "hc-a" : "hc-b"}>
-                <MediaImage image={img} fill priority sizes="(min-width: 1024px) 18vw, 0px" />
+                <MediaImage image={img} fill priority sizes="(min-width: 1024px) 18vw, (min-width: 640px) 38vw, 1px" />
               </div>
             ))}
             <div className="hero-card" aria-hidden>
@@ -145,7 +148,7 @@ export default async function HomePage() {
               className={`${img.height > img.width ? "r-portrait" : "r-landscape"}${i >= RIBBON.length ? " r-clone" : ""}`}
               aria-hidden={i >= RIBBON.length || undefined}
             >
-              <MediaImage image={img} fill sizes="(min-width: 1024px) 22vw, 70vw" />
+              <MediaImage image={img} fill sizes={img.height > img.width ? "(min-width: 1024px) 17vw, 38vw" : "(min-width: 1024px) 34vw, 76vw"} />
             </li>
           ))}
         </ul>
@@ -223,12 +226,12 @@ export default async function HomePage() {
               All programmes <Arrow />
             </Link>
           </div>
-          <div className="card-grid card-grid--3">
+          <div className="card-grid card-grid--3 prog-grid">
             {programmes.slice(0, 3).map((p) => (
               <article key={p.slug} className="card reveal">
                 <Link className="card-link" href={`/programmes/${p.slug}`}>
                   <div className="media">
-                    <MediaImage image={p.image} fill sizes="(min-width: 1024px) 33vw, (min-width: 700px) 50vw, 100vw" />
+                    <MediaImage image={p.image} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 40vw" />
                     {p.status === "in-development" ? <span className="badge">In development</span> : null}
                   </div>
                   <div className="card-body">
@@ -267,7 +270,7 @@ export default async function HomePage() {
               return (
                 <li key={p.slug} className="year-card reveal">
                   <Link href={`/impact/projects/${p.slug}`}>
-                    <MediaImage image={p.coverImage} fill sizes="(min-width: 900px) 33vw, 100vw" />
+                    <MediaImage image={p.coverImage} fill sizes="(min-width: 1100px) 25vw, (min-width: 640px) 50vw, 100vw" />
                     <span className="year-shade" aria-hidden />
                     <span className="year-body">
                       {year ? (
@@ -298,7 +301,7 @@ export default async function HomePage() {
                 {moments.map((m) => (
                   <li key={m.id} className={m.cls}>
                     <Link href="/impact/gallery" aria-label={`Open the gallery: ${m.caption ?? m.image.alt}`}>
-                      <MediaImage image={m.image} fill sizes={m.cls === "m-big" ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 768px) 25vw, 50vw"} />
+                      <MediaImage image={m.image} fill sizes={m.cls === "m-big" || m.cls === "m-wide" ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 768px) 25vw, 50vw"} />
                       {m.caption ? <span className="m-cap">{m.caption}</span> : null}
                     </Link>
                   </li>
@@ -309,7 +312,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 7. Voices: a featured testimonial on its photo, then more in a row. Children are credited by role only. */}
+      {/* 7. Voices: a featured testimonial on its photo, then the rest dissolving one into the next. Children are credited by role only. */}
       <section className="section" aria-labelledby="voices-title">
         <h2 id="voices-title" className="sr-only">
           {featured ? "In their words" : "Our promise"}
@@ -331,20 +334,14 @@ export default async function HomePage() {
               </p>
             </blockquote>
             <figcaption className="quote-cite">
+              <HeartLine />
               <b>{featured ? featured.attribution : "Our promise"}</b>
             </figcaption>
           </figure>
         </div>
         {moreVoices.length ? (
           <div className="wrap voices">
-            <ul className="voices-row">
-              {moreVoices.slice(0, 3).map((t) => (
-                <li key={t.id} className="voice reveal">
-                  <p>&ldquo;{t.quote}&rdquo;</p>
-                  <span>{t.attribution}</span>
-                </li>
-              ))}
-            </ul>
+            <VoiceRotator voices={moreVoices.map(({ id, quote, attribution }) => ({ id, quote, attribution }))} />
             <Link className="link-arrow" href="/impact/testimonials">
               Read all testimonials <Arrow />
             </Link>
@@ -412,7 +409,7 @@ export default async function HomePage() {
             </div>
             <p className="muted section-head-note">Give your time, give online, or give the things children need for school.</p>
           </div>
-          <div className="card-grid card-grid--3">
+          <PathTabs labels={["Volunteer", "Donate", "Give items"]}>
             <article className="card path reveal">
               <div className="card-body">
                 <span className="path-icon" aria-hidden>
@@ -473,7 +470,7 @@ export default async function HomePage() {
                 </div>
               </div>
             </article>
-          </div>
+          </PathTabs>
         </div>
       </section>
 

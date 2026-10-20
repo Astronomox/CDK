@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
-    // 90 is used for the full-screen gallery so photos stay sharp.
+    // 90 is the default for every photo (components/ui/MediaImage.tsx) so they stay sharp.
     qualities: [75, 90],
     remotePatterns: [
       { protocol: "https", hostname: "cdn.sanity.io" },

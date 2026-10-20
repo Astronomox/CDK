@@ -12,10 +12,10 @@ export function Header() {
       >
         Skip to content
       </a>
-      <header className="sticky top-0 z-40 border-b border-border bg-white">
-        <div className="container-page flex min-h-20 items-center justify-between gap-6 md:min-h-[92px]">
+      <header className="site-header sticky top-0 z-40 border-b border-border bg-white">
+        <div className="site-header-bar container-page flex min-h-20 items-center justify-between gap-6 md:min-h-[92px]">
           <Link href="/" className="flex shrink-0 items-center rounded-xl" aria-label={`${SITE.name}, home`}>
-            <Logo width={64} priority className="h-14 w-auto md:h-16" />
+            <Logo width={64} priority className="site-logo h-14 w-auto md:h-16" />
           </Link>
           <SiteNav />
         </div>

@@ -4,11 +4,11 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full font-heading font-semibold transition-[background-color,color,border-color,transform,box-shadow] duration-200 outline-none active:translate-y-px focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-60 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full font-heading font-semibold transition-[background-color,color,border-color,transform,box-shadow] duration-200 outline-none active:scale-[.96] focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-60 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:-translate-y-px hover:bg-purple-deep hover:shadow-[0_10px_22px_-10px_rgba(113,70,211,0.7)]",
+        default: "bg-primary text-primary-foreground hover:-translate-y-0.5 hover:bg-purple-deep hover:shadow-[0_10px_22px_-10px_rgba(113,70,211,0.7)]",
         blue: "border-2 border-blue bg-transparent text-blue hover:bg-blue hover:text-white",
         outline: "border-2 border-blue bg-transparent text-blue hover:bg-blue hover:text-white",
         gold: "bg-gold text-black hover:bg-gold-deep",

@@ -22,14 +22,14 @@
   --r-sm:12px; --r-md:20px; --r-lg:28px; --r-pill:999px;
   /* spacing */
   --gutter:20px; --container:1200px;
-  --section-y:64px; --stack-lg:32px;
+  --section-y:52px; --stack-lg:28px;
   /* elevation (hover and the one floating element only) */
   --shadow-float:0 18px 40px -12px rgba(22,33,46,.22), 0 4px 12px rgba(22,33,46,.06);
   --shadow-hover:0 14px 30px -14px rgba(22,33,46,.28);
   --ease:cubic-bezier(.2,.7,.2,1);
 }
 @media (min-width:768px){ :root{ --gutter:32px; --fs-body:1.125rem; } }
-@media (min-width:1024px){ :root{ --section-y:96px; --stack-lg:64px; } }
+@media (min-width:1024px){ :root{ --section-y:76px; --stack-lg:44px; } }
 
 /* ============ Base (scoped) ============ */
 .home h1,.home h2,.home h3{font-family:var(--font-head); font-weight:600; color:var(--ink); margin:0; letter-spacing:-.015em; text-wrap:balance}
@@ -70,7 +70,7 @@
 .link-arrow:hover svg{transform:translateX(4px)}
 
 /* ============ Hero ============ */
-.hero{background:var(--canvas-warm); padding-block:12px var(--section-y); overflow:hidden}
+.hero{background:var(--canvas-warm); padding-block:12px 40px; overflow:hidden}
 .hero-media{order:-1}
 .hero-grid{display:grid; gap:28px; align-items:center}
 .hero-copy h1{margin-bottom:18px}
@@ -90,9 +90,9 @@
 .hero-card strong{display:block; font-family:var(--font-head); font-weight:600; font-size:1.5rem; line-height:1.1; letter-spacing:-.01em}
 .hero-card span{display:block; font-size:.875rem; line-height:1.35; color:var(--ink-2)}
 @media (min-width:1024px){
-  .hero{padding-top:40px}
+  .hero{padding-top:28px}
   .hero-copy .lead{margin-bottom:32px}
-  .hero-meta{margin-top:32px}
+  .hero-meta{margin-top:24px}
   .hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,1fr); gap:56px}
   .swash{white-space:nowrap}
   .hero-media img{aspect-ratio:auto; height:min(620px, 72vh); min-height:520px}
@@ -111,7 +111,7 @@
 
 /* ============ Why we exist (the one embrace frame) ============ */
 .split{display:grid; gap:48px; align-items:center}
-@media (min-width:1024px){ .split{grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:88px} }
+@media (min-width:1024px){ .split{grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:64px} }
 .embrace{position:relative; margin:0 auto; width:100%; max-width:460px; aspect-ratio:4/5; padding:4.5%}
 .embrace img{width:100%; height:100%; object-fit:cover; border-radius:50% 50% var(--r-lg) var(--r-lg) / 39.2% 39.2% var(--r-lg) var(--r-lg)}
 .embrace svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none}
@@ -138,7 +138,7 @@
 .mv-item p{color:var(--ink-2)}
 .about-link{margin-top:8px}
 @media (min-width:768px){ .mv{grid-template-columns:1fr 1fr; gap:40px} }
-@media (min-width:1024px){ .about-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:88px; align-items:start} }
+@media (min-width:1024px){ .about-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:64px; align-items:start} }
 
 /* ============ Impact (the one colour section) ============ */
 .impact{background:var(--blue-deep); color:var(--on-dark)}
@@ -151,7 +151,7 @@
 .stat-num{font-family:var(--font-head); font-weight:600; font-size:clamp(3rem, 2.2rem + 3vw, 4.5rem); line-height:1; letter-spacing:-.02em; color:#fff; font-variant-numeric:tabular-nums}
 .stat-num--word{font-size:clamp(2rem, 1.6rem + 1.6vw, 3rem); line-height:1.1}
 .stat-label{color:var(--on-dark-2); font-size:1.0625rem; line-height:1.45}
-.impact-foot{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; margin-top:48px; padding-top:20px; border-top:1px solid rgba(255,255,255,.18); color:var(--on-dark-2); font-size:.9375rem}
+.impact-foot{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; margin-top:36px; padding-top:20px; border-top:1px solid rgba(255,255,255,.18); color:var(--on-dark-2); font-size:.9375rem}
 .impact-foot a{color:#fff}
 @media (min-width:900px){
   .stats{grid-template-columns:repeat(3,1fr); gap:40px}
@@ -207,10 +207,10 @@ blockquote{margin:0}
 .quote-body{margin:0}
 .vision-quote{font-family:var(--font-head); font-style:normal; font-weight:500; font-size:clamp(1.5rem, 1.15rem + 1.4vw, 2.375rem); line-height:1.38; letter-spacing:-.01em; color:var(--ink); max-width:26ch}
 .quote-cite{display:flex; align-items:center; gap:14px; margin-top:32px; font-style:normal}
-.quote-cite::before{content:""; width:40px; height:2px; background:var(--purple)}
+.quote-cite .heart-line{width:64px}
 .quote-cite b{font-family:var(--font-head); font-weight:600}
 .quote-cite span{color:var(--ink-2)}
-@media (min-width:900px){ .quote-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:88px} }
+@media (min-width:900px){ .quote-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:64px} }
 
 /* ============ Sponsors ============ */
 .partners{display:grid; gap:40px; align-items:center}
@@ -226,7 +226,7 @@ blockquote{margin:0}
 .ways-list b{display:block; font-family:var(--font-head); font-weight:600; font-size:1.0625rem}
 .ways-list div > span{display:block; color:var(--ink-2); font-size:1rem; line-height:1.55; margin-top:2px}
 @media (min-width:768px){ .ways{padding:36px 40px} }
-@media (min-width:1024px){ .partners{grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:88px} }
+@media (min-width:1024px){ .partners{grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:64px} }
 
 /* ============ Get involved ============ */
 .section-head-note{max-width:36ch}
@@ -274,7 +274,6 @@ blockquote{margin:0}
 /* ============ Scroll reveal ============ */
 /* Pure CSS: browsers without scroll-driven animations simply show everything. */
 @supports (animation-timeline: view()) {
-  .reveal{animation:reveal-in linear both; animation-timeline:view(); animation-range:entry 0% entry 40%}
   .embrace path{stroke-dasharray:1; animation:embrace-draw linear both; animation-timeline:view(); animation-range:entry 10% cover 45%}
 }
 @keyframes reveal-in{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none}}
@@ -325,9 +324,11 @@ blockquote{margin:0}
 .ribbon img{object-fit:cover; transition:transform .6s ease-out}
 .ribbon li:hover img{transform:scale(1.04)}
 @media (min-width:1024px){
-  .ribbon ul{display:grid; grid-template-columns:1.5fr 1fr 1.5fr 1fr 1.5fr 1fr; gap:14px; overflow:visible; padding:0 14px 32px}
-  .ribbon li{width:auto!important; height:clamp(260px, 22vw, 340px)}
-  .ribbon li:nth-child(even){transform:translateY(32px)}
+  .ribbon{padding-bottom:36px}
+  .ribbon li{height:clamp(240px, 20vw, 320px)}
+  .ribbon .r-landscape{width:clamp(360px, 30vw, 480px)}
+  .ribbon .r-portrait{width:clamp(180px, 15vw, 240px)}
+  .ribbon li:nth-child(even){transform:translateY(28px)}
 }
 
 /* ============ Three years of outreaches ============ */
@@ -379,4 +380,74 @@ blockquote{margin:0}
 .voice{display:flex; flex-direction:column; justify-content:space-between; gap:16px; padding:24px; background:var(--canvas-warm); border:1px solid var(--line); border-radius:var(--r-md)}
 .voice p{color:var(--ink); font-size:1rem; line-height:1.6; max-width:none}
 .voice span{display:flex; align-items:center; gap:10px; font-family:var(--font-head); font-weight:600; font-size:.9rem; color:var(--purple)}
-.voice span::before{content:""; width:24px; height:2px; background:var(--purple)}
+
+/* ============ Motion (keyframes live in app/motion.css) ============ */
+.hero{position:relative; isolation:isolate}
+.hero::before,.hero::after{content:""; position:absolute; z-index:-1; border-radius:50%; pointer-events:none}
+.hero::before{width:560px; height:560px; top:-220px; right:-160px; background:radial-gradient(circle, rgba(254,208,114,.55), rgba(254,208,114,0) 68%); animation:drift 16s ease-in-out infinite alternate}
+.hero::after{width:420px; height:420px; bottom:-200px; left:-160px; background:radial-gradient(circle, rgba(113,70,211,.14), rgba(113,70,211,0) 70%); animation:drift 20s ease-in-out -5s infinite alternate-reverse}
+.hero-copy > *{animation:rise .85s var(--ease) backwards}
+.hero-copy > :nth-child(1){animation-delay:.05s}
+.hero-copy > :nth-child(2){animation-delay:.15s}
+.hero-copy > :nth-child(3){animation-delay:.27s}
+.hero-copy > :nth-child(4){animation-delay:.37s}
+.hero-copy > :nth-child(n+5){animation-delay:.47s}
+.hero .swash{animation:swash-draw 1.1s var(--ease) .6s backwards}
+.hero-collage > .hc-main{animation:photo-in 1.1s var(--ease) .1s backwards}
+.hero-collage > .hc-a{animation:photo-in 1.1s var(--ease) .28s backwards}
+.hero-collage > .hc-b{animation:photo-in 1.1s var(--ease) .44s backwards}
+.hero-collage .hc-main img{animation:slow-zoom 24s ease-in-out infinite alternate}
+.hero-card{animation:photo-in .9s var(--ease) .8s backwards, bob 6s ease-in-out 1.8s infinite}
+
+/* Cards and photos respond to the pointer and to touch. */
+.card,.voice,.year-card a{transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s}
+@media (hover:hover){
+  .card:hover,.voice:hover{transform:translateY(-6px); box-shadow:var(--shadow-hover)}
+  .year-card a:hover{transform:translateY(-6px); box-shadow:0 26px 44px -24px rgba(22,33,46,.55)}
+}
+.btn:active{transform:scale(.96)}
+.card:active,.year-card a:active{transform:scale(.985)}
+
+@media (prefers-reduced-motion:reduce){
+  .hero::before,.hero::after,.hero-copy > *,.hero .swash,.hero-collage > *,.hero-collage img,.hero-card{animation:none!important}
+}
+
+/* ============ Voices: one at a time, dissolving like smoke (components/VoiceRotator.tsx) ============ */
+.voice-rotator{position:relative; isolation:isolate; overflow:hidden; margin-bottom:18px; padding:30px 26px 20px; background:var(--canvas-warm); border:1px solid var(--line); border-radius:var(--r-lg)}
+.voice-rotator::before{content:"\201C"; position:absolute; z-index:-1; right:18px; top:-34px; font-family:var(--font-head); font-weight:700; font-size:12rem; line-height:1; color:var(--purple); opacity:.07; pointer-events:none}
+.vr-stage{display:grid}
+.vr-item{grid-area:1 / 1; margin:0; display:flex; flex-direction:column; justify-content:center; gap:16px}
+.vr-item[data-state="idle"]{visibility:hidden}
+.vr-item blockquote{margin:0}
+.vr-item p{font-family:var(--font-head); font-weight:500; font-size:clamp(1.12rem, 1rem + .9vw, 1.6rem); line-height:1.45; color:var(--ink); max-width:52ch}
+.vr-item figcaption{display:flex; align-items:center; gap:12px; font-family:var(--font-head); font-weight:600; font-size:.95rem; color:var(--purple)}
+.vr-word{display:inline-block}
+.voice-rotator:not([data-still]) .vr-item[data-state="in"] .vr-word{animation:smoke-in .65s var(--ease) both; animation-delay:calc(var(--i) * 20ms + 80ms)}
+.voice-rotator:not([data-still]) .vr-item[data-state="in"] figcaption{animation:smoke-in .6s var(--ease) .25s both}
+.vr-item[data-state="out"]{pointer-events:none; animation:smoke-out .6s cubic-bezier(.4,0,.7,.2) both}
+@keyframes smoke-in{from{opacity:0; filter:blur(10px); transform:translate3d(0,10px,0) scale(.96)} to{opacity:1; filter:none; transform:none}}
+@keyframes smoke-out{to{opacity:0; filter:blur(16px); transform:translate3d(0,-18px,0) scale(1.05)}}
+.vr-controls{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:20px}
+.vr-dots{display:flex; align-items:center; gap:2px; margin-left:-6px}
+.vr-dot{position:relative; display:grid; place-items:center; width:24px; height:32px; padding:0; border:0; background:none; cursor:pointer; transition:width .45s var(--ease)}
+.vr-dot::before{content:""; width:8px; height:8px; border-radius:99px; background:#D9D0EA; transition:width .45s var(--ease), background-color .3s}
+.vr-dot:hover::before{background:#B9A6E6}
+.vr-dot[aria-current]{width:48px}
+.vr-dot[aria-current]::before{width:40px; background:rgba(113,70,211,.18)}
+.vr-dot:focus-visible{outline:3px solid var(--blue); outline-offset:2px; border-radius:8px}
+.vr-fill{position:absolute; left:4px; top:50%; width:40px; height:8px; margin-top:-4px; border-radius:99px; background:var(--purple); transform-origin:0 50%; animation:vr-fill 4.7s linear both}
+.voice-rotator:not([data-running]) .vr-fill{animation-play-state:paused}
+@keyframes vr-fill{from{transform:scaleX(0)} to{transform:scaleX(1)}}
+.vr-pause{min-height:36px; padding:0 16px; border:1px solid var(--line-cool); border-radius:var(--r-pill); background:#fff; color:var(--blue); font-family:var(--font-head); font-weight:600; font-size:.85rem; cursor:pointer}
+.vr-pause:hover{border-color:var(--blue)}
+@media (min-width:900px){ .voice-rotator{padding:44px 56px 26px} }
+
+/* ============ Get involved: segmented switch on phones (components/PathTabs.tsx) ============ */
+.pt-bar{display:none}
+.pt-panel{display:flex}
+.pt-panel > .card{flex:1}
+@keyframes panel-in{from{opacity:0; filter:blur(8px); transform:translate3d(0,10px,0)}}
+
+@media (prefers-reduced-motion:reduce){
+  .vr-word,.vr-item,.vr-item figcaption,.vr-fill{animation:none!important}
+}

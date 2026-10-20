@@ -4,7 +4,7 @@
  * swipeable rows instead of long stacks, and the promise quote set on its photo.
  */
 @media (max-width: 767px) {
-  .home{--section-y:52px; --stack-lg:24px; --gutter:20px; overflow-x:clip}
+  .home{--section-y:44px; --stack-lg:22px; --gutter:20px; overflow-x:clip}
   /* Grid children must be allowed to shrink, or swipe rows stretch the page sideways. */
   .home .hero-grid > *,.home .about-grid > *,.home .split > *,.home .partners > *,.home .connect > *,.home .quote-grid > *,.home .wrap > *{min-width:0}
   .home h2{font-size:1.75rem; line-height:1.18}
@@ -34,27 +34,42 @@
   .hero .link-arrow{color:#fff; min-height:40px}
   .hero-meta{margin-top:6px; color:rgba(255,255,255,.82); font-size:.85rem}
   .hero-meta svg{color:var(--gold)}
+  .hero::before,.hero::after{display:none}
 
   /* ============ Photo ribbon ============ */
   .ribbon{background:var(--canvas); padding:16px 0 4px}
   .ribbon li{height:200px; border-radius:16px}
   .ribbon .r-landscape{width:290px}
   .ribbon .r-portrait{width:140px}
-  /* Cards inside sideways rows are not animated by the vertical scroll. */
-  .home .card-grid--3 > .reveal,.home .years > .reveal{animation:none}
 
-  /* ============ Swipe rows ============ */
+  /* ============ No sideways scrolling: rows stack ============ */
   .vision-quote--long{font-size:1.08rem; line-height:1.45}
-  .home .card-grid--3,.home .years,.home .mv,.home .voices-row{
-    display:flex!important; gap:14px; overflow-x:auto; overscroll-behavior-x:contain;
-    scroll-snap-type:x mandatory; scroll-padding-inline:var(--gutter);
-    margin-inline:calc(var(--gutter) * -1); padding:4px var(--gutter) 14px; scrollbar-width:none
-  }
-  .home .card-grid--3::-webkit-scrollbar,.home .years::-webkit-scrollbar,.home .mv::-webkit-scrollbar,.home .voices-row::-webkit-scrollbar{display:none}
-  .home .card-grid--3 > *,.home .years > *,.home .mv > *,.home .voices-row > *{flex:0 0 84%; scroll-snap-align:start}
-  .home .voices-row{margin-bottom:6px}
-  .home .voices-row > .reveal{animation:none}
-  .home .years > *{flex-basis:76%}
+  .home .card-grid,.home .years,.home .mv{display:grid; gap:12px}
+
+  /* Programmes: compact cards, photo on the left */
+  .prog-grid .card-link{flex-direction:row}
+  .prog-grid .media{flex:0 0 36%; aspect-ratio:auto; min-height:148px}
+  .prog-grid .card-body{padding:14px 14px 10px; gap:4px}
+  .home .prog-grid .card h3{font-size:1.05rem}
+  .home .prog-grid .card-body > p{font-size:.88rem; line-height:1.45; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
+  .prog-grid .link-arrow{min-height:34px; font-size:.9rem}
+  .prog-grid .badge{left:8px; top:8px; padding:4px 8px; font-size:.6rem}
+
+  /* Voices */
+  .voice-rotator{padding:24px 20px 14px; border-radius:22px}
+  .voice-rotator::before{font-size:9rem; top:-26px; right:10px}
+  .vr-item p{font-size:1.08rem}
+  .vr-controls{margin-top:14px}
+
+  /* Get involved: one panel at a time under a segmented switch */
+  .pt-bar{position:relative; display:grid; grid-template-columns:repeat(var(--n, 3), 1fr); padding:5px; margin-bottom:14px; background:#fff; border:1px solid var(--line-cool); border-radius:var(--r-pill)}
+  .pt-pill{position:absolute; top:5px; bottom:5px; left:5px; width:calc((100% - 10px) / var(--n)); border-radius:var(--r-pill); background:var(--purple); box-shadow:0 8px 18px -10px rgba(113,70,211,.9); transform:translateX(calc(var(--a) * 100%)); transition:transform .5s cubic-bezier(.34,1.3,.64,1)}
+  .pt-tab{position:relative; z-index:1; min-height:44px; padding:0 6px; border:0; border-radius:var(--r-pill); background:none; color:var(--ink-2); font-family:var(--font-head); font-weight:600; font-size:.9rem; cursor:pointer; transition:color .3s}
+  .pt-tab[aria-pressed="true"]{color:#fff}
+  .pt-tab:focus-visible{outline:3px solid var(--blue); outline-offset:2px}
+  .path-tabs .card-grid{display:block}
+  .pt-panel{display:none}
+  .pt-panel[data-on]{display:flex; animation:panel-in .6s var(--ease) both}
 
   /* Programme and get-involved cards */
   .home .card-body{padding:18px 18px 16px; gap:8px}
@@ -82,10 +97,10 @@
   .mv-item h3{font-size:.85rem}
   .mv-item p{font-size:.95rem}
 
-  /* ============ Three years ============ */
-  .year-card a{aspect-ratio:3/4}
+  /* ============ Where we have been: stacked, landscape ============ */
+  .year-card a{aspect-ratio:16/10}
   .year-body{padding:20px}
-  .year-num{font-size:3.6rem}
+  .year-num{font-size:3rem}
   .year-num::after{margin-top:10px}
   .year-title{font-size:1.1rem}
 
@@ -106,7 +121,7 @@
   .vision-quote{color:#fff; font-size:1.3rem; line-height:1.38}
   .quote-cite{margin-top:16px}
   .quote-cite b{color:#fff}
-  .quote-cite::before{background:var(--gold)}
+  .quote-cite .heart-line{color:var(--gold)}
 
   /* ============ Partners ============ */
   .partners{gap:20px}
@@ -134,18 +149,16 @@
   .mail{font-size:.9rem}
 }
 
-/* Ribbon on phones and tablets: an endless, gentle left-to-right glide. */
-@media (max-width: 1023px) {
-  .ribbon{overflow:hidden}
-  .ribbon ul{width:max-content; overflow:visible; scroll-snap-type:none; padding:0 0 4px; animation:ribbon-flow 60s linear infinite}
-  .ribbon:hover ul,.ribbon:active ul{animation-play-state:paused}
-}
+/* Ribbon: an endless, gentle left-to-right glide on every screen size. Hover or touch to pause. */
+.ribbon{overflow:hidden}
+.ribbon ul{width:max-content; overflow:visible; scroll-snap-type:none; padding:0 0 4px; animation:ribbon-flow 60s linear infinite}
 @media (min-width: 1024px) {
-  .ribbon .r-clone{display:none}
+  .ribbon ul{animation-duration:90s}
 }
+.ribbon:hover ul,.ribbon:active ul{animation-play-state:paused}
 /* Moves exactly one set of photos (half the strip plus half a gap), so the loop is seamless. */
 @keyframes ribbon-flow{from{transform:translateX(calc(-50% - 6px))} to{transform:translateX(0)}}
 @media (prefers-reduced-motion: reduce) {
-  .ribbon ul{animation:none!important; width:auto; overflow-x:auto}
+  .ribbon ul{animation:none!important; width:auto; overflow:visible; flex-wrap:wrap; justify-content:center; padding-inline:var(--gutter)}
   .ribbon .r-clone{display:none}
 }

@@ -43,10 +43,12 @@ export default function VolunteerPage() {
         <SectionHeading id="who-heading" eyebrow="Who can volunteer" title="Volunteers we are looking for" />
         <ul className="mt-8 grid gap-4 md:grid-cols-3">
           {WHO.map(({ title, text, Icon }) => (
-            <li key={title} className="rounded-[20px] bg-canvas-tint p-6">
-              <Icon className="size-8 text-blue" />
-              <h3 className="mt-3 text-xl font-semibold">{title}</h3>
-              <p className="mt-1 text-muted-foreground">{text}</p>
+            <li key={title} className="lift flex gap-4 rounded-[20px] bg-canvas-tint p-4 sm:p-6 md:block">
+              <Icon className="size-7 shrink-0 text-blue md:size-8" />
+              <div>
+                <h3 className="text-lg font-semibold md:mt-3 md:text-xl">{title}</h3>
+                <p className="mt-1 text-muted-foreground">{text}</p>
+              </div>
             </li>
           ))}
         </ul>
@@ -54,13 +56,13 @@ export default function VolunteerPage() {
 
       <Section tone="purple-soft" labelledBy="areas-heading">
         <SectionHeading id="areas-heading" eyebrow="Opportunities" title="Ways you can help" />
-        <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-8 grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4">
           {VOLUNTEER_AREAS.map((area, i) => {
             const Icon = AREA_ICONS[i % AREA_ICONS.length];
             return (
-              <li key={area} className="flex items-center gap-3 rounded-2xl bg-white p-4 font-heading font-semibold">
-                <span aria-hidden className="grid size-10 shrink-0 place-items-center rounded-full bg-canvas-warm text-purple">
-                  <Icon className="size-5" />
+              <li key={area} className="lift flex items-center gap-2.5 rounded-2xl bg-white p-3 font-heading text-[0.95rem] font-semibold leading-snug sm:gap-3 sm:p-4 sm:text-base">
+                <span aria-hidden className="grid size-8 shrink-0 sm:size-10 place-items-center rounded-full bg-canvas-warm text-purple">
+                  <Icon className="size-4 sm:size-5" />
                 </span>
                 {area}
               </li>
@@ -76,7 +78,7 @@ export default function VolunteerPage() {
           title="Your volunteer journey"
           intro="Every volunteer completes a screening test sent by email and takes part in training before deployment. This keeps children safe and helps you feel ready."
         />
-        <div className="[&_li]:bg-canvas-tint">
+        <div className="sm:[&_li]:bg-canvas-tint">
           <Steps steps={VOLUNTEER_JOURNEY} />
         </div>
       </Section>

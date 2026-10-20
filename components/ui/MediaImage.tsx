@@ -18,8 +18,9 @@ type Props = {
  * responsive sizes are handled the same way everywhere. Sample (placeholder)
  * photos get a visible label so they are never mistaken for real outreach photos.
  * The parent element must be positioned for the label to sit on the image.
+ * Photos default to quality 90 (AVIF/WebP) so they stay sharp on high-density phone screens.
  */
-export function MediaImage({ image, sizes, className = "", priority, fill, quality, style }: Props) {
+export function MediaImage({ image, sizes, className = "", priority, fill, quality = 90, style }: Props) {
   const isSvg = image.src.endsWith(".svg");
   const common = {
     src: image.src,

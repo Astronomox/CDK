@@ -18,7 +18,7 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
   return (
     <div>
       {categories.length > 1 ? (
-        <div role="group" aria-label="Filter photos by category" className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:px-0">
+        <div role="group" aria-label="Filter photos by category" className="flex flex-wrap gap-2 pb-2">
           {(["all", ...categories] as const).map((c) => (
             <button
               key={c}

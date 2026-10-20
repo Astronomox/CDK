@@ -18,9 +18,9 @@ export function BankTransfer() {
         </p>
         <a
           href={`mailto:${SITE.contact.email}?subject=${encodeURIComponent("Bank transfer donation")}`}
-          className="mt-3 inline-flex items-center gap-2 font-heading font-semibold text-blue-deep underline underline-offset-4"
+          className="mt-3 inline-flex max-w-full items-start gap-2 font-heading font-semibold text-blue-deep underline underline-offset-4"
         >
-          <Mail className="size-4" /> {SITE.contact.email}
+          <Mail className="mt-1 size-4 shrink-0" /> <span className="min-w-0 break-all">{SITE.contact.email}</span>
         </a>
       </div>
     );

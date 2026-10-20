@@ -69,7 +69,7 @@ export default async function ProjectPage({ params }: Params) {
       </PageHeader>
 
       <Section>
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <article className="space-y-10">
             <div className="relative aspect-[16/10] overflow-hidden rounded-[28px]">
               <MediaImage image={project.coverImage} fill priority sizes="(min-width: 1024px) 60vw, 100vw" className="object-cover" />

@@ -41,7 +41,7 @@ export default function DonateItemsPage() {
               {SITE.requestedItems.map((item, i) => (
                 <li
                   key={item}
-                  className={`rounded-[20px] p-6 font-heading text-xl font-semibold ${["bg-canvas-warm", "bg-canvas-warm", "bg-canvas-tint", "bg-canvas-warm"][i % 4]}`}
+                  className={`lift rounded-[20px] p-4 font-heading text-lg font-semibold [overflow-wrap:anywhere] sm:p-6 sm:text-xl ${["bg-canvas-warm", "bg-canvas-warm", "bg-canvas-tint", "bg-canvas-warm"][i % 4]}`}
                 >
                   {item}
                 </li>

@@ -8,7 +8,7 @@ import { Instagram, LinkedIn } from "@/components/icons";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-black pb-8 pt-12 text-[0.9375rem] text-[#C9D1DB] md:pt-16">
+    <footer className="bg-black pb-8 pt-10 text-[0.9375rem] text-[#C9D1DB] md:pt-14">
       <div className="container-page">
         <div className="grid gap-10 lg:grid-cols-[1fr_2.6fr] lg:gap-16">
           <div>

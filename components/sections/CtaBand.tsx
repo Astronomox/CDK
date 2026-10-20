@@ -5,7 +5,7 @@ type Action = { href: string; label: string; variant?: ButtonVariant; trackLabel
 /** Closing call to action: a calm warm panel, primary button plus an outline one. */
 export function CtaBand({ title, text, actions }: { title: string; text?: string; actions: Action[]; tone?: string }) {
   return (
-    <section className="py-16 lg:py-24">
+    <section className="py-12 lg:py-16">
       <div className="container-page">
         <div className="flex flex-col gap-8 rounded-[28px] bg-canvas-warm px-7 py-10 sm:px-12 sm:py-12 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl">

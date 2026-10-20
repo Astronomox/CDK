@@ -12,10 +12,11 @@ import {
   type Story,
   type Testimonial,
 } from "@/lib/content/types";
+import { HeartLine } from "@/components/HeartLine";
 
 /** One card style for the whole site: white, 1px warm border, 20px radius, photo on top. */
 const cardShell =
-  "group relative flex h-full flex-col overflow-hidden rounded-[20px] border border-border bg-white focus-within:ring-[3px] focus-within:ring-blue/40";
+  "lift group relative flex h-full flex-col overflow-hidden rounded-[20px] border border-border bg-white focus-within:ring-[3px] focus-within:ring-blue/40";
 
 /** Makes the whole card clickable while keeping a single link in the accessibility tree. */
 function StretchedLink({ href, children }: { href: string; children: React.ReactNode }) {
@@ -153,7 +154,7 @@ export function TestimonialCard({ testimonial, large = false }: { testimonial: T
         <p>{testimonial.quote}</p>
       </blockquote>
       <figcaption className="mt-6 flex items-center gap-3.5 text-sm">
-        <span aria-hidden className="h-0.5 w-10 bg-purple" />
+        <HeartLine className="w-14 shrink-0 text-purple" />
         <span>
           <span className="font-heading font-semibold text-ink">{testimonial.attribution}</span>
           {testimonial.attribution.toLowerCase().includes(TESTIMONIAL_ROLE_LABELS[testimonial.role].toLowerCase()) ? null : (
