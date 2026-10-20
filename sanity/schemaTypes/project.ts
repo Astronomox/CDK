@@ -10,6 +10,7 @@ export const project = defineType({
     defineField({ name: "title", title: "Project title", type: "string", validation: (rule) => rule.required() }),
     slugField,
     defineField({ name: "date", type: "date" }),
+    defineField({ name: "dateLabel", title: "Date as shown", type: "string", description: "Optional, e.g. November 2025. Use when the exact day is not known." }),
     defineField({
       name: "location",
       type: "string",
@@ -25,6 +26,7 @@ export const project = defineType({
       type: "number",
       validation: (rule) => rule.min(0).integer(),
     }),
+    defineField({ name: "reachedLabel", title: "Children reached as shown", type: "string", description: "Optional, e.g. 500+ students. Replaces the number on the site." }),
     defineField({ name: "outcome", title: "Outcome or impact", type: "text", rows: 4, validation: (rule) => rule.required() }),
     defineField({ name: "coverImage", type: "safeImage" }),
     defineField({ name: "photos", type: "array", of: [defineArrayMember({ type: "safeImage" })], options: { layout: "grid" } }),

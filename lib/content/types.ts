@@ -77,6 +77,10 @@ export type Project = {
   context: string;
   whatWeDid: string[];
   childrenReached?: number;
+  /** Shown instead of the number when the figure is approximate, e.g. "300+ students". */
+  reachedLabel?: string;
+  /** Shown instead of the full date when only the month or year is known, e.g. "May 2024". */
+  dateLabel?: string;
   outcome: string;
   coverImage: Img;
   photos: Img[];

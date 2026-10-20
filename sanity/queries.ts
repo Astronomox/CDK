@@ -41,7 +41,7 @@ export const programmesQuery = `*[_type == "programme" && defined(slug.current)]
 }`;
 
 const PROJECT_FIELDS = `
-  "slug": slug.current, title, date, location, school, context, whatWeDid, childrenReached, outcome, detailsPending,
+  "slug": slug.current, title, date, dateLabel, location, school, context, whatWeDid, childrenReached, reachedLabel, outcome, detailsPending,
   "coverImage": coverImage${IMG},
   "photos": photos[]${IMG},
   "videos": videos[@->approved == true]->${VIDEO},

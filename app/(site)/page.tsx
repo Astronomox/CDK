@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, HeartHandshake, Mail, MapPin, School, ShoppingBag, UserRound, Users } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
-import { getGallery, getProgrammes, getProjects } from "@/lib/content";
+import { getGallery, getProgrammes, getProjects, getTestimonials } from "@/lib/content";
 import { OUTREACH_PHOTOS, PLACEHOLDERS } from "@/lib/content/seed";
 import type { GalleryItem, Project } from "@/lib/content";
 import { MediaImage } from "@/components/ui/MediaImage";
@@ -70,7 +70,8 @@ function mosaic(items: GalleryItem[]) {
 }
 
 export default async function HomePage() {
-  const [programmes, projects, gallery] = await Promise.all([getProgrammes(), getProjects(), getGallery()]);
+  const [programmes, projects, gallery, testimonials] = await Promise.all([getProgrammes(), getProjects(), getGallery(), getTestimonials()]);
+  const [featured, ...moreVoices] = testimonials;
   // Never show the same photo twice on the homepage.
   const used = new Set([
     PLACEHOLDERS.outreach.src,
@@ -80,7 +81,7 @@ export default async function HomePage() {
     ...HERO_SIDE.map((p) => p.src),
     ...RIBBON.map((p) => p.src),
     ...programmes.slice(0, 3).map((p) => p.image.src),
-    ...projects.slice(0, 3).map((p) => p.coverImage.src),
+    ...projects.slice(0, 4).map((p) => p.coverImage.src),
   ]);
   const moments = mosaic(gallery.filter((g) => !used.has(g.image.src)));
 
@@ -254,14 +255,14 @@ export default async function HomePage() {
           <div className="section-head reveal">
             <div>
               <span className="eyebrow">Featured stories</span>
-              <h2 id="stories-title">Three years of outreaches</h2>
+              <h2 id="stories-title">Where we have been</h2>
             </div>
             <Link className="link-arrow" href="/impact/projects">
               All projects <Arrow />
             </Link>
           </div>
           <ul className="years">
-            {projects.slice(0, 3).map((p) => {
+            {projects.slice(0, 4).map((p) => {
               const year = projectYear(p);
               return (
                 <li key={p.slug} className="year-card reveal">
@@ -308,8 +309,11 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 7. Our promise (no approved testimonials yet; never attribute words to a child) */}
-      <section className="section" aria-label="Our promise">
+      {/* 7. Voices: a featured testimonial on its photo, then more in a row. Children are credited by role only. */}
+      <section className="section" aria-labelledby="voices-title">
+        <h2 id="voices-title" className="sr-only">
+          {featured ? "In their words" : "Our promise"}
+        </h2>
         <div className="wrap quote-grid">
           <figure className="quote-photo reveal">
             <MediaImage image={PLACEHOLDERS.dance} sizes="(min-width: 900px) 40vw, 100vw" />
@@ -322,13 +326,30 @@ export default async function HomePage() {
               />
             </svg>
             <blockquote>
-              <p className="vision-quote">We create positive experiences, encouragement and opportunities that help children keep their spark alive.</p>
+              <p className={featured ? "vision-quote vision-quote--long" : "vision-quote"}>
+                {featured ? featured.quote : "We create positive experiences, encouragement and opportunities that help children keep their spark alive."}
+              </p>
             </blockquote>
             <figcaption className="quote-cite">
-              <b>Our promise</b>
+              <b>{featured ? featured.attribution : "Our promise"}</b>
             </figcaption>
           </figure>
         </div>
+        {moreVoices.length ? (
+          <div className="wrap voices">
+            <ul className="voices-row">
+              {moreVoices.slice(0, 3).map((t) => (
+                <li key={t.id} className="voice reveal">
+                  <p>&ldquo;{t.quote}&rdquo;</p>
+                  <span>{t.attribution}</span>
+                </li>
+              ))}
+            </ul>
+            <Link className="link-arrow" href="/impact/testimonials">
+              Read all testimonials <Arrow />
+            </Link>
+          </div>
+        ) : null}
       </section>
 
       {/* 8. Sponsors and partners */}

@@ -44,13 +44,16 @@
   .home .card-grid--3 > .reveal,.home .years > .reveal{animation:none}
 
   /* ============ Swipe rows ============ */
-  .home .card-grid--3,.home .years,.home .mv{
+  .vision-quote--long{font-size:1.08rem; line-height:1.45}
+  .home .card-grid--3,.home .years,.home .mv,.home .voices-row{
     display:flex!important; gap:14px; overflow-x:auto; overscroll-behavior-x:contain;
     scroll-snap-type:x mandatory; scroll-padding-inline:var(--gutter);
     margin-inline:calc(var(--gutter) * -1); padding:4px var(--gutter) 14px; scrollbar-width:none
   }
-  .home .card-grid--3::-webkit-scrollbar,.home .years::-webkit-scrollbar,.home .mv::-webkit-scrollbar{display:none}
-  .home .card-grid--3 > *,.home .years > *,.home .mv > *{flex:0 0 84%; scroll-snap-align:start}
+  .home .card-grid--3::-webkit-scrollbar,.home .years::-webkit-scrollbar,.home .mv::-webkit-scrollbar,.home .voices-row::-webkit-scrollbar{display:none}
+  .home .card-grid--3 > *,.home .years > *,.home .mv > *,.home .voices-row > *{flex:0 0 84%; scroll-snap-align:start}
+  .home .voices-row{margin-bottom:6px}
+  .home .voices-row > .reveal{animation:none}
   .home .years > *{flex-basis:76%}
 
   /* Programme and get-involved cards */

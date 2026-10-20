@@ -38,12 +38,12 @@ export default async function ProjectPage({ params }: Params) {
   const project = await getProject(slug);
   if (!project) notFound();
 
-  const date = formatDate(project.date);
+  const date = project.dateLabel ?? formatDate(project.date);
   const facts = [
     { label: "Location", value: project.location, Icon: MapPin },
     project.school ? { label: "School or community", value: project.school, Icon: School } : null,
     date ? { label: "Date", value: date, Icon: Calendar } : null,
-    project.childrenReached ? { label: "Children reached", value: project.childrenReached.toLocaleString("en-NG"), Icon: Users } : null,
+    project.childrenReached ? { label: "Children reached", value: project.reachedLabel ?? project.childrenReached.toLocaleString("en-NG"), Icon: Users } : null,
   ].filter((f): f is NonNullable<typeof f> => f !== null);
 
   return (

@@ -142,62 +142,103 @@ export const seedProgrammes: Programme[] = [
   },
 ];
 
-const OUTREACH_ACTIVITIES = [
-  "Led group conversations on purpose and self-belief",
-  "Played games and ran interactive activities",
-  "Shared fun videos and creative engagement",
-  "Prayed with the children",
-  "Danced to music and celebrated together",
-  "Distributed relief items from sponsors",
-];
-
+/** Outreaches as documented by the organisation (Outreach Summary 2024 to 2026). */
 export const seedProjects: Approvable<Project>[] = [
   {
-    slug: "outreaches-2026",
-    title: "Our 2026 outreaches",
-    location: "Southwest Nigeria",
+    slug: "educational-outreach-and-mentorship-2026",
+    title: "Educational Outreach and Mentorship",
+    date: "2026-01-01",
+    dateLabel: "2026",
+    location: "Ikorodu, Lagos State",
+    school: "Asanat Tomori Primary School",
+    childrenReached: 300,
+    reachedLabel: "300+ students",
     context:
-      "This year we returned to schools with conversation, play and encouragement, including a focus on healthy girls, confident women and strong futures.",
-    whatWeDid: OUTREACH_ACTIVITIES,
-    outcome: "Part of the more than 2,000 children reached across our 7 school and community outreaches so far.",
+      "Some classrooms at Asanat Tomori Primary School had missing windows and doors.",
+    whatWeDid: [
+      "Mentorship on career development, morals and the importance of education",
+      "Gave every child learning materials: books, pens, pencils, socks, mathematical sets and water",
+      "Supported repairs to classrooms with missing windows and doors",
+    ],
+    outcome: "More than 300 students received learning materials and mentorship, and we supported classroom repairs to improve their learning environment.",
     coverImage: OUTREACH_PHOTOS["2026-5"],
     photos: [OUTREACH_PHOTOS["2026-4"], OUTREACH_PHOTOS["2026-16"], OUTREACH_PHOTOS["2026-44"], OUTREACH_PHOTOS["2026-31"]],
     videos: [],
     testimonials: [],
     sponsors: [],
-    detailsPending: true,
     approved: true,
   },
   {
-    slug: "outreaches-2025",
-    title: "Our 2025 outreaches",
-    location: "Southwest Nigeria",
+    slug: "hercare-project-2025",
+    title: "HerCare Project",
+    date: "2025-11-01",
+    dateLabel: "November 2025",
+    location: "Asolo, Ikorodu, Lagos State",
+    school: "Glory to Glory School and Teluc College",
+    childrenReached: 500,
+    reachedLabel: "500+ students, including 300+ girls",
     context:
-      "Our volunteers spent the day with young pupils: clapping games, conversations about self-belief and plenty of smiles.",
-    whatWeDid: OUTREACH_ACTIVITIES,
-    outcome: "Part of the more than 2,000 children reached across our 7 school and community outreaches so far.",
-    coverImage: OUTREACH_PHOTOS["2025-28"],
-    photos: [OUTREACH_PHOTOS["2025-22"], OUTREACH_PHOTOS["2025-6"], OUTREACH_PHOTOS["2025-12"], OUTREACH_PHOTOS["2025-43"]],
+      "Health education and empowerment for adolescent students, with both girls and boys taking part.",
+    whatWeDid: [
+      "Health education on HPV and cervical cancer: awareness, prevention and vaccination",
+      "Sessions on menstrual hygiene, body awareness and personal dignity",
+      "Encouraged healthy living and responsible health decisions, with both girls and boys",
+    ],
+    outcome: "More than 500 students, including over 300 girls, took part in health education on HPV, cervical cancer and healthy living.",
+    coverImage: { src: "/photos/hercare-cover.svg", alt: "HerCare Project: health education for adolescent girls and boys", width: 1600, height: 1200 },
+    photos: [],
     videos: [],
     testimonials: [],
     sponsors: [],
-    detailsPending: true,
     approved: true,
   },
   {
-    slug: "outreaches-2024",
-    title: "Our 2024 outreaches",
-    location: "Southwest Nigeria",
+    slug: "childrens-day-outreach-2025",
+    title: "Children’s Day Outreach 2025",
+    date: "2025-05-28",
+    location: "Ikorodu, Lagos State",
+    school: "Talent Breeders School and Asanat Tomori Primary School",
+    childrenReached: 400,
+    reachedLabel: "About 400 children",
     context:
-      "Our early outreaches brought volunteers, games and relief items into school yards and classrooms, and set the tone for everything since.",
-    whatWeDid: OUTREACH_ACTIVITIES,
-    outcome: "Part of the more than 2,000 children reached across our 7 school and community outreaches so far.",
+      "Our second major annual Children’s Day outreach, created so that every child could feel valued and encouraged.",
+    whatWeDid: [
+      "Encouraged education, personal development and positive values",
+      "Gave every child a chance to feel valued and receive encouragement",
+      "Activities that promote learning, growth and well-being",
+    ],
+    outcome: "About 400 children took part in a day built around feeling valued, learning and growing.",
+    coverImage: OUTREACH_PHOTOS["2025-28"],
+    photos: [OUTREACH_PHOTOS["2025-22"], OUTREACH_PHOTOS["2025-1"], OUTREACH_PHOTOS["2025-12"], OUTREACH_PHOTOS["2025-43"]],
+    videos: [],
+    testimonials: [],
+    sponsors: [],
+    approved: true,
+  },
+  {
+    slug: "childrens-day-outreach-2024",
+    title: "Children’s Day Outreach 2024",
+    date: "2024-05-01",
+    dateLabel: "May 2024",
+    location: "Ilorin, Kwara State",
+    school: "St. Barnabas Primary School, Sabo-Oke, and Anglican Grammar School",
+    childrenReached: 300,
+    reachedLabel: "300+ students across two schools",
+    context:
+      "We celebrated Children’s Day with pupils in Ilorin through learning, motivation and play.",
+    whatWeDid: [
+      "Interactive learning sessions and motivational talks",
+      "Topics on education, good morals, child abuse, sex education, personal hygiene and career development",
+      "Dance competitions, riddles and intellectual games",
+      "Distributed over 350 exercise books, pens and other educational supplies, with refreshments and gifts",
+      "Transport assistance for a child in need",
+    ],
+    outcome: "More than 300 students across two schools took part, and over 350 exercise books, pens and other supplies were shared.",
     coverImage: OUTREACH_PHOTOS["2024-24"],
     photos: [OUTREACH_PHOTOS["2024-32"], OUTREACH_PHOTOS["2024-11"], OUTREACH_PHOTOS["2024-29"], OUTREACH_PHOTOS["2024-38"]],
     videos: [],
     testimonials: [],
     sponsors: [],
-    detailsPending: true,
     approved: true,
   },
 ];
@@ -231,8 +272,16 @@ export const seedGallery: Approvable<GalleryItem>[] = [
   { id: "photo-25", image: PHOTOS.team, category: "volunteers", caption: "Volunteers together", approved: true },
 ];
 
-/** Real testimonials exist but must be added in the CMS with consent. None are seeded. */
-export const seedTestimonials: Approvable<Testimonial>[] = [];
+/** Testimonials supplied by the organisation. Children are credited by role only, never by name. */
+export const seedTestimonials: Approvable<Testimonial>[] = [
+  { id: "t1", quote: "The seminar was highly enriching and inspiring. Our students gained valuable knowledge and encouragement, and the initiative made a meaningful impact on our school community. We are grateful for this commendable effort.", attribution: "Mr David, Teacher", role: "teacher", approved: true },
+  { id: "t2", quote: "Seeing pupils learn about personal hygiene, good values, and education reminded me how much a meaningful outreach can contribute to a child's growth.", attribution: "Volunteer", role: "volunteer", approved: true },
+  { id: "t3", quote: "Knowing that people care about my education and daily journey to school encourages me to keep learning and working towards my future.", attribution: "Student", role: "child", approved: true },
+  { id: "t4", quote: "Providing learning materials for pupils in need helped ease some of the challenges they face in pursuing their education.", attribution: "Teacher", role: "teacher", approved: true },
+  { id: "t5", quote: "I learnt how to take better care of myself and maintain personal hygiene. The lessons were helpful and easy to understand.", attribution: "Student", role: "child", approved: true },
+  { id: "t6", quote: "The outreach helped our pupils understand the importance of education, good morals, and their role in society. It was an impactful learning experience.", attribution: "Teacher", role: "teacher", approved: true },
+  { id: "t7", quote: "The support with school uniforms and sandals helped pupils who needed them attend school with greater comfort and confidence.", attribution: "Teacher", role: "teacher", approved: true },
+];
 
 /** Real videos exist but must be added in the CMS with consent. None are seeded. */
 export const seedVideos: Approvable<Video>[] = [];
@@ -267,7 +316,7 @@ export const seedStories: Approvable<Story>[] = [
     body: paragraphs(
       "Through 7 school and community outreaches, Cheer The Kids has reached more than 2,000 children. Our documented activities so far have taken place in Lagos and Kwara.",
       "Every outreach mixes conversation about purpose and self-belief with games, music, creative activities and, thanks to our sponsors, relief items such as bags, shoes and books.",
-      "We are compiling the full story of each outreach. You can already see moments from 2024, 2025 and 2026 in our gallery.",
+      "You can read the story of each outreach on our Projects page and see moments from 2024, 2025 and 2026 in our gallery.",
     ),
     approved: true,
   },

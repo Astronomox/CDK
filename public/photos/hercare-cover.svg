@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" role="img" aria-label="HerCare Project">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7146D3"/>
+      <stop offset="0.55" stop-color="#5D35BC"/>
+      <stop offset="1" stop-color="#1D4F7A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.2" r="0.65">
+      <stop offset="0" stop-color="#FED072" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#FED072" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#bg)"/>
+  <rect width="1600" height="1200" fill="url(#glow)"/>
+  <!-- Two figures embracing a heart, echoing the logo -->
+  <g transform="translate(800 470)">
+    <path d="M0 210 C-150 110 -230 40 -230 -50 C-230 -130 -165 -185 -95 -185 C-50 -185 -18 -160 0 -128 C18 -160 50 -185 95 -185 C165 -185 230 -130 230 -50 C230 40 150 110 0 210 Z" fill="#FFFFFF" opacity="0.14"/>
+    <circle cx="-300" cy="-250" r="70" fill="#FED072"/>
+    <circle cx="300" cy="-250" r="70" fill="#FFFFFF" opacity="0.9"/>
+    <path d="M-390 -120 C-390 -170 -210 -170 -150 -120 C-90 -70 -60 40 -40 160 C-180 140 -330 40 -390 -120 Z" fill="#FED072" opacity="0.95"/>
+    <path d="M390 -120 C390 -170 210 -170 150 -120 C90 -70 60 40 40 160 C180 140 330 40 390 -120 Z" fill="#FFFFFF" opacity="0.85"/>
+    <circle cx="0" cy="-20" r="46" fill="#FFFFFF"/>
+    <path d="M-34 40 Q0 20 34 40 L0 150 Z" fill="#FFFFFF"/>
+  </g>
+  <circle cx="1420" cy="980" r="190" fill="#FFFFFF" opacity="0.06"/>
+  <circle cx="160" cy="180" r="120" fill="#FFFFFF" opacity="0.06"/>
+</svg>

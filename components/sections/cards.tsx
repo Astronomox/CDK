@@ -65,7 +65,7 @@ export function ProgrammeCard({ programme }: { programme: Programme; index?: num
 }
 
 export function ProjectCard({ project }: { project: Project; featured?: boolean }) {
-  const date = formatDate(project.date);
+  const date = project.dateLabel ?? formatDate(project.date);
   return (
     <article className={cardShell}>
       <CardMedia image={project.coverImage} ratio="aspect-[3/2]" sizes="(min-width: 768px) 50vw, 100vw" />
@@ -84,7 +84,7 @@ export function ProjectCard({ project }: { project: Project; featured?: boolean 
         ) : null}
         <p className="line-clamp-3 text-base text-muted-foreground">{project.context}</p>
         {project.childrenReached ? (
-          <p className="font-heading font-semibold text-ink">{project.childrenReached.toLocaleString("en-NG")} children reached</p>
+          <p className="font-heading font-semibold text-ink">{project.reachedLabel ?? `${project.childrenReached.toLocaleString("en-NG")} children reached`}</p>
         ) : null}
         <MoreLink>Read the story</MoreLink>
       </div>
@@ -156,7 +156,9 @@ export function TestimonialCard({ testimonial, large = false }: { testimonial: T
         <span aria-hidden className="h-0.5 w-10 bg-purple" />
         <span>
           <span className="font-heading font-semibold text-ink">{testimonial.attribution}</span>
-          <span className="text-muted-foreground">, {TESTIMONIAL_ROLE_LABELS[testimonial.role]}</span>
+          {testimonial.attribution.toLowerCase().includes(TESTIMONIAL_ROLE_LABELS[testimonial.role].toLowerCase()) ? null : (
+            <span className="sr-only">, {TESTIMONIAL_ROLE_LABELS[testimonial.role]}</span>
+          )}
         </span>
       </figcaption>
     </figure>
