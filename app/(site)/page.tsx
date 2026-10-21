@@ -130,7 +130,7 @@ export default async function HomePage() {
             </div>
             <p className="hero-meta">
               <MapPin aria-hidden />
-              Working across {SITE.region}, with outreaches in Lagos and Kwara.
+              {SITE.whereWeWork}
             </p>
           </div>
           <figure className="hero-media hero-collage">

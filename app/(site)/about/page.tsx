@@ -82,10 +82,7 @@ export default function AboutPage() {
             <p className="flex items-center gap-1.5 font-sans text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-purple">
               <MapPin aria-hidden className="size-4" /> Where we work
             </p>
-            <p className="mt-3 font-heading text-xl font-medium leading-snug text-ink lg:text-2xl">
-              Across {SITE.region}, with outreaches in Lagos and Kwara so far, we plan to expand our reach to other regions of the country,
-              extending our impact to children and communities across Nigeria.
-            </p>
+            <p className="mt-3 font-heading text-xl font-medium leading-snug text-ink lg:text-2xl">{SITE.whereWeWork}</p>
           </div>
         </div>
       </Section>
@@ -100,7 +97,7 @@ export default function AboutPage() {
             </li>
           ))}
           <li aria-hidden className="relative min-h-40 overflow-hidden rounded-[20px]">
-            <MediaImage image={OUTREACH_PHOTOS["2025-37"]} fill sizes="(min-width: 1024px) 22vw, 46vw" className="object-cover" />
+            <MediaImage image={OUTREACH_PHOTOS["2025-37"]} fill sizes="(min-width: 1024px) 22vw, 46vw" className="object-cover object-[50%_14%]" />
           </li>
         </ul>
       </Section>

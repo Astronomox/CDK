@@ -42,6 +42,9 @@ export const SITE = {
     "To create positive experiences, encouragement and opportunities that help children keep their spark alive and believe that their circumstances do not have to define their future.",
 
   region: "Southwest Nigeria",
+  /** Where we work, in the organisation's own words (2026-10-21). */
+  whereWeWork:
+    "Across Southwest Nigeria, with outreaches in Lagos and Kwara so far, we plan to expand our reach to other regions of the country, extending our impact to children and communities across Nigeria.",
   locations: ["Lagos", "Kwara"],
 
   impact: {
