@@ -130,7 +130,7 @@
 
 /* ============ About ============ */
 .about-grid{display:grid; gap:40px}
-.about-statement{font-family:var(--font-head); font-weight:600; font-size:clamp(1.5rem, 1.2rem + 1.3vw, 2.25rem); line-height:1.3; letter-spacing:-.01em; color:var(--ink); max-width:24ch}
+.home .about-statement{font-family:var(--font-head); font-weight:600; font-size:clamp(1.35rem, 1.1rem + 1vw, 1.95rem); line-height:1.35; letter-spacing:-.01em; color:var(--ink); max-width:30ch}
 .about-statement em{font-style:normal; color:var(--purple)}
 .mv{display:grid; gap:32px}
 .mv-item{border-top:2px solid var(--ink); padding-top:20px}

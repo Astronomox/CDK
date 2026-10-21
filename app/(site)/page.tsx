@@ -205,7 +205,8 @@ export default async function HomePage() {
           <div className="reveal">
             <span className="eyebrow">About us</span>
             <h2 className="about-statement" id="about-title">
-              {SITE.name} is an NGO working across <em>{SITE.region}</em>, with documented outreaches in Lagos and Kwara.
+              {/* The organisation's own words (SITE.whereWeWork), with the region highlighted. */}
+              {SITE.whereWeWork.split(SITE.region).map((part, i) => (i === 0 ? part : [<em key={i}>{SITE.region}</em>, part]))}
             </h2>
           </div>
           <div className="reveal">

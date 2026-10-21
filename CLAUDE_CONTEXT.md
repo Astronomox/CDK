@@ -125,5 +125,5 @@ Working notes for whoever picks this project up next (human or Claude). Read CLA
 - Deputy director: new photo (809x1080), zoom 1.35.
 - Registered name is "Cheer The Kids Initiative" (`SITE.legalName`), shown on the About registration card, in the footer copyright and JSON-LD. Display name stays "Cheer The Kids".
 - Locations (owner's call, 2026-10-21): "Igbolomu, Ikorodu, Lagos State" on the Children's Day 2025 and Educational Outreach 2026 projects only; HerCare uses the client's full wording (Landmark Bus Stop, Asolo Road, and Ayo Bus Stop, Asolo, Ikorodu, Lagos State).
-- `SITE.whereWeWork` holds the client's long "where we work" sentence, used on About, under the homepage hero and on Contact. The homepage About headline keeps its short form.
+- `SITE.whereWeWork` holds the client's long "where we work" sentence, used on About, under the homepage hero, on Contact and as the homepage "About us" statement (owner wanted it everywhere, verbatim).
 - About values grid: the 8th-slot photo crops to the face (`object-[50%_14%]`).

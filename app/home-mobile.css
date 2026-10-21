@@ -91,7 +91,7 @@
 
   /* ============ About: mission and vision swipe ============ */
   .about-grid{gap:18px}
-  .about-statement{font-size:1.4rem; line-height:1.32}
+  .home .about-statement{font-size:1.25rem; line-height:1.38}
   .home .mv > .mv-item{background:#fff; border:1px solid var(--line); border-top:4px solid var(--purple); border-radius:20px; padding:18px 18px 20px}
   .home .mv > .mv-item:nth-child(2){border-top-color:var(--blue)}
   .mv-item h3{font-size:.85rem}
