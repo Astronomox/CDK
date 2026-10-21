@@ -94,7 +94,7 @@ Working notes for whoever picks this project up next (human or Claude). Read CLA
 - Client decisions: no office address is published (`officeAddress` is empty; Contact says email and phone). Item drop-off address is shared by email. Privacy and safeguarding pages approved. Domain: no custom domain needed for now (owner: "no stress about domain"). `SITE.url` falls back to the Vercel production URL (`VERCEL_PROJECT_PRODUCTION_URL`), which fixes canonical and og:url pointing at localhost:3000 on the live site.
 - Outreach copy checked line by line against the client summary; outcome lines reworded to stick to what the client wrote. Locations use "Ikorodu, Lagos State" without the Igbolomu community name (owner lives there); add it back only if the owner agrees.
 - Fixes: About "Get in touch" email now wraps on phones (it caused sideways scroll) and is a mailto/tel link.
-- Still pending from the client: who will update the site (item 11), the client's "observations", partners and logo permission, bank details, Paystack keys, videos, HerCare photos. Note the headline stats (2,000+ children, 7 outreaches) are larger than the 4 documented outreaches add up to (about 1,500); confirm with the client.
+- Still pending from the client: who will update the site (item 11), the client's "observations", partners and logo permission, bank details, Paystack keys, videos, HerCare photos. Note: headline children figure later corrected by the client to 1,300+ (Session 7).
 
 ## Session 6b (2026-10-20): "too much space, site feels dead"
 

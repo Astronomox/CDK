@@ -29,7 +29,7 @@ Giving Children Hope. Keeping Their Spark Alive.***
 
 Cheer the Kids is an NGO focused on giving children hope, restoring joy and helping young people develop the self-belief to pursue their dreams and aspirations. The organisation currently works across Southwest Nigeria, with documented activities in Lagos and Kwara, and has a long-term view toward expansion.
 
-Current impact: over 2,000 children reached through 7 school/community outreaches.
+Current impact: over 1,300 children reached through 7 school/community outreaches.
 
 # 2. Brand Purpose, Mission & Vision
 
@@ -250,7 +250,7 @@ Children experiencing difficult family, economic and social circumstances may lo
 
 2. Communicate its mission, vision and core values.
 
-3. Show evidence of impact, including 2,000+ children reached and 7 outreaches.
+3. Show evidence of impact, including 1,300+ children reached and 7 outreaches.
 
 4. Showcase photographs, videos and testimonials from previous projects.
 
@@ -417,7 +417,7 @@ The programme is currently under development. Photography and graphics design ar
 <thead>
 <tr class="header">
 <th><strong>Current impact<br />
-</strong>Over 2,000 children reached through 7 outreaches. Documented activities include Lagos and Kwara.</th>
+</strong>Over 1,300 children reached through 7 outreaches. Documented activities include Lagos and Kwara.</th>
 </tr>
 </thead>
 <tbody>
@@ -869,7 +869,7 @@ Homepage → Programmes → School Outreach → Invite Us → Enquiry → Follow
 </tr>
 <tr class="odd">
 <th>Impact statistics</th>
-<th>2,000+ children; 7 outreaches</th>
+<th>1,300+ children; 7 outreaches</th>
 </tr>
 <tr class="header">
 <th>Sponsor list</th>
