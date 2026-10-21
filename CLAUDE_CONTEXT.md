@@ -117,7 +117,7 @@ Working notes for whoever picks this project up next (human or Claude). Read CLA
 
 ## Session 7 (2026-10-21): client observations
 
-- Sponsors: 7 logos sent by the client for display (Bukola Jaiyeola Initiative, Aquacy, Giwa Autos, Skyhour Resources, Emmy Visuals, Vard Label, Pelumi Bintu-Edun). Square 600px tiles in `public/partners/` (each keeps its own background), listed in `seedPartners`. Shown on /partners (`PartnerTile`: logo tile + name) and as a row on the homepage under "Made possible together". `SITE.partnersConfirmed` is true.
+- Sponsors: 7 logos sent by the client for display (Bukola Jaiyeola Initiative, Aquacy, Giwa Autos, Skyhour Resources, Emmy Visuals, Vard Label, Pelumi Bintu-Edun). Square 600px tiles in `public/partners/` (each keeps its own background), listed in `seedPartners`. Shown on /partners (`PartnerTile`: logo tile + name) and as an auto-gliding carousel on the homepage under "Made possible together" (`.sponsor-marquee`: 4 copies, first set exposed to assistive tech, pauses on hover/touch/focus, still grid under reduced motion). `SITE.partnersConfirmed` is true.
 - Mentorship: "Need someone to talk to?" (moral, career, education, development) as a purple panel after Programmes on the homepage (`#mentorship`) and a card on Contact. Email (subject "Mentorship: I would like to talk") and phone only, no new form. Under-18s are asked to reach out with a parent, guardian or teacher.
 - Numbers: children reached is now 1,300+ (`SITE.impact.childrenReached`, Impact page, story renamed to `children-reached-and-outreaches-so-far`). Outreaches still 7.
 - Copy from the client: About "Where we work" and the homepage "On an outreach day" paragraph use their wording.

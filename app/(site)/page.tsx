@@ -449,18 +449,26 @@ export default async function HomePage() {
           </div>
         </div>
         {sponsors.length ? (
-          <div className="wrap sponsors reveal">
-            <h3 id="sponsors-title">Our sponsors</h3>
-            <ul className="sponsor-row" aria-labelledby="sponsors-title">
-              {sponsors.map((p) => (
-                <li key={p.id}>
-                  <Link href="/partners" title={p.name}>
-                    <MediaImage image={p.logo!} fill sizes="(min-width: 1024px) 150px, 24vw" />
-                    <span className="sr-only">{p.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div className="sponsors reveal">
+            <div className="wrap">
+              <h3 id="sponsors-title">Our sponsors</h3>
+            </div>
+            {/* Glides on its own (no swiping). Each half of the track holds the logos twice so the loop is seamless on wide screens; only the first set is exposed to assistive tech. */}
+            <div className="sponsor-marquee">
+              <ul className="sponsor-track" aria-labelledby="sponsors-title">
+                {[...sponsors, ...sponsors, ...sponsors, ...sponsors].map((p, i) => {
+                  const clone = i >= sponsors.length;
+                  return (
+                    <li key={`${p.id}-${i}`} className={clone ? "s-clone" : undefined} aria-hidden={clone || undefined}>
+                      <Link href="/partners" title={p.name} tabIndex={clone ? -1 : undefined}>
+                        <MediaImage image={p.logo!} fill sizes="150px" />
+                        <span className="sr-only">{p.name}</span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
         ) : null}
       </section>
