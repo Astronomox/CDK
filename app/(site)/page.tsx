@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, BookOpen, Briefcase, HeartHandshake, Mail, MapPin, Phone, School, ShoppingBag, Sprout, UserRound, Users } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Briefcase, HeartHandshake, Mail, MapPin, School, ShoppingBag, Sprout, UserRound, Users } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 import { getGallery, getPartners, getProgrammes, getProjects, getTestimonials } from "@/lib/content";
@@ -13,6 +13,8 @@ import { HomeDonate } from "@/components/home/HomeDonate";
 import { HeartLine } from "@/components/HeartLine";
 import { VoiceRotator } from "@/components/VoiceRotator";
 import { PathTabs } from "@/components/PathTabs";
+import { TeamSlideshow } from "@/components/TeamSlideshow";
+import { TEAM } from "@/lib/team";
 import "../home.css";
 import "../home-mobile.css";
 
@@ -130,7 +132,7 @@ export default async function HomePage() {
             </div>
             <p className="hero-meta">
               <MapPin aria-hidden />
-              {SITE.whereWeWork}
+              Working across {SITE.region}, with outreaches in Lagos and Kwara.
             </p>
           </div>
           <figure className="hero-media hero-collage">
@@ -204,12 +206,7 @@ export default async function HomePage() {
         <div className="wrap about-grid">
           <div className="reveal">
             <span className="eyebrow">About us</span>
-            <h2 className="about-statement" id="about-title">
-              {/* The organisation's own words (SITE.whereWeWork), with the region highlighted. */}
-              {SITE.whereWeWork.split(SITE.region).map((part, i) => (i === 0 ? part : [<em key={i}>{SITE.region}</em>, part]))}
-            </h2>
-          </div>
-          <div className="reveal">
+            <h2 id="about-title">Our mission and vision</h2>
             <div className="mv">
               <div className="mv-item">
                 <h3>Our mission</h3>
@@ -222,6 +219,14 @@ export default async function HomePage() {
             </div>
             <Link className="link-arrow about-link" href="/about">
               Read our story <Arrow />
+            </Link>
+          </div>
+          {/* Team on the homepage as a slideshow, one director at a time. */}
+          <div className="reveal">
+            <h3 className="team-title">Meet our team</h3>
+            <TeamSlideshow members={TEAM} />
+            <Link className="link-arrow about-link" href="/about#team">
+              See the whole team <Arrow />
             </Link>
           </div>
         </div>
@@ -278,8 +283,8 @@ export default async function HomePage() {
               <span className="eyebrow">Mentorship</span>
               <h2 id="mentor-title">Need someone to talk to?</h2>
               <p>
-                Our team is here to listen and guide you on morals, career, education and personal development. Reach out by email or phone
-                and someone will get back to you.
+                Our team is here to listen and guide you on morals, career, education and personal development. Send us an email and someone
+                will get back to you.
               </p>
               <ul className="mentor-topics" aria-label="What we can talk about">
                 {MENTOR_TOPICS.map(({ label, Icon }) => (
@@ -291,9 +296,6 @@ export default async function HomePage() {
               <div className="mentor-actions">
                 <a className="btn btn--light" href={`mailto:${SITE.contact.email}?subject=${encodeURIComponent("Mentorship: I would like to talk")}`}>
                   <Mail aria-hidden /> Email us
-                </a>
-                <a className="btn btn--ghost-light" href={`tel:${SITE.contact.phoneIntl}`}>
-                  <Phone aria-hidden /> Call {SITE.contact.phone}
                 </a>
               </div>
               <p className="mentor-note">Under 18? Please ask a parent, guardian or teacher to reach out with you.</p>

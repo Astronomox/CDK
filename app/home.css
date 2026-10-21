@@ -130,8 +130,7 @@
 
 /* ============ About ============ */
 .about-grid{display:grid; gap:40px}
-.home .about-statement{font-family:var(--font-head); font-weight:600; font-size:clamp(1.35rem, 1.1rem + 1vw, 1.95rem); line-height:1.35; letter-spacing:-.01em; color:var(--ink); max-width:30ch}
-.about-statement em{font-style:normal; color:var(--purple)}
+#about-title{margin-bottom:24px}
 .mv{display:grid; gap:32px}
 .mv-item{border-top:2px solid var(--ink); padding-top:20px}
 .mv-item h3{font-size:1rem; letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px}
@@ -139,6 +138,40 @@
 .about-link{margin-top:8px}
 @media (min-width:768px){ .mv{grid-template-columns:1fr 1fr; gap:40px} }
 @media (min-width:1024px){ .about-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:64px; align-items:start} }
+
+/* ============ Team slideshow (components/TeamSlideshow.tsx) ============ */
+.team-title{font-size:1rem; letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px}
+.team-show{position:relative; background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); padding:14px}
+.ts-stage{display:grid}
+.ts-slide{grid-area:1 / 1; margin:0; opacity:0; visibility:hidden; transition:opacity .7s var(--ease), visibility 0s .7s}
+.ts-slide[data-active]{opacity:1; visibility:visible; transition:opacity .7s var(--ease), visibility 0s}
+.ts-photo{position:relative; aspect-ratio:4/5; overflow:hidden; border-radius:var(--r-md); background:var(--canvas-warm)}
+.ts-photo img{object-fit:cover; transform-origin:center}
+.ts-slide[data-active] .ts-photo{animation:ts-settle 4.5s var(--ease) both}
+@keyframes ts-settle{from{transform:scale(1.04)} to{transform:none}}
+.ts-slide figcaption{padding:14px 4px 2px}
+.ts-slide b{display:block; font-family:var(--font-head); font-weight:600; font-size:1.125rem; color:var(--ink)}
+.ts-slide figcaption span{display:block; margin-top:2px; color:var(--purple); font-size:.95rem}
+.ts-controls{display:flex; align-items:center; gap:8px; margin-top:12px; padding:0 2px}
+.ts-arrow{display:grid; place-items:center; width:40px; height:40px; flex:none; border:1px solid var(--line-cool); border-radius:50%; background:#fff; color:var(--ink); cursor:pointer; transition:background-color .2s, color .2s}
+.ts-arrow:hover{background:var(--purple); border-color:var(--purple); color:#fff}
+.ts-arrow svg{width:18px; height:18px}
+.ts-dots{display:flex; flex:1; justify-content:center; gap:2px}
+.ts-dot{display:grid; place-items:center; width:22px; height:32px; padding:0; border:0; background:none; cursor:pointer}
+.ts-dot::before{content:""; width:8px; height:8px; border-radius:99px; background:#D9D0EA; transition:width .35s var(--ease), background-color .35s}
+.ts-dot[aria-current]::before{width:18px; background:var(--purple)}
+.ts-dot:focus-visible,.ts-arrow:focus-visible,.ts-pause:focus-visible{outline:3px solid var(--blue); outline-offset:2px}
+.ts-pause{min-height:36px; padding:0 14px; border:1px solid var(--line-cool); border-radius:var(--r-pill); background:#fff; color:var(--ink); font-family:var(--font-head); font-weight:600; font-size:.85rem; cursor:pointer}
+/* Wide screens: landscape card, photo left, name and controls on the right. */
+@media (min-width:768px){
+  .ts-slide{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:22px; align-items:start}
+  .ts-slide figcaption{padding:18px 4px 0}
+  .ts-slide b{font-size:1.35rem; line-height:1.25}
+  .ts-slide figcaption span{margin-top:6px; font-size:1rem}
+  .ts-controls{position:absolute; right:14px; bottom:14px; left:calc(14px + (100% - 28px - 22px) * 5 / 11 + 22px); margin:0; flex-wrap:wrap; justify-content:flex-start}
+  .ts-dots{flex:1 1 100%; justify-content:flex-start; order:-1; margin-bottom:6px}
+}
+@media (prefers-reduced-motion:reduce){ .ts-slide,.ts-slide[data-active]{transition:none} .ts-slide[data-active] .ts-photo{animation:none} }
 
 /* ============ Impact (the one colour section) ============ */
 .impact{background:var(--blue-deep); color:var(--on-dark)}

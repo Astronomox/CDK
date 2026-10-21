@@ -125,5 +125,7 @@ Working notes for whoever picks this project up next (human or Claude). Read CLA
 - Deputy director: new photo (809x1080), zoom 1.35.
 - Registered name is "Cheer The Kids Initiative" (`SITE.legalName`), shown on the About registration card, in the footer copyright and JSON-LD. Display name stays "Cheer The Kids".
 - Locations (owner's call, 2026-10-21): "Igbolomu, Ikorodu, Lagos State" on the Children's Day 2025 and Educational Outreach 2026 projects only; HerCare uses the client's full wording (Landmark Bus Stop, Asolo Road, and Ayo Bus Stop, Asolo, Ikorodu, Lagos State).
-- `SITE.whereWeWork` holds the client's long "where we work" sentence, used on About, under the homepage hero, on Contact and as the homepage "About us" statement (owner wanted it everywhere, verbatim).
+- `SITE.whereWeWork` holds the client's long "where we work" sentence, used on the About page and Contact only. The client asked for it to be removed from the homepage (2026-10-21), so the hero line is back to the short form.
 - About values grid: the 8th-slot photo crops to the face (`object-[50%_14%]`).
+- Homepage About (client, 2026-10-21): heading "Our mission and vision" with the mission and vision, and beside it a team slideshow (`components/TeamSlideshow.tsx`, data from `lib/team.ts`): crossfade every 4.5s, prev/next, dots, pause, pauses on hover/focus/off screen, no auto-advance under reduced motion, no swiping. Landscape card from 768px, square photo on phones. The About page keeps the full team grid.
+- Mentorship on the homepage now leads to email only (Call button removed, as the client asked).
