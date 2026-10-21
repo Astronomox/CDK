@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { MediaImage } from "@/components/ui/MediaImage";
 import type { TeamMember } from "@/lib/team";
 
-const INTERVAL_MS = 4500;
+const INTERVAL_MS = 6750;
+/** How long the outgoing slide takes to dissolve (matches .ts-slide[data-state="out"] in app/home.css). */
+const OUT_MS = 1050;
 
 const REDUCED = "(prefers-reduced-motion: reduce)";
 const prefersReducedMotion = () => window.matchMedia(REDUCED).matches;
@@ -16,12 +18,13 @@ function subscribeReducedMotion(onChange: () => void) {
 }
 
 /**
- * The leadership team, one director at a time: photos crossfade in place (no sideways
- * scrolling). Advances on its own, pauses on hover, focus, when off screen or with the
+ * The leadership team, one director at a time, changing in place (no sideways scrolling):
+ * the current slide dissolves upward like smoke and the next drifts in from a blur. Advances on its own, pauses on hover, focus, when off screen or with the
  * pause button, and never auto-advances for people who prefer reduced motion.
  */
 export function TeamSlideshow({ members }: { members: TeamMember[] }) {
   const [index, setIndex] = useState(0);
+  const [leaving, setLeaving] = useState<number | null>(null);
   const [paused, setPaused] = useState(false);
   const [held, setHeld] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -41,12 +44,26 @@ export function TeamSlideshow({ members }: { members: TeamMember[] }) {
 
   useEffect(() => {
     if (!running) return;
-    const t = window.setTimeout(() => setIndex((i) => (i + 1) % count), INTERVAL_MS);
+    const t = window.setTimeout(() => {
+      setLeaving(index);
+      setIndex((index + 1) % count);
+    }, INTERVAL_MS);
     return () => window.clearTimeout(t);
   }, [running, index, count]);
 
+  useEffect(() => {
+    if (leaving === null) return;
+    const t = window.setTimeout(() => setLeaving(null), OUT_MS);
+    return () => window.clearTimeout(t);
+  }, [leaving]);
+
   if (!count) return null;
-  const go = (next: number) => setIndex((next + count) % count);
+  const go = (next: number) => {
+    const target = (next + count) % count;
+    if (target === index) return;
+    setLeaving(index);
+    setIndex(target);
+  };
   const current = members[index];
 
   return (
@@ -66,7 +83,7 @@ export function TeamSlideshow({ members }: { members: TeamMember[] }) {
           <figure
             key={m.name}
             className="ts-slide"
-            data-active={i === index || undefined}
+            data-state={i === index ? "in" : i === leaving ? "out" : "idle"}
             aria-hidden={i !== index}
             aria-roledescription="slide"
             aria-label={`${i + 1} of ${count}`}
@@ -113,8 +130,14 @@ export function TeamSlideshow({ members }: { members: TeamMember[] }) {
             <ChevronRight aria-hidden />
           </button>
           {!still ? (
-            <button type="button" className="ts-pause" onClick={() => setPaused((p) => !p)} aria-pressed={paused}>
-              {paused ? "Play" : "Pause"}
+            <button
+              type="button"
+              className="ts-arrow ts-pause"
+              onClick={() => setPaused((p) => !p)}
+              aria-pressed={paused}
+              aria-label={paused ? "Play slideshow" : "Pause slideshow"}
+            >
+              {paused ? <Play aria-hidden /> : <Pause aria-hidden />}
             </button>
           ) : null}
         </div>
