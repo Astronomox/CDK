@@ -287,7 +287,20 @@ export const seedTestimonials: Approvable<Testimonial>[] = [
 export const seedVideos: Approvable<Video>[] = [];
 
 /** Sponsors and partners are still being confirmed. None are seeded. */
-export const seedPartners: Partner[] = [];
+function sponsor(id: string, name: string): Partner {
+  return { id, name, kind: "sponsor", logo: { src: `/partners/${id}.png`, alt: `${name} logo`, width: 600, height: 600 } };
+}
+
+/** Sponsors, with logos, as sent by the organisation for display on the site (2026-10-20). */
+export const seedPartners: Partner[] = [
+  sponsor("bukola-jaiyeola-initiative", "The Bukola Jaiyeola Initiative"),
+  sponsor("aquacy", "Aquacy Premium Table Water"),
+  sponsor("giwa-autos", "Giwa Autos"),
+  sponsor("skyhour-resources", "Skyhour Resources"),
+  sponsor("emmy-visuals", "Emmy Visuals"),
+  sponsor("vard-label", "Vard Label"),
+  sponsor("pelumi-bintu-edun", "Pelumi Bintu-Edun"),
+];
 
 export const seedStories: Approvable<Story>[] = [
   {
@@ -307,14 +320,14 @@ export const seedStories: Approvable<Story>[] = [
     approved: true,
   },
   {
-    slug: "two-thousand-children-seven-outreaches",
-    title: "2,000+ children, 7 outreaches, and we are just getting started",
+    slug: "children-reached-and-outreaches-so-far",
+    title: "1,300+ children, 7 outreaches, and we are just getting started",
     category: "impact-story",
     publishedAt: "2026-10-10",
     excerpt: "A look at where our work has taken us so far, from Lagos to Kwara.",
     coverImage: OUTREACH_PHOTOS["2026-5"],
     body: paragraphs(
-      "Through 7 school and community outreaches, Cheer The Kids has reached more than 2,000 children. Our documented activities so far have taken place in Lagos and Kwara.",
+      "Through 7 school and community outreaches, Cheer The Kids has reached more than 1,300 children. Our documented activities so far have taken place in Lagos and Kwara.",
       "Every outreach mixes conversation about purpose and self-belief with games, music, creative activities and, thanks to our sponsors, relief items such as bags, shoes and books.",
       "You can read the story of each outreach on our Projects page and see moments from 2024, 2025 and 2026 in our gallery.",
     ),

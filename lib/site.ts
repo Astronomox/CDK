@@ -27,8 +27,8 @@ export const SITE = {
   shortName: "Cheer The Kids",
   /** Plain spelling used in emails, file names and anywhere a straight apostrophe is safer. */
   plainName: "Cheer The Kids",
-  /** Registered (official) name, as given by the organisation. Used with the RC number. */
-  legalName: "Cheer The Kids",
+  /** Registered (official) name, as confirmed by the organisation (2026-10-21). Used with the RC number. */
+  legalName: "Cheer The Kids Initiative",
   tagline: "Giving Children Hope. Keeping Their Spark Alive.",
   description:
     "Cheer The Kids creates programmes and experiences that help children rediscover joy, build self-belief and believe in their dreams and aspirations.",
@@ -45,7 +45,7 @@ export const SITE = {
   locations: ["Lagos", "Kwara"],
 
   impact: {
-    childrenReached: "2,000+",
+    childrenReached: "1,300+",
     outreaches: "7",
     states: "Lagos and Kwara",
   },
@@ -99,8 +99,8 @@ export const SITE = {
     cleva: TODO as string,
   },
 
-  /** TODO: sponsors and partners to be confirmed. Partners are managed in the CMS. */
-  partnersConfirmed: false,
+  /** Sponsors and their logos were sent by the organisation for display (2026-10-20). Managed in the CMS once it is set up. */
+  partnersConfirmed: true,
 } as const;
 
 export function hasBankDetails(): boolean {

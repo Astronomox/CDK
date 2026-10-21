@@ -17,7 +17,7 @@ function portrait(file: string, width: number, height: number, name: string): Im
 /** Leadership team, in the order supplied by the organisation. */
 export const TEAM: TeamMember[] = [
   { name: "Giwa Israel Genesis", role: "Executive Director", photo: portrait("giwa-israel-genesis.jpg", 1000, 1250, "Giwa Israel Genesis"), focus: "50% 25%" },
-  { name: "Mosope David Faturoti", role: "Deputy Executive Director", photo: portrait("mosope-david-faturoti.jpg", 1000, 1333, "Mosope David Faturoti"), focus: "50% 38%", zoom: 1.9 },
+  { name: "Mosope David Faturoti", role: "Deputy Executive Director", photo: portrait("mosope-david-faturoti.jpg", 809, 1080, "Mosope David Faturoti"), focus: "50% 24%", zoom: 1.35 },
   { name: "Bello Blessing Mariam", role: "Director of Operations", photo: portrait("bello-blessing-mariam.jpg", 1000, 1499, "Bello Blessing Mariam"), focus: "50% 20%" },
   { name: "Anifowose Akachukwu", role: "Director of Administration", photo: portrait("anifowose-akachukwu.jpg", 1000, 1500, "Anifowose Akachukwu"), focus: "50% 25%" },
   { name: "Aminu Victoria", role: "Director of Programs", photo: portrait("aminu-victoria.jpg", 842, 1137, "Aminu Victoria"), focus: "50% 20%" },

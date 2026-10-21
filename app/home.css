@@ -212,6 +212,31 @@ blockquote{margin:0}
 .quote-cite span{color:var(--ink-2)}
 @media (min-width:900px){ .quote-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:64px} }
 
+/* ============ Mentorship ============ */
+.mentor-section{padding-top:0}
+.mentor{display:grid; overflow:hidden; border-radius:var(--r-lg); background:var(--purple); color:#fff}
+.mentor-copy{padding:32px 24px}
+.home .mentor h2{color:#fff; margin-bottom:12px}
+.home .mentor .eyebrow{color:#fff; opacity:.9}
+.mentor-copy > p{color:rgba(255,255,255,.92); max-width:52ch}
+.mentor-topics{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 26px}
+.mentor-topics li{display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:var(--r-pill); background:var(--gold); color:#000; font-family:var(--font-head); font-weight:600; font-size:.95rem}
+.mentor-topics svg{width:17px; height:17px}
+.mentor-actions{display:flex; flex-wrap:wrap; gap:12px}
+.mentor-actions svg{width:18px; height:18px}
+.btn--light{background:#fff; color:var(--purple)}
+.btn--light:hover{background:var(--canvas-warm); transform:translateY(-1px)}
+.btn--ghost-light{background:transparent; color:#fff; border-color:rgba(255,255,255,.75)}
+.btn--ghost-light:hover{background:#fff; color:var(--purple)}
+.mentor .mentor-note{margin-top:18px; font-size:.9rem; color:rgba(255,255,255,.88)}
+.mentor-media{position:relative; min-height:240px}
+.mentor-media img{object-fit:cover}
+@media (min-width:768px){ .mentor-copy{padding:44px 48px} }
+@media (min-width:1024px){
+  .mentor{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+  .mentor-copy{padding:56px 56px}
+}
+
 /* ============ Sponsors ============ */
 .partners{display:grid; gap:40px; align-items:center}
 .partners-copy h2{margin-bottom:18px}
@@ -227,6 +252,14 @@ blockquote{margin:0}
 .ways-list div > span{display:block; color:var(--ink-2); font-size:1rem; line-height:1.55; margin-top:2px}
 @media (min-width:768px){ .ways{padding:36px 40px} }
 @media (min-width:1024px){ .partners{grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:64px} }
+.sponsors{margin-top:40px}
+.sponsors h3{margin-bottom:16px; font-size:1.125rem}
+.sponsor-row{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px}
+.sponsor-row a{position:relative; display:block; aspect-ratio:1; overflow:hidden; border:1px solid var(--line); border-radius:var(--r-sm); background:#fff; transition:transform .3s var(--ease), box-shadow .3s var(--ease)}
+.sponsor-row a:hover{transform:translateY(-3px); box-shadow:var(--shadow-hover)}
+.sponsor-row img{object-fit:contain}
+@media (min-width:640px){ .sponsor-row{grid-template-columns:repeat(7,minmax(0,1fr)); gap:14px} }
+@media (min-width:1024px){ .sponsors{margin-top:56px} }
 
 /* ============ Get involved ============ */
 .section-head-note{max-width:36ch}

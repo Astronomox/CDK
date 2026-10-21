@@ -170,17 +170,18 @@ export function PartnerTile({ partner }: { partner: Partner }) {
   const inner = (
     <>
       {partner.logo ? (
-        <div className="relative h-16 w-full">
-          <MediaImage image={partner.logo} fill sizes="200px" className="object-contain" />
+        <div className="relative aspect-square w-full overflow-hidden rounded-[14px] border border-border">
+          <MediaImage image={partner.logo} fill sizes="(min-width: 1024px) 220px, 45vw" className="object-contain" />
         </div>
-      ) : (
-        <p className="font-heading text-lg font-semibold text-ink">{partner.name}</p>
-      )}
-      {partner.description ? <p className="mt-3 text-sm text-muted-foreground">{partner.description}</p> : null}
+      ) : null}
+      <p className={partner.logo ? "mt-3 font-heading text-sm font-semibold text-ink sm:text-base" : "font-heading text-lg font-semibold text-ink"}>
+        {partner.name}
+      </p>
+      {partner.description ? <p className="mt-2 text-sm text-muted-foreground">{partner.description}</p> : null}
     </>
   );
   return (
-    <li className="flex min-h-32 flex-col items-center justify-center rounded-[20px] border border-border bg-white p-6 text-center">
+    <li className="lift flex flex-col items-center rounded-[20px] border border-border bg-white p-3 text-center sm:p-4">
       {partner.website ? (
         <a href={partner.website} target="_blank" rel="noopener noreferrer" className="w-full">
           {inner}

@@ -77,6 +77,20 @@ export default function ContactPage() {
             </a>
           </p>
         ) : null}
+        <div id="mentorship" className="mt-6 rounded-[20px] bg-purple p-5 text-white sm:mt-8 sm:p-8">
+          <h3 className="text-xl font-semibold text-white sm:text-2xl">Need someone to talk to?</h3>
+          <p className="mt-2 max-w-2xl text-white/90">
+            Our team is here to listen and guide you on morals, career, education and personal development. Email us with the subject
+            &ldquo;Mentorship&rdquo; or call, and someone will get back to you. Under 18? Please ask a parent, guardian or teacher to reach out
+            with you.
+          </p>
+          <a
+            href={`mailto:${SITE.contact.email}?subject=${encodeURIComponent("Mentorship: I would like to talk")}`}
+            className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-5 font-heading font-semibold text-purple transition-transform hover:-translate-y-0.5"
+          >
+            <Mail className="size-4" /> Email us about mentorship
+          </a>
+        </div>
       </Section>
 
       <Section tone="soft" id="school-outreach" labelledBy="school-heading">

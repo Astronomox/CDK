@@ -44,7 +44,7 @@ export function Footer() {
         </div>
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-[#2A2F36] pt-6 md:mt-12">
           <p>
-            &copy; {year} {SITE.name}
+            &copy; {year} {SITE.legalName}
             {!isTodo(SITE.registration.rcNumber) ? <>. Registered in Nigeria, RC {SITE.registration.rcNumber}.</> : null}
           </p>
           <div className="flex gap-2.5">

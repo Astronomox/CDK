@@ -114,3 +114,13 @@ Working notes for whoever picks this project up next (human or Claude). Read CLA
 - Verified: tsc, lint and build pass; every page is 375px wide on phones with no inner sideways scrollers; homepage phone screenshot checked.
 - To check next: the "Our impact so far" heading on the blue stats band looked dark in the phone screenshot (possibly caught mid-reveal; confirm the contrast). Not committed or pushed yet.
 - Share image: `app/opengraph-image.jpg` (and an identical `app/twitter-image.jpg`), 1200x630, made from photo 2024-23 with the logo on a white badge bottom-right; replaces the generated `opengraph-image.tsx`. Bug fixed: pages using `pageMetadata` set their own `openGraph`, which dropped the root file-based image, so most pages had no og:image. `lib/seo.ts` now passes the share image by default (pages with their own `image`, like stories, keep theirs). To remake it, rerun the PIL composite (crop photo to 1200x630, logo-transparent.png 150px tall on a white rounded badge).
+
+## Session 7 (2026-10-21): client observations
+
+- Sponsors: 7 logos sent by the client for display (Bukola Jaiyeola Initiative, Aquacy, Giwa Autos, Skyhour Resources, Emmy Visuals, Vard Label, Pelumi Bintu-Edun). Square 600px tiles in `public/partners/` (each keeps its own background), listed in `seedPartners`. Shown on /partners (`PartnerTile`: logo tile + name) and as a row on the homepage under "Made possible together". `SITE.partnersConfirmed` is true.
+- Mentorship: "Need someone to talk to?" (moral, career, education, development) as a purple panel after Programmes on the homepage (`#mentorship`) and a card on Contact. Email (subject "Mentorship: I would like to talk") and phone only, no new form. Under-18s are asked to reach out with a parent, guardian or teacher.
+- Numbers: children reached is now 1,300+ (`SITE.impact.childrenReached`, Impact page, story renamed to `children-reached-and-outreaches-so-far`). Outreaches still 7.
+- Copy from the client: About "Where we work" and the homepage "On an outreach day" paragraph use their wording.
+- Homepage "why we exist" frame: the two arms now rise up the sides and meet over the arched top of the photo (client felt it was upside down).
+- Deputy director: new photo (809x1080), zoom 1.35.
+- Registered name is "Cheer The Kids Initiative" (`SITE.legalName`), shown on the About registration card, in the footer copyright and JSON-LD. Display name stays "Cheer The Kids".

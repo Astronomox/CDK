@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Counts a figure like "2,000+" up from 0 when it scrolls into view.
+ * Counts a figure like "1,300+" up from 0 when it scrolls into view.
  * The real value is always in the page for search engines and screen readers.
  */
 export function CountUp({ value, duration = 1100 }: { value: string; duration?: number }) {

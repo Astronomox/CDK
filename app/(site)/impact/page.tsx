@@ -13,7 +13,7 @@ export const revalidate = 600;
 
 export const metadata: Metadata = pageMetadata({
   title: "Our impact",
-  description: "Over 2,000 children reached through 7 school and community outreaches in Lagos and Kwara. See our projects, photos, videos and testimonials.",
+  description: "Over 1,300 children reached through 7 school and community outreaches in Lagos and Kwara. See our projects, photos, videos and testimonials.",
   path: "/impact",
 });
 
@@ -32,7 +32,7 @@ export default async function ImpactPage() {
       <PageHeader
         image={OUTREACH_PHOTOS["2026-5"]}
         eyebrow="Our impact"
-        title="Over 2,000 children reached through 7 outreaches"
+        title="Over 1,300 children reached through 7 outreaches"
         intro="Our documented activities so far have taken place in Lagos and Kwara. Here is the evidence, shared honestly and with consent."
         crumbs={[{ label: "Our Impact" }]}
       />
@@ -76,7 +76,7 @@ export default async function ImpactPage() {
       ) : null}
 
       <CtaBand
-        title="Help us reach the next 2,000 children"
+        title="Help us reach many more children"
         text="Your support makes the next outreach possible."
         actions={[
           { href: "/get-involved/donate", label: "Support Our Mission", trackLabel: "impact_donate" },

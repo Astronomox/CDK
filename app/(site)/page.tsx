@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, HeartHandshake, Mail, MapPin, School, ShoppingBag, UserRound, Users } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Briefcase, HeartHandshake, Mail, MapPin, Phone, School, ShoppingBag, Sprout, UserRound, Users } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
-import { getGallery, getProgrammes, getProjects, getTestimonials } from "@/lib/content";
+import { getGallery, getPartners, getProgrammes, getProjects, getTestimonials } from "@/lib/content";
 import { OUTREACH_PHOTOS, PLACEHOLDERS } from "@/lib/content/seed";
 import type { GalleryItem, Project } from "@/lib/content";
 import { MediaImage } from "@/components/ui/MediaImage";
@@ -45,6 +45,15 @@ const RIBBON = [
   OUTREACH_PHOTOS["2025-47"],
 ];
 const IMPACT_BG = OUTREACH_PHOTOS["2026-31"];
+const MENTOR_PHOTO = OUTREACH_PHOTOS["2026-44"];
+
+/** What our mentors can talk through, as listed by the organisation. */
+const MENTOR_TOPICS = [
+  { label: "Moral", Icon: HeartHandshake },
+  { label: "Career", Icon: Briefcase },
+  { label: "Education", Icon: BookOpen },
+  { label: "Development", Icon: Sprout },
+];
 
 /** Year shown large on project cards: from the date, or a year in the title. */
 function projectYear(p: Project) {
@@ -73,7 +82,14 @@ function mosaic(items: GalleryItem[]) {
 }
 
 export default async function HomePage() {
-  const [programmes, projects, gallery, testimonials] = await Promise.all([getProgrammes(), getProjects(), getGallery(), getTestimonials()]);
+  const [programmes, projects, gallery, testimonials, partners] = await Promise.all([
+    getProgrammes(),
+    getProjects(),
+    getGallery(),
+    getTestimonials(),
+    getPartners(),
+  ]);
+  const sponsors = partners.filter((p) => p.kind === "sponsor" && p.logo);
   const [featured, ...moreVoices] = testimonials;
   // Never show the same photo twice on the homepage.
   const used = new Set([
@@ -160,8 +176,9 @@ export default async function HomePage() {
           <figure className="embrace" aria-label="Photo framed by two curved arms, inspired by the embrace in our logo">
             <MediaImage image={PLACEHOLDERS.classroom} sizes="(min-width: 1024px) 460px, 90vw" />
             <svg viewBox="0 0 400 500" preserveAspectRatio="none" aria-hidden>
-              <path pathLength={1} stroke="#7146D3" d="M40 102 A192 192 0 0 0 8 200 L8 372 C8 438 96 486 200 496" />
-              <path pathLength={1} stroke="#FED072" d="M360 102 A192 192 0 0 1 392 200 L392 372 C392 438 304 486 200 496" />
+              {/* Two arms rise up the sides and meet over the photo's arched top, following its shape. */}
+              <path pathLength={1} stroke="#7146D3" d="M64 494 C30 486 8 462 8 428 L8 200 A192 192 0 0 1 196 8" />
+              <path pathLength={1} stroke="#FED072" d="M336 494 C370 486 392 462 392 428 L392 200 A192 192 0 0 0 204 8" />
             </svg>
           </figure>
           <div className="why-copy reveal">
@@ -246,9 +263,44 @@ export default async function HomePage() {
             ))}
           </div>
           <p className="on-the-day reveal">
-            <b>On an outreach day:</b> group conversations on purpose and self-belief, games, fun videos and creative engagement, prayer,
-            danceable music, and relief items like bags, shoes and books.
+            <b>On an outreach day:</b> we engage children in group conversations about purpose and self-belief, games, fun videos, and other
+            creative activities. We also incorporate prayer, danceable music, and the distribution of relief items.
           </p>
+        </div>
+      </section>
+
+      {/* 5b. Mentorship: a direct line to someone who will listen. */}
+      <section className="section mentor-section" id="mentorship" aria-labelledby="mentor-title">
+        <div className="wrap">
+          <div className="mentor reveal">
+            <div className="mentor-copy">
+              <span className="eyebrow">Mentorship</span>
+              <h2 id="mentor-title">Need someone to talk to?</h2>
+              <p>
+                Our team is here to listen and guide you on morals, career, education and personal development. Reach out by email or phone
+                and someone will get back to you.
+              </p>
+              <ul className="mentor-topics" aria-label="What we can talk about">
+                {MENTOR_TOPICS.map(({ label, Icon }) => (
+                  <li key={label}>
+                    <Icon aria-hidden /> {label}
+                  </li>
+                ))}
+              </ul>
+              <div className="mentor-actions">
+                <a className="btn btn--light" href={`mailto:${SITE.contact.email}?subject=${encodeURIComponent("Mentorship: I would like to talk")}`}>
+                  <Mail aria-hidden /> Email us
+                </a>
+                <a className="btn btn--ghost-light" href={`tel:${SITE.contact.phoneIntl}`}>
+                  <Phone aria-hidden /> Call {SITE.contact.phone}
+                </a>
+              </div>
+              <p className="mentor-note">Under 18? Please ask a parent, guardian or teacher to reach out with you.</p>
+            </div>
+            <div className="mentor-media">
+              <MediaImage image={MENTOR_PHOTO} fill sizes="(min-width: 1024px) 40vw, 100vw" />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -356,14 +408,13 @@ export default async function HomePage() {
             <span className="eyebrow">Sponsors and partners</span>
             <h2 id="partners-title">Made possible together.</h2>
             <p>
-              Sponsors and partners help us provide relief items such as bags, shoes and books, and make every outreach possible. We will
-              introduce them here, with their permission.
+              Sponsors and partners help us provide relief items such as bags, shoes and books, and make every outreach possible.
+              {sponsors.length ? " Thank you to everyone who stands with us." : " We will introduce them here, with their permission."}
             </p>
             <Link className="btn btn--secondary" href="/get-involved/partner">
               Partner With Us
             </Link>
           </div>
-          {/* No sponsors are confirmed yet. Logos are added in the CMS only with written permission. */}
           <div className="ways reveal">
             <h3>Ways to partner with us</h3>
             <ul className="ways-list">
@@ -397,6 +448,21 @@ export default async function HomePage() {
             </ul>
           </div>
         </div>
+        {sponsors.length ? (
+          <div className="wrap sponsors reveal">
+            <h3 id="sponsors-title">Our sponsors</h3>
+            <ul className="sponsor-row" aria-labelledby="sponsors-title">
+              {sponsors.map((p) => (
+                <li key={p.id}>
+                  <Link href="/partners" title={p.name}>
+                    <MediaImage image={p.logo!} fill sizes="(min-width: 1024px) 150px, 24vw" />
+                    <span className="sr-only">{p.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </section>
 
       {/* 9. Get involved */}
